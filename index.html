@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX Projects Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .status {
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        p {
+            color: #666;
+            font-size: 1.1em;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .info-box {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 5px;
+        }
+        
+        .info-box code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #999;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📐 LaTeX Projects</h1>
+        
+        <div class="status">✓ Domain Linking Successful</div>
+        
+        <p>Welcome! This is a placeholder page for showcasing LaTeX projects.</p>
+        
+        <div class="info-box">
+            <p><strong>Current Status:</strong></p>
+            <p>If you can see this page, your domain has successfully linked to this repository!</p>
+        </div>
+        
+        <div class="info-box">
+            <p><strong>Next Steps:</strong></p>
+            <ul style="margin-left: 20px; text-align: left;">
+                <li>Add your LaTeX project details</li>
+                <li>Upload PDF previews</li>
+                <li>Create project showcase sections</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Repository: <code>bntnware/cbenton</code></p>
+            <p>Last updated: <span id="date"></span></p>
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+</html>
