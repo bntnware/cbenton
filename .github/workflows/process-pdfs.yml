@@ -1,0 +1,24 @@
+  - name: Install system deps
+    run: |
+      sudo apt-get update
+      sudo apt-get install -y poppler-utils
+
+  - name: Setup Node
+    uses: actions/setup-node@v4
+    with:
+      node-version: '18'
+
+  - name: Install npm deps
+    run: npm ci
+
+  - name: Generate thumbnails
+    run: node tools/process-pdfs.js
+
+  - name: Commit and push generated assets
+    run: |
+      git config user.name "github-actions[bot]"
+      git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      git add assets/samples/thumbs || true
+      git add assets/samples/images.json || true
+      git commit -m "chore: generate PDF thumbnails and metadata" || echo "no changes"
+      git push
