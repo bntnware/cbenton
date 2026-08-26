@@ -1,0 +1,25 @@
+/* Added form styles for contact page and a few helpers */
+
+.contact-card{ margin-top: var(--space-4); padding: var(--space-4); background: transparent; }
+.contact-form{ display: grid; grid-template-columns: 1fr; gap: var(--space-3); max-width: 720px; }
+.contact-form label{ font-size: .95rem; color: var(--muted); }
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: var(--scale-2);
+  background: var(--surface);
+  color: var(--text);
+}
+.contact-form textarea{ resize: vertical; }
+.contact-form input:focus, .contact-form textarea:focus{ outline: 3px solid color-mix(in srgb, var(--focus) 12%, transparent); outline-offset: 2px; }
+
+.form-actions{ margin-top: var(--space-2); }
+.muted-note{ margin-top: var(--space-3); color: var(--muted); font-size: .95rem; }
+
+/* small utility: sr-only */
+.sr-only{ position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }

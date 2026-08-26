@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — cbenton</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">[ cbenton ]</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Main</a></li>
+          <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
+          <li><a href="/sample" class="nav-link" data-nav>Sample</a></li>
+          <li><a href="/order" class="nav-link" data-nav>Order</a></li>
+          <li><a href="/contact" class="nav-link active" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>Contact</h1>
+    <p class="prose">Get in touch — fill out the form below and I'll receive your message by email.</p>
+
+    <section class="contact-card" aria-labelledby="contact-form-heading">
+      <h2 id="contact-form-heading" class="sr-only">Contact form</h2>
+
+      <form class="contact-form" action="https://formsubmit.co/chrisbenton@outlook.com" method="POST">
+        <!-- Redirect to a local thank-you page after submission -->
+        <input type="hidden" name="_next" value="/thank-you.html" />
+        <!-- Disable FormSubmit's captcha (optional) -->
+        <input type="hidden" name="_captcha" value="false" />
+
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </div>
+      </form>
+
+      <p class="muted-note">Or email directly: <a href="mailto:chrisbenton@outlook.com">chrisbenton@outlook.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>

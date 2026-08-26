@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank you — cbenton</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">[ cbenton ]</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Main</a></li>
+          <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
+          <li><a href="/sample" class="nav-link" data-nav>Sample</a></li>
+          <li><a href="/order" class="nav-link" data-nav>Order</a></li>
+          <li><a href="/contact" class="nav-link active" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>Thank you</h1>
+    <p class="prose">Your message was sent. I will get back to you soon.</p>
+    <p><a href="/" class="btn">Return home</a></p>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>
