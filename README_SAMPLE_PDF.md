@@ -1,0 +1,1 @@
+Updated sample page for single-page PDF demonstration.
