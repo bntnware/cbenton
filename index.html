@@ -1,142 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaTeX Projects Portfolio - GITHUB PAGES</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            padding: 60px 40px;
-            text-align: center;
-            max-width: 600px;
-        }
-        
-        h1 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        
-        .github-badge {
-            display: inline-block;
-            background: #000;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            margin: 20px 0;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        
-        .status {
-            background: #667eea;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        
-        p {
-            color: #666;
-            font-size: 1.1em;
-            margin: 15px 0;
-            line-height: 1.6;
-        }
-        
-        .info-box {
-            background: #e3f2fd;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: left;
-            border-radius: 5px;
-        }
-        
-        .info-box code {
-            background: #bbdefb;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: monospace;
-        }
-        
-        .control-marker {
-            background: #f0f0f0;
-            border: 2px dashed #667eea;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #999;
-            font-size: 0.9em;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>cbenton — Home</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="github-badge">🐙 GITHUB PAGES</div>
-        
-        <h1>📐 LaTeX Projects</h1>
-        
-        <div class="status">✓ GITHUB SITE ACTIVE</div>
-        
-        <p>If you see this page with the <strong>BLUE background</strong> and <strong>GITHUB PAGES badge</strong>, you are viewing the GitHub Pages site, NOT the GoDaddy placeholder.</p>
-        
-        <div class="control-marker">
-            <strong>🎯 CONTROL TEST MARKER</strong><br>
-            This unique blue design proves the GitHub Pages site is live!
-        </div>
-        
-        <div class="info-box">
-            <p><strong>✅ What this means:</strong></p>
-            <ul style="margin-left: 20px; text-align: left;">
-                <li>GitHub Pages is successfully enabled</li>
-                <li>Your domain is pointing to GitHub (or will once configured)</li>
-                <li>The site is being served from the cbenton repository</li>
-            </ul>
-        </div>
-        
-        <div class="info-box">
-            <p><strong>📝 Repository Info:</strong></p>
-            <p>Repo: <code>bntnware/cbenton</code></p>
-            <p>Branch: <code>main</code></p>
-            <p>File: <code>index.html</code></p>
-        </div>
-        
-        <footer>
-            <p>Last updated: <span id="date"></span></p>
-        </footer>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">cbenton</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Main</a></li>
+          <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
+          <li><a href="/sample" class="nav-link" data-nav>Sample</a></li>
+          <li><a href="/order" class="nav-link" data-nav>Order</a></li>
+          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
     </div>
-    
-    <script>
-        document.getElementById('date').textContent = new Date().toLocaleDateString();
-    </script>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>Welcome</h1>
+    <p class="prose">This is a minimalist, chic, and fast starting point. Use the navigation above to explore the site.</p>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script src="nav.js" defer></script>
 </body>
 </html>
