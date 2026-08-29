@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Order — cbenton</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .pricing-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+    }
+    .pricing-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+    .pricing-card h3 {
+      font-size: var(--scale-4);
+      margin: 16px 0 8px 0;
+      color: var(--text);
+    }
+    .pricing-card .price {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 16px 0;
+    }
+    .pricing-card .price span {
+      font-size: 1rem;
+      color: var(--muted);
+    }
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+      text-align: left;
+      color: var(--muted);
+    }
+    .pricing-card li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-card li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">[ cbenton ]</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Main</a></li>
+          <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
+          <li><a href="/sample" class="nav-link" data-nav>Sample</a></li>
+          <li><a href="/order" class="nav-link active" data-nav>Order</a></li>
+          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>Order Services</h1>
+    <p class="prose">
+      Choose a package that works for your project. All packages include consultation, revisions, and ongoing support.
+    </p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="price">$500<span>/project</span></div>
+        <ul>
+          <li>✓ Single page design</li>
+          <li>✓ Mobile responsive</li>
+          <li>✓ Basic optimization</li>
+          <li>✓ 2 rounds of revisions</li>
+          <li>✓ Deployment support</li>
+        </ul>
+        <a href="/contact" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Professional</h3>
+        <div class="price">$1,500<span>/project</span></div>
+        <ul>
+          <li>✓ 3-5 page website</li>
+          <li>✓ Custom branding</li>
+          <li>✓ Advanced optimization</li>
+          <li>✓ Unlimited revisions</li>
+          <li>✓ 30 days support</li>
+          <li>✓ Analytics setup</li>
+        </ul>
+        <a href="/contact" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Enterprise</h3>
+        <div class="price">$3,000<span>+/project</span></div>
+        <ul>
+          <li>✓ Full website redesign</li>
+          <li>✓ API integration</li>
+          <li>✓ Performance tuning</li>
+          <li>✓ Unlimited revisions</li>
+          <li>✓ 90 days support</li>
+          <li>✓ Training & documentation</li>
+        </ul>
+        <a href="/contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+
+    <section aria-labelledby="process-heading">
+      <h2 id="process-heading">How It Works</h2>
+      <p class="prose">
+        <strong>1. Discovery</strong> — We discuss your goals, audience, and requirements.<br />
+        <strong>2. Design</strong> — I create clean mockups and prototypes for your review.<br />
+        <strong>3. Development</strong> — The design is built with optimized, semantic code.<br />
+        <strong>4. Launch</strong> — Testing, deployment, and handover to you.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>
