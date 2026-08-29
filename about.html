@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Me — cbenton</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">[ cbenton ]</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Main</a></li>
+          <li><a href="/about" class="nav-link active" data-nav>About Me</a></li>
+          <li><a href="/sample" class="nav-link" data-nav>Sample</a></li>
+          <li><a href="/order" class="nav-link" data-nav>Order</a></li>
+          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>About Me</h1>
+    <p class="prose">
+      I'm a designer and developer focused on creating clean, minimalist experiences that work beautifully across all devices. With a keen eye for typography and spacing, I craft interfaces that balance aesthetics with functionality.
+    </p>
+
+    <section aria-labelledby="expertise-heading">
+      <h2 id="expertise-heading">Expertise</h2>
+      <p class="prose">
+        I specialize in web design, front-end development, and digital strategy. My approach emphasizes:
+      </p>
+      <ul class="prose">
+        <li><strong>Minimalist design</strong> — clarity through reduction</li>
+        <li><strong>Accessibility</strong> — building for everyone</li>
+        <li><strong>Performance</strong> — fast, efficient, and lean</li>
+        <li><strong>User experience</strong> — intuitive and delightful interactions</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="approach-heading">
+      <h2 id="approach-heading">My Approach</h2>
+      <p class="prose">
+        Every project starts with understanding the core need. I believe great design isn't about decoration—it's about solving problems clearly and elegantly. I work closely with clients to ensure the final product not only looks good but performs and serves its intended purpose.
+      </p>
+    </section>
+
+    <section aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Let's Work Together</h2>
+      <p class="prose">
+        If you have a project in mind or just want to chat about design, feel free to <a href="/contact">get in touch</a>. I'm always interested in new challenges and collaborations.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script src="nav.js" defer></script>
+</body>
+</html>
