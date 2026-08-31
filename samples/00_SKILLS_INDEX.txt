@@ -1,0 +1,50 @@
+LAYOUT: TOP = FRONT | BOTTOM = BACK
+PRINT MARGIN: 0.25 inch white border on all four outer edges
+RASTER: 300 dpi
+MARGIN IN PIXELS: 75px
+PAIR IMAGE SIZE: 2619 x 1608 px
+
+LAYOUT: TOP = FRONT; BOTTOM = BACK
+Each PNG is a vertical two-unit pair.
+
+I'M COOL — CAL FOOTBALL 2026 — 12-PAIR FULL SKILLS SAMPLER
+
+Format: each PNG contains exactly two ticket units side-by-side: TOP [FRONT] / BOTTOM [BACK].
+Rasterization: 300 dpi from the latest verified CONTRAST_FIRST_MIN_WHITE full-roster vector PDF.
+Ticket pair raster size: 4938 x 729 px (30 px white separator between front and back).
+
+Selection:
+01. Solomon Williams #0 — Florida — unit 1
+    one-digit jersey #0; two-row NAME; one-digit 3/D/glasses absorber; transfer back
+02. EJ Caminong #2 — Washington — unit 5
+    single-line NAME; one-digit jersey; compact 3/D/glasses whitespace absorber
+03. Jaron-Keawe Sagapolutele #3 — Hawaii — unit 6
+    long two-row NAME; one-digit jersey; pressure-saturated 3/D/glasses absorber
+04. Emmanuel Okoye #6 — Nigeria — unit 13
+    zero-white reference front; one-digit jersey; international origin palette
+05. Ian Strong #9 — New York — unit 18
+    zero-white reference front; one-digit jersey; senior/transfer machinery
+06. AJ Tuitele #9 — Nevada — unit 19
+    single-line NAME; one-digit jersey; compact stereo absorber; Nevada palette
+07. Jackson Brousseau #11 — Utah — unit 23
+    two-digit jersey; standard two-digit 3D/glasses branch; transfer back
+08. Aaron Hampton #21 — Alaska — unit 40
+    two-digit jersey; Alaska origin palette; returner machinery
+09. Angus Davies #29 — Australia — unit 52
+    two-digit jersey; international Australia palette; senior/transfer machinery
+10. Frederick Williams III #54 — California — unit 72
+    III suffix absorbed by COOL -> COOOL; two-digit jersey; suffix routing
+11. Justin Hasenhuetl #65 — Germany — unit 83
+    two-digit jersey; international Germany palette; returner machinery
+12. Rico Walker #8 — North Carolina — unit 17
+    one-digit jersey; senior machinery; North Carolina palette
+
+Coverage highlights:
+- one-digit jerseys: #0, #2, #3, #6, #8, #9
+- two-digit jerseys: #11, #21, #29, #54, #65
+- single-line NAME machinery: EJ Caminong, AJ Tuitele
+- two-row / one-digit pressure-saturated 3-D-glasses machinery: Jaron-Keawe Sagapolutele
+- suffix absorption / COOOL (III): Frederick Williams III
+- zero-white front references: Emmanuel Okoye, Ian Strong
+- wide origin spread: Florida, Washington, Hawaii, Nigeria, New York, Nevada, Utah, Alaska, Australia, California, Germany, North Carolina
+- back-side golden C-BEAR/SOSO solver remains live in every selected back; the samples show varied solved positions.
