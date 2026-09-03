@@ -27,12 +27,14 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
+    /* Allow very-wide sample images to keep their native ratio so they are not cropped */
     .gallery-img {
       display: block;
       width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      height: auto; /* let the image determine height from intrinsic ratio */
+      /* remove forced aspect-ratio and object-fit:cover which cropped wide images */
+      object-fit: none;
+      background: #fff;
     }
 
     .gallery-caption {
@@ -175,7 +177,7 @@
     <section aria-labelledby="about-work-heading">
       <h2 id="about-work-heading">About This Work</h2>
       <p class="prose">
-        Each project reflects a commitment to thoughtful design and clean execution. I focus on understanding client needs, delivering accessible solutions, and creating work that performs well across devices.
+        Each project reflects a commitment to thoughtful design and clean execution. I focus on understanding client needs, delivering accessible solutions, and creating work that performs well a[...]
       </p>
     </section>
   </main>
