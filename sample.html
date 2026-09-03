@@ -17,9 +17,11 @@
     .gallery-item {
       position: relative;
       border-radius: 8px;
-      overflow: hidden;
+      overflow: visible; /* allow full-width images to display without clipping */
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       transition: transform 150ms ease, box-shadow 150ms ease;
+      background: #fff;
+      padding: 12px; /* spacing around the image and caption */
     }
 
     .gallery-item:hover {
@@ -27,30 +29,26 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
-    /* Allow very-wide sample images to keep their native ratio so they are not cropped */
+    /* Show the entire ticket image at full width and preserve intrinsic ratio */
     .gallery-img {
       display: block;
       width: 100%;
-      height: auto; /* let the image determine height from intrinsic ratio */
-      /* remove forced aspect-ratio and object-fit:cover which cropped wide images */
+      height: auto; /* preserve natural aspect ratio */
       object-fit: none;
       background: #fff;
+      border-radius: 6px; /* slightly round image corners to match container */
     }
 
+    /* Caption moved below the image so it doesn't cover any part of the ticket */
     .gallery-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-      color: #fff;
-      padding: 20px 16px 16px;
+      display: block;
+      position: static;
+      margin-top: 12px;
+      color: #111;
+      padding: 0 6px 6px;
       font-size: 0.95rem;
-      opacity: 0;
-      transition: opacity 150ms ease;
-    }
-
-    .gallery-item:hover .gallery-caption {
+      text-align: center;
+      background: none;
       opacity: 1;
     }
 
