@@ -66,6 +66,53 @@
       text-align: center;
       padding: 16px;
     }
+
+    /* PDF Downloads section */
+    .pdf-downloads {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .pdf-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
+      border: 2px solid #e0e0e0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .pdf-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border-color: #111;
+    }
+
+    .pdf-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .pdf-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .pdf-size {
+      font-size: 0.85rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
@@ -169,6 +216,30 @@
           <div class="gallery-caption">12 — Rico Walker (North Carolina)</div>
         </div>
 
+      </div>
+    </section>
+
+    <section aria-labelledby="pdf-heading">
+      <h2 id="pdf-heading">Additional Samples</h2>
+      
+      <div class="pdf-downloads">
+        <a href="samples/IM_COOL_BASELINE_BBALL_UNIQUE_CBENTON_SHORT_V5_PROOF.pdf" class="pdf-item" download>
+          <div class="pdf-icon">📄</div>
+          <div class="pdf-name">I'M COOL — CAL FOOTBALL 2026</div>
+          <div class="pdf-size">Baseline Proof</div>
+        </a>
+
+        <a href="samples/IM_COOL_FRONT_BACK_PUSH.pdf" class="pdf-item" download>
+          <div class="pdf-icon">📄</div>
+          <div class="pdf-name">I'M COOL</div>
+          <div class="pdf-size">Front & Back Push</div>
+        </a>
+
+        <a href="samples/ITS_HER_BIRTHDAY_FRONT_BACK_UNIT_PUSH.pdf" class="pdf-item" download>
+          <div class="pdf-icon">📄</div>
+          <div class="pdf-name">IT'S HER BIRTHDAY</div>
+          <div class="pdf-size">Front & Back Push</div>
+        </a>
       </div>
     </section>
 
