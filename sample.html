@@ -67,39 +67,23 @@
       padding: 16px;
     }
 
-    /* PDF Viewer section - full width */
-    .pdf-viewer-section {
-      margin: 60px 0 40px;
-    }
-
-    .pdf-viewer-section h2 {
-      margin-bottom: 32px;
-    }
-
-    .pdf-viewer-item {
-      margin-bottom: 40px;
-    }
-
-    .pdf-viewer-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: #111;
-    }
-
+    /* Full-width PDF viewer */
     .pdf-viewer-container {
-      width: 100%;
-      height: 600px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      height: auto;
+      margin-top: 60px;
       background: #f5f5f5;
     }
 
-    .pdf-viewer-container embed,
-    .pdf-viewer-container iframe {
+    .pdf-viewer-container embed {
+      display: block;
       width: 100%;
-      height: 100%;
+      height: auto;
       border: none;
     }
   </style>
@@ -208,31 +192,6 @@
       </div>
     </section>
 
-    <section class="pdf-viewer-section" aria-labelledby="pdf-heading">
-      <h2 id="pdf-heading">Additional Samples</h2>
-      
-      <div class="pdf-viewer-item">
-        <div class="pdf-viewer-title">I'M COOL — CAL FOOTBALL 2026 (Baseline Proof)</div>
-        <div class="pdf-viewer-container">
-          <embed src="samples/IM_COOL_BASELINE_BBALL_UNIQUE_CBENTON_SHORT_V5_PROOF.pdf" type="application/pdf">
-        </div>
-      </div>
-
-      <div class="pdf-viewer-item">
-        <div class="pdf-viewer-title">I'M COOL (Front & Back Push)</div>
-        <div class="pdf-viewer-container">
-          <embed src="samples/IM_COOL_FRONT_BACK_PUSH.pdf" type="application/pdf">
-        </div>
-      </div>
-
-      <div class="pdf-viewer-item">
-        <div class="pdf-viewer-title">IT'S HER BIRTHDAY (Front & Back Push)</div>
-        <div class="pdf-viewer-container">
-          <embed src="samples/ITS_HER_BIRTHDAY_FRONT_BACK_UNIT_PUSH.pdf" type="application/pdf">
-        </div>
-      </div>
-    </section>
-
     <section aria-labelledby="about-work-heading">
       <h2 id="about-work-heading">About This Work</h2>
       <p class="prose">
@@ -240,6 +199,12 @@
       </p>
     </section>
   </main>
+
+  <div class="pdf-viewer-container">
+    <embed src="samples/IM_COOL_BASELINE_BBALL_UNIQUE_CBENTON_SHORT_V5_PROOF.pdf" type="application/pdf">
+    <embed src="samples/IM_COOL_FRONT_BACK_PUSH.pdf" type="application/pdf">
+    <embed src="samples/ITS_HER_BIRTHDAY_FRONT_BACK_UNIT_PUSH.pdf" type="application/pdf">
+  </div>
 
   <footer class="site-footer container" role="contentinfo">
     <p>&copy; 2026 cbenton</p>
