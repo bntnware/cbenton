@@ -30,11 +30,13 @@
     .gallery-item {
       position: relative;
       border-radius: 8px;
-      overflow: visible;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       transition: transform 150ms ease, box-shadow 150ms ease;
       background: #fff;
-      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .gallery-item:hover {
@@ -42,12 +44,17 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
+    /* Image gallery items */
+    .gallery-item.image-item {
+      padding: 12px;
+    }
+
     .gallery-img {
       display: block;
       width: 100%;
       height: auto;
-      object-fit: none;
-      background: #fff;
+      object-fit: cover;
+      background: #f5f5f5;
       border-radius: 6px;
     }
 
@@ -63,12 +70,79 @@
       opacity: 1;
     }
 
-    /* PDF embed full-width */
-    .pdf-fullwidth {
+    /* PDF gallery items */
+    .gallery-item.pdf-item {
+      padding: 0;
+      flex-direction: column;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+    }
+
+    .gallery-item.pdf-item:focus {
+      outline: 3px solid #1a73e8;
+      outline-offset: 2px;
+    }
+
+    .pdf-thumbnail {
       width: 100%;
-      height: auto;
-      border: none;
-      display: block;
+      height: 280px;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e9e9e9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pdf-thumbnail::before {
+      content: '📄';
+      font-size: 64px;
+      opacity: 0.3;
+    }
+
+    .pdf-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pdf-info {
+      padding: 16px 12px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pdf-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #111;
+      margin: 0 0 8px 0;
+      line-height: 1.3;
+    }
+
+    .pdf-link {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 150ms ease;
+    }
+
+    .gallery-item.pdf-item:hover .pdf-link {
+      color: #1557b0;
+    }
+
+    .pdf-link::after {
+      content: ' →';
+      margin-left: 4px;
     }
 
     /* Header and footer positioning */
@@ -133,88 +207,105 @@
     <!-- Jersey Gallery - Full Width -->
     <div class="fullwidth-section">
       <div class="fullwidth-content">
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/01_SOLOMON_WILLIAMS_JERSEY_0_FLORIDA_TOP_FRONT_BOTTOM_BACK.png" alt="Solomon Williams jersey sample" class="gallery-img">
           <div class="gallery-caption">01 — Solomon Williams (Florida)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/02_EJ_CAMINONG_JERSEY_2_WASHINGTON_TOP_FRONT_BOTTOM_BACK.png" alt="EJ Caminong jersey sample" class="gallery-img">
           <div class="gallery-caption">02 — EJ Caminong (Washington)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/03_JARON_KEAWE_SAGAPOLUTELE_JERSEY_3_HAWAII_TOP_FRONT_BOTTOM_BACK.png" alt="Jaron Keawe Sagapolutele jersey sample" class="gallery-img">
           <div class="gallery-caption">03 — Jaron Keawe Sagapolutele (Hawaii)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/04_EMMANUEL_OKOYE_JERSEY_6_NIGERIA_TOP_FRONT_BOTTOM_BACK.png" alt="Emmanuel Okoye jersey sample" class="gallery-img">
           <div class="gallery-caption">04 — Emmanuel Okoye (Nigeria)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/05_IAN_STRONG_JERSEY_9_NEW_YORK_TOP_FRONT_BOTTOM_BACK.png" alt="Ian Strong jersey sample" class="gallery-img">
           <div class="gallery-caption">05 — Ian Strong (New York)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/06_AJ_TUITELE_JERSEY_9_NEVADA_TOP_FRONT_BOTTOM_BACK.png" alt="AJ Tuitele jersey sample" class="gallery-img">
           <div class="gallery-caption">06 — AJ Tuitele (Nevada)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/07_JACKSON_BROUSSEAU_JERSEY_11_UTAH_TOP_FRONT_BOTTOM_BACK.png" alt="Jackson Brousseau jersey sample" class="gallery-img">
           <div class="gallery-caption">07 — Jackson Brousseau (Utah)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/08_AARON_HAMPTON_JERSEY_21_ALASKA_TOP_FRONT_BOTTOM_BACK.png" alt="Aaron Hampton jersey sample" class="gallery-img">
           <div class="gallery-caption">08 — Aaron Hampton (Alaska)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/09_ANGUS_DAVIES_JERSEY_29_AUSTRALIA_TOP_FRONT_BOTTOM_BACK.png" alt="Angus Davies jersey sample" class="gallery-img">
           <div class="gallery-caption">09 — Angus Davies (Australia)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/10_FREDERICK_WILLIAMS_III_JERSEY_54_CALIFORNIA_TOP_FRONT_BOTTOM_BACK.png" alt="Frederick Williams III jersey sample" class="gallery-img">
           <div class="gallery-caption">10 — Frederick Williams III (California)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/11_JUSTIN_HASENHUETL_JERSEY_65_GERMANY_TOP_FRONT_BOTTOM_BACK.png" alt="Justin Hasenhuetl jersey sample" class="gallery-img">
           <div class="gallery-caption">11 — Justin Hasenhuetl (Germany)</div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item image-item">
           <img src="samples/12_RICO_WALKER_JERSEY_8_NORTH_CAROLINA_TOP_FRONT_BOTTOM_BACK.png" alt="Rico Walker jersey sample" class="gallery-img">
           <div class="gallery-caption">12 — Rico Walker (North Carolina)</div>
         </div>
       </div>
     </div>
 
-    <!-- PDF 1 - Full Width -->
+    <!-- PDF Gallery - Unified Gallery Style -->
     <div class="fullwidth-section">
-      <embed src="samples/IM_COOL_BASELINE_BBALL_UNIQUE_CBENTON_SHORT_V5_PROOF.pdf" type="application/pdf" class="pdf-fullwidth">
-    </div>
+      <div class="fullwidth-content">
+        <!-- PDF 1 -->
+        <a href="samples/IM_COOL_BASELINE_BBALL_UNIQUE_CBENTON_SHORT_V5_PROOF.pdf" target="_blank" rel="noopener noreferrer" class="gallery-item pdf-item">
+          <div class="pdf-thumbnail"></div>
+          <div class="pdf-info">
+            <h3 class="pdf-title">I'M COOL Basketball Proof</h3>
+            <span class="pdf-link">View PDF</span>
+          </div>
+        </a>
 
-    <!-- PDF 2 - Full Width -->
-    <div class="fullwidth-section">
-      <embed src="samples/IM_COOL_FRONT_BACK_PUSH.pdf" type="application/pdf" class="pdf-fullwidth">
-    </div>
+        <!-- PDF 2 -->
+        <a href="samples/IM_COOL_FRONT_BACK_PUSH.pdf" target="_blank" rel="noopener noreferrer" class="gallery-item pdf-item">
+          <div class="pdf-thumbnail"></div>
+          <div class="pdf-info">
+            <h3 class="pdf-title">I'M COOL Front & Back</h3>
+            <span class="pdf-link">View PDF</span>
+          </div>
+        </a>
 
-    <!-- PDF 3 - Full Width -->
-    <div class="fullwidth-section">
-      <embed src="samples/ITS_HER_BIRTHDAY_FRONT_BACK_UNIT_PUSH.pdf" type="application/pdf" class="pdf-fullwidth">
+        <!-- PDF 3 -->
+        <a href="samples/ITS_HER_BIRTHDAY_FRONT_BACK_UNIT_PUSH.pdf" target="_blank" rel="noopener noreferrer" class="gallery-item pdf-item">
+          <div class="pdf-thumbnail"></div>
+          <div class="pdf-info">
+            <h3 class="pdf-title">It's Her Birthday Unit Push</h3>
+            <span class="pdf-link">View PDF</span>
+          </div>
+        </a>
+      </div>
     </div>
 
     <div class="container">
       <section aria-labelledby="about-work-heading">
         <h2 id="about-work-heading">About This Work</h2>
         <p class="prose">
-          Each project reflects a commitment to thoughtful design and clean execution. I focus on understanding client needs, delivering accessible solutions, and creating work that performs well a[...]
+          Each project reflects a commitment to thoughtful design and clean execution. I focus on understanding client needs, delivering accessible solutions, and creating work that performs well across all formats.
         </p>
       </section>
     </div>
