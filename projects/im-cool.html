@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>I'M COOL — front/back systems — CBenton</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">[ cbenton ]</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Home</a></li>
+          <li><a href="/work" class="nav-link active" data-nav>Work</a></li>
+          <li><a href="/about" class="nav-link" data-nav>About</a></li>
+          <li><a href="/order" class="nav-link" data-nav>Pricing</a></li>
+          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <nav aria-label="Breadcrumb" style="margin-bottom:12px;">
+      <a href="/">Home</a> ‹ <a href="/work">Work</a> ‹ I'M COOL — front/back systems
+    </nav>
+
+    <h1>I'M COOL — front/back systems</h1>
+    <p class="prose">System type: Campaign System</p>
+
+    <section id="project-intro">
+      <h2>Project intro</h2>
+      <p class="prose">Coordinated front/back pieces that register across formats and scales, designed to be produced as a family with consistent provenance and layout logic.</p>
+    </section>
+
+    <section id="the-system">
+      <h2>The system</h2>
+      <h3>Rules</h3>
+      <ul>
+        <li>Registration and alignment rules for front/back continuity.</li>
+        <li>Consistent captioning and edition labeling to indicate provenance.</li>
+      </ul>
+
+      <h3>Inputs</h3>
+      <ul>
+        <li>Artwork files for front and back variants.</li>
+        <li>Metadata for captions and edition identifiers.</li>
+      </ul>
+
+      <h3>Variable elements</h3>
+      <ul>
+        <li>Color choice</li>
+        <li>Layout variant (but maintaining core grid)</li>
+      </ul>
+
+      <h3>Fixed elements</h3>
+      <ul>
+        <li>Logo bracket and type scale</li>
+        <li>Grid-based margins and caption placement</li>
+      </ul>
+
+      <h3>How the system scales</h3>
+      <p class="prose">New variants are produced by swapping artwork and color while keeping layout, captioning, and provenance marks consistent. This allows both single prints and larger serialized runs to be generated without redesigning the core structure.</p>
+    </section>
+
+    <section id="outputs">
+      <h2>Outputs</h2>
+      <p class="prose">Front/back prints, butted spreads, proof sheets, and web presentation tiles. Exports include print-ready PDFs with registration marks and color-managed files for production.</p>
+
+      <figure>
+        <img src="/samples/01_IM_COOL_FRONT.png" alt="I'M COOL Front" style="width:100%;height:auto;max-width:900px;" />
+        <figcaption class="muted">Hero image: I'M COOL front</figcaption>
+      </figure>
+    </section>
+
+    <section id="detail">
+      <h2>What changes from unit to unit</h2>
+      <p class="prose">Primary changes are color and minor layout variants; systemic cues like logo bracket, caption placement, and edition marks remain stable so units read cohesively as a family.</p>
+    </section>
+
+    <section id="production">
+      <h2>Production architecture</h2>
+      <ul>
+        <li>Tools: raster assets and layout scripts to assemble front/back pairs.</li>
+        <li>Automation/code: templating for captions and edition labels.</li>
+        <li>Print constraints: attention to front/back registration, color separations, and multi-up imposition for efficient printing.</li>
+      </ul>
+    </section>
+
+    <section id="result">
+      <h2>What the system makes possible</h2>
+      <p class="prose">An efficient, repeatable production method for coordinated artifacts that read as a coherent campaign across print and digital channels, enabling selective editions and consistent public presentation.</p>
+    </section>
+
+    <p style="margin-top:18px;"><a href="/work" class="btn">Back to systems index</a></p>
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script src="/nav.js" defer></script>
+</body>
+</html>
