@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work — CBenton</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-image-hints.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -45,6 +46,12 @@
       <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
     </section>
 
+    <section id="samples-grid" style="margin-top:20px; display:none;">
+      <h2 id="samples-heading">Samples</h2>
+      <div id="samples" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
+      <p style="margin-top:12px;"><a href="/work" class="btn">View all systems</a></p>
+    </section>
+
   </main>
 
   <footer class="site-footer container" role="contentinfo">
@@ -52,12 +59,24 @@
   </footer>
 
   <script>
-    // Lightweight client-side renderer for a static JSON index
-    async function renderProjects() {
+    async function renderProjectsOrSamples() {
+      const params = new URLSearchParams(window.location.search);
+      const filter = params.get('filter');
+      const grid = document.getElementById('grid');
+      const samplesSection = document.getElementById('samples-grid');
+      const samplesContainer = document.getElementById('samples');
+
+      // Load projects data always (to show related systems when filtering)
+      let projects = [];
       try {
         const res = await fetch('/data/projects.json');
-        const projects = await res.json();
-        const grid = document.getElementById('grid');
+        projects = await res.json();
+      } catch (e) {
+        console.error('Failed to load projects.json', e);
+      }
+
+      if (!filter) {
+        // Render systems-first index (original behavior)
         projects.forEach(p => {
           const article = document.createElement('article');
           article.className = 'card';
@@ -69,6 +88,7 @@
           const img = document.createElement('img');
           img.src = p.images && p.images[0] && p.images[0].src ? p.images[0].src : '';
           img.alt = p.images && p.images[0] && p.images[0].alt ? p.images[0].alt : p.title;
+          img.loading = 'lazy';
           img.style.width = '100%';
           img.style.height = 'auto';
           img.style.display = 'block';
@@ -88,11 +108,79 @@
           article.appendChild(link);
           grid.appendChild(article);
         });
+        return;
+      }
+
+      // If a filter param exists: show samples matching the filter token
+      // Load asset inventory and filter by token
+      try {
+        const assetsRes = await fetch('/data/assets.json');
+        const assets = await assetsRes.json();
+        const token = filter.toLowerCase();
+        // find matching assets (path includes token)
+        const matches = assets.filter(a => a.path.toLowerCase().includes(token));
+        // If no direct matches, also try matching within filenames by token presence
+        if (matches.length === 0) {
+          // fallback: match any asset whose filename contains token as substring
+          const alt = assets.filter(a => a.path.toLowerCase().split('/').pop().includes(token));
+          matches.push(...alt);
+        }
+
+        // Show samples section
+        samplesSection.style.display = '';
+        // Clear any previous samples
+        samplesContainer.innerHTML = '';
+
+        matches.forEach(a => {
+          const card = document.createElement('article');
+          card.className = 'card';
+
+          const link = document.createElement('a');
+          link.href = '/' + a.path; // open the image directly
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.className = 'card-link';
+
+          const img = document.createElement('img');
+          img.src = '/' + a.path;
+          img.alt = a.path.split('/').pop();
+          img.loading = 'lazy';
+          img.style.width = '100%';
+          img.style.height = 'auto';
+
+          const caption = document.createElement('div');
+          caption.className = 'gallery-caption';
+          caption.textContent = a.path.split('/').pop();
+
+          link.appendChild(img);
+          link.appendChild(caption);
+          card.appendChild(link);
+          samplesContainer.appendChild(card);
+        });
+
+        // Also show related systems (projects whose images reference the token)
+        const related = projects.filter(p => (p.images || []).some(img => img.src.toLowerCase().includes(token)));
+        if (related.length > 0) {
+          const relatedHeading = document.createElement('h2');
+          relatedHeading.textContent = 'Related systems';
+          relatedHeading.style.marginTop = '28px';
+          samplesContainer.parentNode.insertBefore(relatedHeading, samplesContainer);
+          related.forEach(p => {
+            const a = document.createElement('a');
+            a.href = '/projects/' + (p.slug || p.id) + '.html';
+            a.className = 'btn';
+            a.style.marginRight = '8px';
+            a.textContent = p.title;
+            samplesContainer.parentNode.appendChild(a);
+          });
+        }
+
       } catch (e) {
-        console.error('Failed to load projects.json', e);
+        console.error('Failed to load assets.json for filtering', e);
       }
     }
-    renderProjects();
+
+    renderProjectsOrSamples();
   </script>
   <script src="nav.js" defer></script>
 </body>
