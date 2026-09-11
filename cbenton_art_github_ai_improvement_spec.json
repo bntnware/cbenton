@@ -1,0 +1,685 @@
+{
+  "spec_version": "1.0",
+  "site": {
+    "domain": "cbenton.art",
+    "primary_identity": "CBenton",
+    "purpose": "Portfolio and inquiry site for coded visual campaign systems, serialized visual production, publication systems, and project-based creative collaboration.",
+    "current_public_observation": {
+      "page_title": "cbenton — Home",
+      "visible_h1": "Welcome",
+      "visible_positioning": "This is a minimalist, chic, and fast starting point. Use the navigation above to explore the site.",
+      "diagnosis": "The current public homepage reads as a starter shell and does not communicate the actual practice, body of work, project scale, or differentiated production systems."
+    }
+  },
+  "north_star": {
+    "core_positioning": "This is not ordinary graphic design. CBenton builds coded visual systems that turn a project into an expandable campaign, publication, edition, or family of coordinated artifacts.",
+    "primary_value_proposition": "Make ambitious projects look larger, more complete, more official, more collectible, and more visually coherent without reducing the work to a single isolated graphic.",
+    "business_model": "Project-based custom work, campaign systems, publication systems, selected experimental commissions, consulting, workflow integration, and potential licensing.",
+    "tone": [
+      "precise",
+      "inventive",
+      "systematic",
+      "visual",
+      "confident",
+      "not corporate-generic",
+      "not agency-cliche",
+      "not bargain-freelancer language"
+    ],
+    "do_not_position_as": [
+      "cheap one-off graphic design",
+      "template design",
+      "drag-and-drop production",
+      "generic social media content service",
+      "hourly production labor",
+      "a storefront menu of isolated deliverables"
+    ]
+  },
+  "practice_model": {
+    "description": "The portfolio should show that individual outputs are instances of larger systems. A ticket, poster, handout, PDF, mailing piece, glyph, or webpage is often one node in a repeatable architecture.",
+    "recurring_capabilities": [
+      "coded and rule-driven layouts",
+      "variable and serialized visual objects",
+      "deterministic glyph and provenance systems",
+      "edition logic and unique identifiers",
+      "campaign packaging",
+      "print-ready production systems",
+      "multi-page publication architecture",
+      "poster and mural systems",
+      "mailing and envelope systems",
+      "data-driven visual variation",
+      "visual identity applied across families of outputs",
+      "PDF-first and print-first design",
+      "experimental typography",
+      "LaTeX/TikZ-based production",
+      "automation-aware creative workflows"
+    ],
+    "proof_categories_from_existing_work": [
+      {
+        "category": "Serialized / Collectible Visual Systems",
+        "examples": [
+          "player-specific ticket systems with unique names, jersey data, origin logic, barcodes, sigils, and one-of-one presentation",
+          "edition structures with deterministic marks, identifiers, issue logic, and provenance cues"
+        ]
+      },
+      {
+        "category": "Campaign & Launch Systems",
+        "examples": [
+          "coordinated front/back units",
+          "image sequences",
+          "poster families",
+          "campaign packets",
+          "branded multi-asset sets"
+        ]
+      },
+      {
+        "category": "Publication & Document Systems",
+        "examples": [
+          "research posters",
+          "multi-panel diagrams",
+          "zines",
+          "visual reports",
+          "procedural packets",
+          "grant and portfolio documents",
+          "large-format visual documents"
+        ]
+      },
+      {
+        "category": "Print Production Systems",
+        "examples": [
+          "printer-aligned multi-up sheets",
+          "cut-mark systems",
+          "front/back registration",
+          "envelope layouts",
+          "mailing pieces",
+          "phone-scale and print-scale proof variants"
+        ]
+      },
+      {
+        "category": "Generative / Rule-Based Identity",
+        "examples": [
+          "deterministic sigil languages",
+          "glyph alphabets",
+          "variable visual signatures",
+          "rule-based color and geometry systems"
+        ]
+      }
+    ]
+  },
+  "information_architecture": {
+    "primary_navigation": [
+      {
+        "label": "Work",
+        "route": "/work",
+        "purpose": "Primary portfolio index organized by project systems, not isolated media types."
+      },
+      {
+        "label": "Projects",
+        "route": "/projects",
+        "purpose": "Detailed case studies for selected systems."
+      },
+      {
+        "label": "Approach",
+        "route": "/approach",
+        "purpose": "Explain coded visual systems, serialization, variable production, and how projects scale."
+      },
+      {
+        "label": "Pricing",
+        "route": "/pricing",
+        "purpose": "Project-based engagement models and quoting logic."
+      },
+      {
+        "label": "About",
+        "route": "/about",
+        "purpose": "Background, artistic/production approach, tools, and collaboration focus."
+      },
+      {
+        "label": "Contact",
+        "route": "/contact",
+        "purpose": "Project inquiry, collaboration, consulting, licensing, and agency integration."
+      }
+    ],
+    "optional_secondary_routes": [
+      {
+        "label": "Lab",
+        "route": "/lab",
+        "purpose": "Experiments, proof-of-concept systems, glyph research, and technical visual studies."
+      },
+      {
+        "label": "Capabilities",
+        "route": "/capabilities",
+        "purpose": "Searchable summary of formats, technologies, and production methods without turning them into commodity services."
+      }
+    ]
+  },
+  "homepage": {
+    "goal": "Immediately replace the generic starter impression with a strong explanation of what CBenton actually makes.",
+    "hero": {
+      "eyebrow": "CODED VISUAL SYSTEMS / CAMPAIGN PRODUCTION / PUBLICATION ARCHITECTURE",
+      "headline": "I build visual systems, not isolated graphics.",
+      "subhead": "Campaigns, editions, publications, print systems, and serialized visual objects designed to expand—so a small project can arrive with the presence of a much larger one.",
+      "primary_cta": {
+        "label": "View selected systems",
+        "href": "/work"
+      },
+      "secondary_cta": {
+        "label": "Start a project",
+        "href": "/contact"
+      }
+    },
+    "sections": [
+      {
+        "id": "what-it-is",
+        "heading": "One project. A whole visual system.",
+        "copy": "A project may begin with one artifact, but the work is designed to extend: posters, PDFs, print pieces, sequences, editions, identifiers, mailers, launch materials, or other coordinated outputs can grow from the same underlying visual logic."
+      },
+      {
+        "id": "selected-systems",
+        "heading": "Selected systems",
+        "presentation": "Large visual case-study cards with system name, short premise, number/types of outputs, and one sentence explaining the rule set."
+      },
+      {
+        "id": "coded-production",
+        "heading": "Built with rules, not templates.",
+        "copy": "Many projects use custom layout logic, variable data, deterministic marks, edition structures, print constraints, or generative rules. The result is repeatable without becoming generic."
+      },
+      {
+        "id": "project-model",
+        "heading": "Project-based by design.",
+        "copy": "Engagements are scoped around the system a project needs—not around an hourly menu of isolated design tasks.",
+        "cta": {
+          "label": "See project formats",
+          "href": "/pricing"
+        }
+      },
+      {
+        "id": "integration",
+        "heading": "For teams that need the system, not just the output.",
+        "copy": "Available for selected consulting, workflow integration, collaboration, and licensing conversations where the production method itself has value."
+      }
+    ]
+  },
+  "work_index": {
+    "route": "/work",
+    "organizing_principle": "Show systems first, outputs second.",
+    "filters": [
+      "Campaign Systems",
+      "Serialized / Variable Editions",
+      "Publication Systems",
+      "Print & Mailing",
+      "Identity / Glyph Systems",
+      "Experimental"
+    ],
+    "card_fields": [
+      "project_title",
+      "system_type",
+      "short_description",
+      "year",
+      "deliverable_count_or_scope",
+      "key_rules",
+      "hero_image",
+      "detail_route"
+    ],
+    "avoid": [
+      "a flat masonry gallery with no explanation",
+      "categories such as logo / flyer / brochure as the primary hierarchy",
+      "thumbnail grids that make system work look like unrelated single pieces"
+    ]
+  },
+  "project_case_study_schema": {
+    "route_pattern": "/projects/{slug}",
+    "required_sections": [
+      {
+        "id": "project-intro",
+        "fields": [
+          "project_title",
+          "project_type",
+          "one_sentence_problem",
+          "one_sentence_solution",
+          "year"
+        ]
+      },
+      {
+        "id": "system",
+        "heading": "The system",
+        "fields": [
+          "rules",
+          "inputs",
+          "variable_elements",
+          "fixed_elements",
+          "how_the_system_scales"
+        ]
+      },
+      {
+        "id": "outputs",
+        "heading": "Outputs",
+        "fields": [
+          "formats",
+          "count",
+          "print_or_screen_context",
+          "selected_images"
+        ]
+      },
+      {
+        "id": "detail",
+        "heading": "What changes from unit to unit",
+        "purpose": "Make serialization, data variation, provenance, geometry, color, glyphs, or other controlled differences legible."
+      },
+      {
+        "id": "production",
+        "heading": "Production architecture",
+        "fields": [
+          "tools",
+          "automation_or_code",
+          "print_constraints",
+          "registration_or_output_logic",
+          "reusability"
+        ]
+      },
+      {
+        "id": "result",
+        "heading": "What the system makes possible",
+        "purpose": "Explain the project advantage: scale, consistency, speed, identity, collectibility, official presence, or repeatable production."
+      }
+    ]
+  },
+  "pricing_page": {
+    "route": "/pricing",
+    "page_strategy": "Replace service-menu pricing with project-shaped engagement types. The page should explain how projects are scoped and what kinds of systems can be commissioned. Do not invent dollar figures unless the repository already contains approved amounts.",
+    "hero": {
+      "eyebrow": "PROJECT-BASED ENGAGEMENTS",
+      "headline": "Pricing follows the system, not the number of mouse clicks.",
+      "copy": "Most work is quoted as a project. Scope depends on how many outputs the system needs to generate, how much variation is built in, how much production logic is required, and whether the work is a finished campaign, a reusable framework, or both."
+    },
+    "engagements": [
+      {
+        "id": "focused-project",
+        "name": "Focused Project",
+        "best_for": "A clearly defined visual problem that still benefits from a coherent system rather than a one-off treatment.",
+        "examples": [
+          "small launch package",
+          "poster + supporting pieces",
+          "short publication",
+          "limited print set",
+          "compact branded asset family"
+        ],
+        "scope_language": "Quoted by project.",
+        "price_display": "Custom quote",
+        "cta": "Describe the project"
+      },
+      {
+        "id": "campaign-system",
+        "name": "Campaign System",
+        "best_for": "Projects that need multiple coordinated assets and a visual logic that can expand across a launch, event, release, artist project, or public campaign.",
+        "examples": [
+          "poster and image sequence",
+          "launch packet",
+          "social + print coordination",
+          "promotional PDF family",
+          "campaign identity and rollout assets"
+        ],
+        "scope_language": "Quoted from campaign scope, number of asset families, production complexity, and rollout needs.",
+        "price_display": "Custom quote",
+        "cta": "Plan a campaign"
+      },
+      {
+        "id": "serialized-edition",
+        "name": "Serialized / Variable Edition System",
+        "best_for": "Work where each unit should be related but not identical.",
+        "examples": [
+          "collectible series",
+          "player or participant-specific objects",
+          "edition codes",
+          "variable identifiers",
+          "deterministic glyphs",
+          "data-driven color / geometry / text variation"
+        ],
+        "scope_language": "Quoted from the number of variables, number of units, rule complexity, proofing requirements, and final production format.",
+        "price_display": "Custom quote",
+        "cta": "Build an edition system"
+      },
+      {
+        "id": "publication-document",
+        "name": "Publication / Document System",
+        "best_for": "Dense information that needs a designed architecture rather than ordinary document formatting.",
+        "examples": [
+          "research poster",
+          "zine",
+          "visual report",
+          "portfolio",
+          "grant or presentation packet",
+          "diagram-rich publication",
+          "procedural or civic-facing document"
+        ],
+        "scope_language": "Quoted from page count, information density, diagram requirements, source condition, and print/digital outputs.",
+        "price_display": "Custom quote",
+        "cta": "Scope a publication"
+      },
+      {
+        "id": "integration-consulting",
+        "name": "Workflow Integration / Consulting",
+        "best_for": "Studios, agencies, teams, or collaborators interested in the production method itself.",
+        "examples": [
+          "custom production framework",
+          "automation-aware design workflow",
+          "system adaptation",
+          "creative tooling",
+          "licensing discussion",
+          "agency or team integration"
+        ],
+        "scope_language": "Professional consulting engagement; scope defined before work begins.",
+        "price_display": "Consulting quote",
+        "cta": "Discuss integration"
+      },
+      {
+        "id": "selective-small-project",
+        "name": "Selective Small Projects",
+        "best_for": "Unusual, ambitious, culturally interesting, visually strange, or genuinely compelling projects that do not fit a larger engagement.",
+        "examples": [
+          "experimental print object",
+          "small edition",
+          "unusual visual problem",
+          "artist or community project with strong fit"
+        ],
+        "scope_language": "Accepted selectively. Small budget does not automatically mean discounted work.",
+        "price_display": "By fit and scope",
+        "cta": "Pitch the project"
+      }
+    ],
+    "quote_factors": [
+      "number of asset families",
+      "number of unique or variable units",
+      "amount of custom rule / layout development",
+      "data preparation",
+      "illustration or image-generation requirements",
+      "publication length",
+      "print-production requirements",
+      "proofing and revision complexity",
+      "deadline / launch schedule",
+      "whether the client receives a reusable system in addition to final outputs",
+      "licensing, integration, or handoff requirements"
+    ],
+    "pricing_copy_rules": [
+      "Prefer 'project', 'system', 'campaign', 'edition', 'publication', 'engagement', and 'scope' over 'service package'.",
+      "Do not lead with hourly rates.",
+      "Do not price every artifact separately.",
+      "Do not imply unlimited revisions.",
+      "Do not frame custom code, automation, or variable production as a free add-on.",
+      "Do not publish invented starting prices.",
+      "If approved prices already exist in repository content, preserve the numbers but reorganize them under project engagements.",
+      "The page should make clear that serious consulting, integration, and licensing conversations are distinct from ordinary small design requests."
+    ]
+  },
+  "approach_page": {
+    "route": "/approach",
+    "headline": "Design the rule set. Then let the project expand.",
+    "sections": [
+      {
+        "heading": "1. Define the visual problem",
+        "copy": "Clarify what the project needs to communicate, how official / strange / collectible / direct it should feel, and where it must appear."
+      },
+      {
+        "heading": "2. Build the system",
+        "copy": "Create the visual grammar: layout rules, typography, colors, identifiers, data fields, edition logic, print constraints, and variation rules."
+      },
+      {
+        "heading": "3. Generate the family",
+        "copy": "Apply the system across the required outputs while keeping each object coherent with the whole."
+      },
+      {
+        "heading": "4. Proof the real production context",
+        "copy": "Test size, printing, sequencing, front/back registration, readability, and output behavior—not just a screen mockup."
+      },
+      {
+        "heading": "5. Extend or hand off",
+        "copy": "Where appropriate, adapt the system into a reusable workflow, campaign framework, or integration."
+      }
+    ]
+  },
+  "about_page": {
+    "route": "/about",
+    "positioning": "Artist/designer and visual systems builder with traditional graphic-design and illustrative grounding, developed through extensive self-directed production work.",
+    "suggested_copy": [
+      "I work between graphic design, publication design, print production, generative systems, and campaign architecture.",
+      "A large part of the practice is concerned with what happens after the first piece is designed: how the same visual logic can generate a family of related objects without flattening them into templates.",
+      "The work often uses LaTeX, TikZ, scripting, structured data, print-production constraints, and custom visual rules alongside conventional design judgment.",
+      "I am especially interested in projects where identity, rarity, sequencing, public presentation, and production logic are part of the concept—not just decoration."
+    ],
+    "do_not_overemphasize": [
+      "software stack as a substitute for artistic judgment",
+      "generic 'AI designer' language",
+      "resume chronology",
+      "a long list of commodity design services"
+    ]
+  },
+  "contact_page": {
+    "route": "/contact",
+    "headline": "Tell me what the project needs to become.",
+    "intro": "Useful inquiries describe the project, audience, timing, desired outputs, and what makes the work unusual or important.",
+    "inquiry_types": [
+      "Project",
+      "Campaign",
+      "Publication",
+      "Serialized / Variable System",
+      "Print Production",
+      "Collaboration",
+      "Agency / Team Integration",
+      "Licensing / Consulting"
+    ],
+    "fields": [
+      "name",
+      "email",
+      "organization_optional",
+      "inquiry_type",
+      "project_description",
+      "desired_outputs_optional",
+      "deadline_optional",
+      "budget_range_optional",
+      "links_optional"
+    ],
+    "note": "Do not use wording that promises acceptance of every inquiry. The practice is selective."
+  },
+  "visual_direction": {
+    "principle": "The site should be visually controlled and editorial, but the projects—not website chrome—should carry the loudest visual energy.",
+    "site_chrome": [
+      "minimal",
+      "high-contrast",
+      "fast",
+      "typographically deliberate",
+      "neutral enough to support highly varied project imagery"
+    ],
+    "project_presentation": [
+      "large images",
+      "tight captions",
+      "system diagrams where helpful",
+      "front/back or sequence views",
+      "detail crops",
+      "proof sheets",
+      "variable-unit comparisons",
+      "print-context photography when available"
+    ],
+    "signature_policy": "Keep cbenton.art / CBenton as a quiet maker identity. Do not stamp the domain prominently over portfolio work unless it is part of the original artifact."
+  },
+  "content_rules": {
+    "preferred_vocabulary": [
+      "system",
+      "campaign",
+      "edition",
+      "series",
+      "publication",
+      "architecture",
+      "production",
+      "variable",
+      "serialized",
+      "deterministic",
+      "rule-based",
+      "print-ready",
+      "visual grammar",
+      "framework",
+      "integration",
+      "collectible",
+      "provenance",
+      "identity"
+    ],
+    "avoid_vocabulary": [
+      "affordable",
+      "cheap",
+      "quick logo",
+      "basic flyer",
+      "content bundle",
+      "social media package",
+      "unlimited revisions",
+      "template",
+      "instant branding",
+      "AI-powered design service"
+    ],
+    "copy_style": [
+      "short declarative headings",
+      "specific descriptions of what systems do",
+      "explain technical mechanisms only when they support the visual idea",
+      "show evidence through projects",
+      "avoid inflated startup language",
+      "avoid repeating 'unique' and 'innovative' when a concrete mechanism can be named instead"
+    ]
+  },
+  "repository_and_implementation_instructions_for_github_ai": {
+    "phase_1_audit": [
+      "Inspect framework, routing, component structure, styling system, content source, image pipeline, and deployment configuration before changing architecture.",
+      "Inventory every existing route and identify dead, placeholder, duplicated, or thin pages.",
+      "Find all current pricing copy and preserve any approved numeric prices before restructuring.",
+      "Find all current project images and metadata before renaming or moving assets.",
+      "Do not delete source assets simply because they are not yet used on the homepage.",
+      "Identify whether content is hard-coded, markdown/MDX, JSON, CMS-driven, or component-local."
+    ],
+    "phase_2_content_model": [
+      "Create a project data model that can represent systems, not just images.",
+      "Prefer structured project metadata stored in JSON/TS/MDX frontmatter rather than duplicating copy across components.",
+      "Allow multiple images, captions, output types, rules, technologies, variable fields, and case-study sections per project.",
+      "Create pricing engagement data as structured content so wording can be edited without rebuilding layout logic."
+    ],
+    "recommended_project_type": {
+      "id": "string",
+      "slug": "string",
+      "title": "string",
+      "year": "string_or_number",
+      "systemType": "string",
+      "summary": "string",
+      "problem": "string",
+      "solution": "string",
+      "outputs": [
+        "string"
+      ],
+      "rules": [
+        "string"
+      ],
+      "variables": [
+        "string"
+      ],
+      "fixedElements": [
+        "string"
+      ],
+      "tools": [
+        "string"
+      ],
+      "images": [
+        {
+          "src": "string",
+          "alt": "string",
+          "caption": "string_optional",
+          "role": "hero|detail|sequence|proof|diagram|print-context"
+        }
+      ],
+      "featured": "boolean",
+      "status": "published|draft"
+    },
+    "phase_3_pages": [
+      "Replace placeholder homepage copy first.",
+      "Build /work as the primary portfolio index.",
+      "Build reusable project case-study template.",
+      "Rebuild /pricing around project engagement types.",
+      "Add /approach before adding unnecessary marketing pages.",
+      "Refine /about and /contact after project architecture is in place."
+    ],
+    "phase_4_design": [
+      "Create a restrained global shell and let case-study imagery provide visual intensity.",
+      "Use responsive typography and generous image widths.",
+      "Keep case-study reading width controlled even when images run wide.",
+      "Use consistent caption and metadata styling.",
+      "Make comparison layouts available for front/back, before/after, or variable-unit sets.",
+      "Support both portrait and landscape artwork without aggressive cropping."
+    ],
+    "phase_5_quality": [
+      "Test mobile navigation.",
+      "Test images for cumulative layout shift.",
+      "Add meaningful alt text.",
+      "Verify contrast and keyboard focus.",
+      "Ensure route metadata, canonical URLs, Open Graph metadata, and project-specific titles exist.",
+      "Create a custom 404 page.",
+      "Remove starter/template copy from production.",
+      "Run existing lint, typecheck, test, and build commands before completion."
+    ],
+    "hard_constraints": [
+      "Do not invent client names, awards, testimonials, project outcomes, revenue impact, or collaborators.",
+      "Do not invent pricing numbers.",
+      "Do not call experimental or speculative work commissioned client work unless repository content proves it.",
+      "Do not describe every project as AI-generated.",
+      "Do not flatten serialized or generative systems into a generic gallery.",
+      "Do not make the website brand louder than the work.",
+      "Do not delete original project assets without explicit evidence they are redundant.",
+      "Do not rewrite project-specific terminology into generic agency language."
+    ]
+  },
+  "seo_and_metadata": {
+    "home_title": "CBenton — Coded Visual Systems, Campaigns & Publication Design",
+    "home_description": "CBenton builds coded visual campaign systems, serialized editions, publication architecture, print systems, and coordinated project-based visual identities.",
+    "project_title_pattern": "{project_title} — CBenton",
+    "pricing_title": "Project Pricing & Engagements — CBenton",
+    "structured_content_targets": [
+      "Person or ProfessionalService schema only where factually appropriate",
+      "CreativeWork or VisualArtwork schema for individual published project case studies where appropriate",
+      "BreadcrumbList for project routes"
+    ],
+    "seo_constraints": [
+      "Do not keyword-stuff.",
+      "Do not create thin location pages.",
+      "Do not claim services, clients, or markets not evidenced by the portfolio."
+    ]
+  },
+  "priority_order": [
+    {
+      "priority": 1,
+      "change": "Replace homepage starter-shell content with actual positioning."
+    },
+    {
+      "priority": 2,
+      "change": "Restructure work around systems and case studies."
+    },
+    {
+      "priority": 3,
+      "change": "Rebuild pricing as project-based engagements with custom quotes."
+    },
+    {
+      "priority": 4,
+      "change": "Add an Approach page explaining rule-based, expandable production."
+    },
+    {
+      "priority": 5,
+      "change": "Refine About and Contact around selective project, collaboration, integration, and licensing inquiries."
+    },
+    {
+      "priority": 6,
+      "change": "Improve technical SEO, accessibility, performance, and metadata after core content architecture is corrected."
+    }
+  ],
+  "acceptance_criteria": [
+    "A first-time visitor can understand within the first screen that CBenton builds expandable visual systems rather than isolated graphics.",
+    "The homepage no longer contains starter-template language.",
+    "The portfolio is organized by projects/systems, not only by media type.",
+    "At least one case study clearly demonstrates controlled variation across multiple related outputs.",
+    "The pricing page presents project engagement types and does not read like a commodity service menu.",
+    "Pricing does not introduce invented dollar amounts.",
+    "The site supports consulting / integration / licensing inquiries without making them the only business model.",
+    "Small projects are presented as selective, not discounted by default.",
+    "The CBenton identity remains visible but subordinate to the work.",
+    "All published routes pass the repository's build and quality checks."
+  ]
+}
