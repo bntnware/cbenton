@@ -1,0 +1,584 @@
+{
+  "spec_version": "2.0",
+  "artifact_purpose": "GitHub AI implementation guide for rebuilding cbenton.art Samples as a project index with project-level detail pages.",
+  "site": {
+    "domain": "cbenton.art",
+    "target_section": "/samples",
+    "primary_change": "Samples must become a project index. Individual image filenames and player names must not define projects."
+  },
+  "scrape_and_audit_status": {
+    "live_scrape_attempted": true,
+    "result": "The current site did not return reliable searchable/indexed pages to the available crawler during this pass, and direct runtime DNS access was unavailable. Treat repository inspection as authoritative for current implementation details.",
+    "implementation_instruction": [
+      "Before editing, inspect the repository routes, current Samples component/page, sample asset directory, any existing project metadata, and all links that currently point into Samples.",
+      "Do not infer the site's current route tree from filenames.",
+      "Do not delete or rename assets merely to make routing easier.",
+      "Use this JSON as the desired information architecture and explicit asset-to-project manifest."
+    ]
+  },
+  "critical_correction": {
+    "statement": "Solomon Williams, EJ Caminong, Jaron Keawe Sagapolutele, Emmanuel Okoye, Ian Strong, AJ Tuitele, Jackson Brousseau, Aaron Hampton, Angus Davies, Frederick Williams III, Justin Hasenhuetl, and Rico Walker are NOT separate projects.",
+    "canonical_parent_project": "UC Berkeley — I’M COOL",
+    "rule": "Player-specific images are instances/examples inside the UC Berkeley — I’M COOL project page.",
+    "forbidden_behavior": [
+      "Do not generate one project card per player.",
+      "Do not generate one project route per player.",
+      "Do not derive project titles from player filenames.",
+      "Do not treat jersey number or origin as a project category.",
+      "Do not show player names as peer-level navigation beside actual project titles."
+    ]
+  },
+  "desired_navigation": {
+    "samples_index": {
+      "route": "/samples",
+      "role": "Project index",
+      "page_title": "Samples",
+      "headline": "Selected project systems",
+      "intro": "Each project is shown as a system or body of related work. Individual images, editions, players, and variants live inside the project that generated them.",
+      "card_unit": "project",
+      "not_card_unit": [
+        "filename",
+        "player",
+        "jersey number",
+        "individual edition image"
+      ]
+    },
+    "project_route_pattern": "/samples/{project-slug}",
+    "breadcrumb_pattern": [
+      "Samples",
+      "{Project Title}"
+    ]
+  },
+  "project_index_order": [
+    "uc-berkeley-im-cool",
+    "bootyz",
+    "its-her-birthday",
+    "christopher-phone-stack"
+  ],
+  "projects": [
+    {
+      "id": "uc-berkeley-im-cool",
+      "slug": "uc-berkeley-im-cool",
+      "title": "UC Berkeley — I’M COOL",
+      "title_status": "canonical_for_this_spec",
+      "project_type": "Serialized / variable visual system",
+      "short_description": "A coded front/back visual system built as one UC Berkeley project, with player-specific data producing related but distinct units inside a consistent graphic architecture.",
+      "positioning_notes": [
+        "Present this as one system with many outputs.",
+        "Use the overview front/back images to explain the base visual architecture.",
+        "Use the player-specific images to demonstrate controlled variation.",
+        "The value of the page is the relationship between the units, not the celebrity or identity of any one player."
+      ],
+      "index_card": {
+        "hero_asset": "samples/03_IM_COOL_FRONT_BACK_BUTTED.png",
+        "eyebrow": "SERIALIZED VISUAL SYSTEM",
+        "title": "UC Berkeley — I’M COOL",
+        "summary": "One visual grammar, expanded across player-specific front/back units.",
+        "meta": "15 sample images / 12 player-specific instances"
+      },
+      "detail_page": {
+        "hero_asset": "samples/03_IM_COOL_FRONT_BACK_BUTTED.png",
+        "intro_heading": "One project. Multiple player-specific units.",
+        "intro_copy": "The player names, jersey numbers, origins, and other variable information are inputs to the system. They are not separate project identities. The project page should first establish the shared front/back architecture, then show how that architecture changes from unit to unit.",
+        "sections": [
+          {
+            "id": "system-overview",
+            "heading": "System overview",
+            "layout": "large_media_sequence",
+            "asset_ids": [
+              "imcool-front",
+              "imcool-back",
+              "imcool-front-back"
+            ]
+          },
+          {
+            "id": "player-instances",
+            "heading": "Player-specific instances",
+            "layout": "responsive_grid_or_sequence",
+            "description": "Show all player units as examples generated by the same parent system. Captions may include player, jersey number, and origin, but captions must remain visually subordinate to the project title.",
+            "asset_ids": [
+              "imcool-solomon-williams",
+              "imcool-ej-caminong",
+              "imcool-jaron-keawe-sagapolutele",
+              "imcool-emmanuel-okoye",
+              "imcool-ian-strong",
+              "imcool-aj-tuitele",
+              "imcool-jackson-brousseau",
+              "imcool-aaron-hampton",
+              "imcool-angus-davies",
+              "imcool-frederick-williams-iii",
+              "imcool-justin-hasenhuetl",
+              "imcool-rico-walker"
+            ]
+          }
+        ]
+      },
+      "assets": [
+        {
+          "id": "imcool-front",
+          "path": "samples/01_IM_COOL_FRONT.png",
+          "role": "system_overview_front",
+          "caption": "I’M COOL — front system",
+          "alt": "UC Berkeley I’M COOL front design sample"
+        },
+        {
+          "id": "imcool-back",
+          "path": "samples/02_IM_COOL_BACK.png",
+          "role": "system_overview_back",
+          "caption": "I’M COOL — back system",
+          "alt": "UC Berkeley I’M COOL back design sample"
+        },
+        {
+          "id": "imcool-front-back",
+          "path": "samples/03_IM_COOL_FRONT_BACK_BUTTED.png",
+          "role": "system_overview_pair",
+          "caption": "I’M COOL — front and back",
+          "alt": "UC Berkeley I’M COOL front and back shown together"
+        },
+        {
+          "id": "imcool-solomon-williams",
+          "path": "samples/01_SOLOMON_WILLIAMS_JERSEY_0_FLORIDA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Solomon Williams",
+            "jersey": "0",
+            "origin": "Florida"
+          },
+          "caption": "Solomon Williams · #0 · Florida",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Solomon Williams, jersey 0, Florida"
+        },
+        {
+          "id": "imcool-ej-caminong",
+          "path": "samples/02_EJ_CAMINONG_JERSEY_2_WASHINGTON_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "EJ Caminong",
+            "jersey": "2",
+            "origin": "Washington"
+          },
+          "caption": "EJ Caminong · #2 · Washington",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for EJ Caminong, jersey 2, Washington"
+        },
+        {
+          "id": "imcool-jaron-keawe-sagapolutele",
+          "path": "samples/03_JARON_KEAWE_SAGAPOLUTELE_JERSEY_3_HAWAII_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Jaron Keawe Sagapolutele",
+            "jersey": "3",
+            "origin": "Hawaii"
+          },
+          "caption": "Jaron Keawe Sagapolutele · #3 · Hawaii",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Jaron Keawe Sagapolutele, jersey 3, Hawaii"
+        },
+        {
+          "id": "imcool-emmanuel-okoye",
+          "path": "samples/04_EMMANUEL_OKOYE_JERSEY_6_NIGERIA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Emmanuel Okoye",
+            "jersey": "6",
+            "origin": "Nigeria"
+          },
+          "caption": "Emmanuel Okoye · #6 · Nigeria",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Emmanuel Okoye, jersey 6, Nigeria"
+        },
+        {
+          "id": "imcool-ian-strong",
+          "path": "samples/05_IAN_STRONG_JERSEY_9_NEW_YORK_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Ian Strong",
+            "jersey": "9",
+            "origin": "New York"
+          },
+          "caption": "Ian Strong · #9 · New York",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Ian Strong, jersey 9, New York"
+        },
+        {
+          "id": "imcool-aj-tuitele",
+          "path": "samples/06_AJ_TUITELE_JERSEY_9_NEVADA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "AJ Tuitele",
+            "jersey": "9",
+            "origin": "Nevada"
+          },
+          "caption": "AJ Tuitele · #9 · Nevada",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for AJ Tuitele, jersey 9, Nevada"
+        },
+        {
+          "id": "imcool-jackson-brousseau",
+          "path": "samples/07_JACKSON_BROUSSEAU_JERSEY_11_UTAH_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Jackson Brousseau",
+            "jersey": "11",
+            "origin": "Utah"
+          },
+          "caption": "Jackson Brousseau · #11 · Utah",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Jackson Brousseau, jersey 11, Utah"
+        },
+        {
+          "id": "imcool-aaron-hampton",
+          "path": "samples/08_AARON_HAMPTON_JERSEY_21_ALASKA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Aaron Hampton",
+            "jersey": "21",
+            "origin": "Alaska"
+          },
+          "caption": "Aaron Hampton · #21 · Alaska",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Aaron Hampton, jersey 21, Alaska"
+        },
+        {
+          "id": "imcool-angus-davies",
+          "path": "samples/09_ANGUS_DAVIES_JERSEY_29_AUSTRALIA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Angus Davies",
+            "jersey": "29",
+            "origin": "Australia"
+          },
+          "caption": "Angus Davies · #29 · Australia",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Angus Davies, jersey 29, Australia"
+        },
+        {
+          "id": "imcool-frederick-williams-iii",
+          "path": "samples/10_FREDERICK_WILLIAMS_III_JERSEY_54_CALIFORNIA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Frederick Williams III",
+            "jersey": "54",
+            "origin": "California"
+          },
+          "caption": "Frederick Williams III · #54 · California",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Frederick Williams III, jersey 54, California"
+        },
+        {
+          "id": "imcool-justin-hasenhuetl",
+          "path": "samples/11_JUSTIN_HASENHUETL_JERSEY_65_GERMANY_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Justin Hasenhuetl",
+            "jersey": "65",
+            "origin": "Germany"
+          },
+          "caption": "Justin Hasenhuetl · #65 · Germany",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Justin Hasenhuetl, jersey 65, Germany"
+        },
+        {
+          "id": "imcool-rico-walker",
+          "path": "samples/12_RICO_WALKER_JERSEY_8_NORTH_CAROLINA_TOP_FRONT_BOTTOM_BACK.png",
+          "role": "project_instance",
+          "instance": {
+            "player": "Rico Walker",
+            "jersey": "8",
+            "origin": "North Carolina"
+          },
+          "caption": "Rico Walker · #8 · North Carolina",
+          "alt": "UC Berkeley I’M COOL player-specific front and back sample for Rico Walker, jersey 8, North Carolina"
+        }
+      ]
+    },
+    {
+      "id": "bootyz",
+      "slug": "bootyz",
+      "title": "BOOTYZ",
+      "title_status": "canonical_from_asset_family",
+      "project_type": "Edition / variant series",
+      "short_description": "A single project expressed through eight named front/back variants. Variant names belong inside the project, not as separate project cards.",
+      "index_card": {
+        "hero_asset": "samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png",
+        "eyebrow": "EDITION / VARIANT SERIES",
+        "title": "BOOTYZ",
+        "summary": "Eight related front/back variants presented as one project.",
+        "meta": "8 variants"
+      },
+      "detail_page": {
+        "hero_asset": "samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png",
+        "intro_heading": "Eight variants. One project.",
+        "intro_copy": "The variant names should function as edition labels or captions inside the BOOTYZ project page.",
+        "gallery_layout": "responsive_grid_with_fullscreen_view"
+      },
+      "assets": [
+        {
+          "id": "bootyz-01",
+          "path": "samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Petaled Rose Tone",
+          "caption": "01 · Petaled Rose Tone",
+          "alt": "BOOTYZ front and back variant 01, Petaled Rose Tone"
+        },
+        {
+          "id": "bootyz-02",
+          "path": "samples/BOOTYZ_02_SOFT_VANILLA_ACCENT_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Soft Vanilla Accent",
+          "caption": "02 · Soft Vanilla Accent",
+          "alt": "BOOTYZ front and back variant 02, Soft Vanilla Accent"
+        },
+        {
+          "id": "bootyz-03",
+          "path": "samples/BOOTYZ_03_RIPE_STRAWBERRY_GLOW_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Ripe Strawberry Glow",
+          "caption": "03 · Ripe Strawberry Glow",
+          "alt": "BOOTYZ front and back variant 03, Ripe Strawberry Glow"
+        },
+        {
+          "id": "bootyz-04",
+          "path": "samples/BOOTYZ_04_SUNLIT_PEACH_FIELD_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Sunlit Peach Field",
+          "caption": "04 · Sunlit Peach Field",
+          "alt": "BOOTYZ front and back variant 04, Sunlit Peach Field"
+        },
+        {
+          "id": "bootyz-05",
+          "path": "samples/BOOTYZ_05_CUT_GREEN_GREEN_CREAM_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Cut Green / Green Cream",
+          "caption": "05 · Cut Green / Green Cream",
+          "alt": "BOOTYZ front and back variant 05, Cut Green / Green Cream"
+        },
+        {
+          "id": "bootyz-06",
+          "path": "samples/BOOTYZ_06_SMOOTH_COCONUT_WAVE_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Smooth Coconut Wave",
+          "caption": "06 · Smooth Coconut Wave",
+          "alt": "BOOTYZ front and back variant 06, Smooth Coconut Wave"
+        },
+        {
+          "id": "bootyz-07",
+          "path": "samples/BOOTYZ_07_BRIGHT_CITRUS_VEIL_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Bright Citrus Veil",
+          "caption": "07 · Bright Citrus Veil",
+          "alt": "BOOTYZ front and back variant 07, Bright Citrus Veil"
+        },
+        {
+          "id": "bootyz-08",
+          "path": "samples/BOOTYZ_08_NECTARED_HONEY_CREAM_FRONT_BACK.png",
+          "role": "variant",
+          "variant_name": "Nectared Honey Cream",
+          "caption": "08 · Nectared Honey Cream",
+          "alt": "BOOTYZ front and back variant 08, Nectared Honey Cream"
+        }
+      ]
+    },
+    {
+      "id": "its-her-birthday",
+      "slug": "its-her-birthday",
+      "title": "IT’S HER BIRTHDAY",
+      "title_status": "canonical_from_asset_name",
+      "project_type": "Front / back design sample",
+      "short_description": "A standalone front/back project sample.",
+      "index_card": {
+        "hero_asset": "samples/04_ITS_HER_BIRTHDAY_FRONT_BACK_BUTTED.png",
+        "eyebrow": "FRONT / BACK PROJECT",
+        "title": "IT’S HER BIRTHDAY",
+        "summary": "A paired front/back design shown as one project.",
+        "meta": "1 paired sample"
+      },
+      "assets": [
+        {
+          "id": "its-her-birthday-front-back",
+          "path": "samples/04_ITS_HER_BIRTHDAY_FRONT_BACK_BUTTED.png",
+          "role": "hero_and_primary_sample",
+          "caption": "IT’S HER BIRTHDAY — front and back",
+          "alt": "IT’S HER BIRTHDAY front and back design sample"
+        }
+      ],
+      "content_constraint": "Do not invent additional project history, client context, purpose, or outcomes unless those facts already exist in the repository."
+    },
+    {
+      "id": "christopher-phone-stack",
+      "slug": "christopher-phone-stack",
+      "title": "Christopher — 8-Unit Phone Stack",
+      "title_status": "working_title_only",
+      "project_type": "Stacked mobile-format sample",
+      "short_description": "A phone-scale presentation showing eight stacked units.",
+      "index_card": {
+        "hero_asset": "samples/05_CHRISTOPHER_PHONE_8_STACKED.png",
+        "eyebrow": "MOBILE-FORMAT SAMPLE",
+        "title": "Christopher — 8-Unit Phone Stack",
+        "summary": "Eight units arranged as a phone-scale stacked presentation.",
+        "meta": "1 stacked composite"
+      },
+      "assets": [
+        {
+          "id": "christopher-phone-8-stack",
+          "path": "samples/05_CHRISTOPHER_PHONE_8_STACKED.png",
+          "role": "hero_and_primary_sample",
+          "caption": "8-unit phone stack",
+          "alt": "Christopher project sample with eight units stacked for phone-scale viewing"
+        }
+      ],
+      "content_constraint": "This title is a working label derived from the filename. If the repository contains the actual canonical project name, use that instead and keep this asset within that project."
+    }
+  ],
+  "samples_index_design": {
+    "layout": "project_cards_not_asset_grid",
+    "recommended_card_content": [
+      "project hero",
+      "project title",
+      "system/project type",
+      "one-sentence summary",
+      "small scope marker such as '12 instances' or '8 variants'"
+    ],
+    "card_behavior": [
+      "Entire card links to the parent project route.",
+      "Do not link directly to raw image files from the index.",
+      "Do not place player names in index-card headlines.",
+      "Do not use filename numbers as visible ranking or chronology."
+    ],
+    "responsive_behavior": {
+      "desktop": "2-column or editorial asymmetric grid depending on existing design system",
+      "mobile": "single-column project cards with uncropped or lightly constrained project imagery"
+    }
+  },
+  "project_page_component_model": {
+    "required_fields": [
+      "id",
+      "slug",
+      "title",
+      "project_type",
+      "short_description",
+      "index_card",
+      "assets"
+    ],
+    "optional_fields": [
+      "detail_page",
+      "positioning_notes",
+      "content_constraint"
+    ],
+    "asset_fields": [
+      "id",
+      "path",
+      "role",
+      "caption",
+      "alt"
+    ],
+    "implementation_note": "Render from structured project data. Do not scan the samples directory and auto-create project pages from every image."
+  },
+  "routing_rules": {
+    "canonical_project_routes": [
+      "/samples/uc-berkeley-im-cool",
+      "/samples/bootyz",
+      "/samples/its-her-birthday",
+      "/samples/christopher-phone-stack"
+    ],
+    "forbidden_route_examples": [
+      "/samples/solomon-williams",
+      "/samples/ej-caminong",
+      "/samples/jaron-keawe-sagapolutele",
+      "/samples/emmanuel-okoye",
+      "/samples/ian-strong",
+      "/samples/aj-tuitele",
+      "/samples/jackson-brousseau",
+      "/samples/aaron-hampton",
+      "/samples/angus-davies",
+      "/samples/frederick-williams-iii",
+      "/samples/justin-hasenhuetl",
+      "/samples/rico-walker",
+      "/samples/petaled-rose-tone",
+      "/samples/soft-vanilla-accent"
+    ],
+    "legacy_behavior": "If the current repository already has asset-level or player-level routes, redirect them to the appropriate parent project rather than keeping them as independent portfolio entries."
+  },
+  "filename_handling": {
+    "principle": "Filenames are source metadata, not public information architecture.",
+    "rules": [
+      "Never convert every file basename into a project title.",
+      "Never infer parent project from the first numeric prefix alone.",
+      "The repeated 01_, 02_, etc. prefixes exist in multiple families and must not be globally sorted as one project sequence.",
+      "Use the explicit project manifest in this JSON.",
+      "Preserve original files on disk unless there is a strong repository reason to rename them."
+    ],
+    "known_family_patterns": [
+      {
+        "pattern": "samples/*_JERSEY_*_TOP_FRONT_BOTTOM_BACK.png",
+        "parent_project": "uc-berkeley-im-cool",
+        "public_role": "player-specific project instance"
+      },
+      {
+        "pattern": "samples/BOOTYZ_*_FRONT_BACK.png",
+        "parent_project": "bootyz",
+        "public_role": "variant / edition"
+      }
+    ]
+  },
+  "uc_berkeley_im_cool_display_rules": {
+    "primary_title": "UC Berkeley — I’M COOL",
+    "secondary_terms": [
+      "serialized system",
+      "player-specific instances",
+      "front/back architecture",
+      "controlled variation"
+    ],
+    "player_caption_format": "{player} · #{jersey} · {origin}",
+    "hierarchy": [
+      "UC Berkeley — I’M COOL",
+      "system explanation",
+      "overview front/back",
+      "player-specific instances",
+      "individual player caption"
+    ],
+    "never_hierarchy": [
+      "Samples",
+      "Solomon Williams",
+      "EJ Caminong",
+      "Jaron Keawe Sagapolutele",
+      "etc. as project peers"
+    ]
+  },
+  "content_and_copy_rules": {
+    "preferred": [
+      "project",
+      "system",
+      "series",
+      "edition",
+      "instance",
+      "variant",
+      "front/back",
+      "serialized",
+      "variable",
+      "controlled variation"
+    ],
+    "avoid": [
+      "collection of random samples",
+      "one project per filename",
+      "one project per person",
+      "gallery item as project",
+      "client claims not supported by repository content"
+    ],
+    "accuracy_rule": "Do not imply UC Berkeley commissioned, approved, licensed, or endorsed the I’M COOL work unless repository content explicitly proves that relationship."
+  },
+  "github_ai_execution_order": [
+    "1. Audit existing /samples route and sample-related components.",
+    "2. Inventory all sample assets and confirm the listed paths exist.",
+    "3. Create structured project data using this manifest.",
+    "4. Convert /samples into a project index.",
+    "5. Create a reusable /samples/{slug} project detail template.",
+    "6. Implement UC Berkeley — I’M COOL first and verify that all 12 player images appear inside that one project.",
+    "7. Implement BOOTYZ as one project with eight variants.",
+    "8. Implement IT’S HER BIRTHDAY.",
+    "9. Resolve the canonical name for the Christopher phone-stack asset from repository context; use the working title only if no better title exists.",
+    "10. Repair internal links and add redirects only where existing routes require them.",
+    "11. Test responsive image behavior, alt text, keyboard navigation, metadata, and production build."
+  ],
+  "acceptance_tests": [
+    "The /samples page shows project cards rather than one card for every PNG.",
+    "Solomon Williams is not a project title on /samples.",
+    "All player-specific UC Berkeley images live on /samples/uc-berkeley-im-cool.",
+    "The UC Berkeley project page visibly explains that the player images are instances of one visual system.",
+    "BOOTYZ appears once on the Samples index and contains eight variants on its detail page.",
+    "IT’S HER BIRTHDAY appears once as a project.",
+    "The Christopher phone-stack image appears once under a parent project rather than as eight inferred projects.",
+    "Raw filename prefixes are not visible as project hierarchy.",
+    "No unsupported claims of commissioning, endorsement, licensing, or client relationship are introduced.",
+    "The repository build, lint, and type checks pass after the restructure."
+  ]
+}
