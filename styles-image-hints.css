@@ -1,0 +1,6 @@
+.hero img{width:100%;height:auto;max-width:900px;aspect-ratio:16/9;object-fit:contain}
+.card img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.grid img{aspect-ratio:4/3;object-fit:cover}
+
+/* provide explicit image placeholders for project hero images to reduce CLS */
+img[loading="lazy"]{opacity:0.99}
