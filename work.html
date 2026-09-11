@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Work — CBenton</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner" aria-label="Top header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" aria-label="Homepage" class="brand-link">
+          <span class="logo">[ cbenton ]</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link" data-nav>Home</a></li>
+          <li><a href="/work" class="nav-link active" data-nav>Work</a></li>
+          <li><a href="/about" class="nav-link" data-nav>About</a></li>
+          <li><a href="/order" class="nav-link" data-nav>Pricing</a></li>
+          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container" role="main">
+    <h1>Work — Selected systems</h1>
+    <p class="prose">Systems-first portfolio index. Each entry represents a repeatable visual system and links to more detailed documentation.</p>
+
+    <section id="systems-grid" style="margin-top:20px;">
+      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer container" role="contentinfo">
+    <p>&copy; 2026 cbenton</p>
+  </footer>
+
+  <script>
+    // Lightweight client-side renderer for a static JSON index
+    async function renderProjects() {
+      try {
+        const res = await fetch('/data/projects.json');
+        const projects = await res.json();
+        const grid = document.getElementById('grid');
+        projects.forEach(p => {
+          const article = document.createElement('article');
+          article.className = 'card';
+          const link = document.createElement('a');
+          link.href = '/projects/' + (p.slug || p.id) + '.html';
+          link.className = 'card-link';
+          link.setAttribute('aria-label', 'View system: ' + p.title);
+
+          const img = document.createElement('img');
+          img.src = p.images && p.images[0] && p.images[0].src ? p.images[0].src : '';
+          img.alt = p.images && p.images[0] && p.images[0].alt ? p.images[0].alt : p.title;
+          img.style.width = '100%';
+          img.style.height = 'auto';
+          img.style.display = 'block';
+          img.style.borderRadius = '6px';
+
+          const h3 = document.createElement('h3');
+          h3.textContent = p.title;
+          h3.style.margin = '10px 0 6px 0';
+
+          const meta = document.createElement('p');
+          meta.className = 'muted';
+          meta.textContent = p.summary || '';
+
+          link.appendChild(img);
+          link.appendChild(h3);
+          link.appendChild(meta);
+          article.appendChild(link);
+          grid.appendChild(article);
+        });
+      } catch (e) {
+        console.error('Failed to load projects.json', e);
+      }
+    }
+    renderProjects();
+  </script>
+  <script src="nav.js" defer></script>
+</body>
+</html>

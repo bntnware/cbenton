@@ -1,0 +1,56 @@
+[
+  {
+    "id": "solomon-williams",
+    "slug": "solomon-williams",
+    "title": "01 — Solomon Williams",
+    "year": "",
+    "systemType": "Serialized / Collectible Visual System",
+    "summary": "A serialized jersey system showing front/back outputs and individualized identifiers.",
+    "outputs": ["front", "back", "proof sheet"],
+    "rules": ["deterministic identifier", "front/back registration"],
+    "variables": ["player name", "jersey number", "state color"],
+    "fixedElements": ["layout grid", "type scale"],
+    "tools": ["raster assets", "print proofs"],
+    "images": [
+      { "src": "samples/01_SOLOMON_WILLIAMS_JERSEY_0_FLORIDA_TOP_FRONT_BOTTOM_BACK.png", "alt": "Solomon Williams jersey sample", "role": "hero" }
+    ],
+    "featured": true,
+    "status": "published"
+  },
+  {
+    "id": "bootyz-series",
+    "slug": "bootyz-series",
+    "title": "BOOTYZ — edition series",
+    "year": "",
+    "systemType": "Serialized / Edition System",
+    "summary": "A family of related prints exploring color variation and repeatable layout rules.",
+    "outputs": ["poster", "front/back print"],
+    "rules": ["color-variable palettes", "consistent crop and captioning"],
+    "variables": ["color tone", "paper treatment"],
+    "fixedElements": ["type lockup", "margins"],
+    "tools": ["raster assets", "print setup"],
+    "images": [
+      { "src": "samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png", "alt": "BOOTYZ Petaled Rose Tone", "role": "hero" }
+    ],
+    "featured": true,
+    "status": "published"
+  },
+  {
+    "id": "im-cool",
+    "slug": "im-cool",
+    "title": "I'M COOL — front/back systems",
+    "year": "",
+    "systemType": "Campaign System",
+    "summary": "Coordinated front/back pieces designed to register across print formats and scales.",
+    "outputs": ["front", "back", "butted spreads"],
+    "rules": ["registration across spreads", "consistent captioning"],
+    "variables": ["color", "layout variant"],
+    "fixedElements": ["logo bracket", "type scale"],
+    "tools": ["raster assets", "layout scripts"],
+    "images": [
+      { "src": "samples/01_IM_COOL_FRONT.png", "alt": "I'M COOL Front", "role": "hero" }
+    ],
+    "featured": false,
+    "status": "published"
+  }
+]
