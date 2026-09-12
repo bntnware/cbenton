@@ -112,6 +112,7 @@
 
     document.querySelectorAll('img[src]').forEach((image) => {
       const src = image.getAttribute('src');
+      if (!src || src.startsWith('#')) return;
       const rewritten = rewriteInternalUrl(src);
       if (rewritten !== src) image.src = rewritten;
     });
