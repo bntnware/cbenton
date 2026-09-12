@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const getActiveKey = (path) => {
     if (path === '/' || path === '/index') return 'home';
-    if (path === '/work' || path === '/projects' || path.startsWith('/projects/')) return 'work';
-    if (path === '/samples' || path === '/sample' || path === '/sample-pdf' || path.startsWith('/samples/')) return 'samples';
+    if (path === '/work') return 'work';
+    if (path === '/samples' || path === '/sample' || path === '/sample-pdf' || path.startsWith('/samples/') || path.startsWith('/sample/')) return 'samples';
     if (path === '/approach') return 'approach';
     if (path === '/order' || path === '/pricing') return 'pricing';
     if (path === '/about') return 'about';
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const currentPath = normalizePath(window.location.pathname);
-  const activeKey = getActiveKey(currentPath);
+  const activeKey = document.body.getAttribute('data-nav-current') || getActiveKey(currentPath);
 
   nav.setAttribute('role', 'navigation');
   nav.setAttribute('aria-label', 'Main navigation');
