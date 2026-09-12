@@ -70,7 +70,22 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.type = 'button';
     toggle.className = 'nav-toggle';
     toggle.id = 'nav-toggle';
-    toggle.innerHTML = '<svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false"><rect width="24" height="2" y="0"></rect><rect width="24" height="2" y="7"></rect><rect width="24" height="2" y="14"></rect></svg>';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '24');
+    svg.setAttribute('height', '16');
+    svg.setAttribute('viewBox', '0 0 24 16');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+
+    [0, 7, 14].forEach(function (y) {
+      const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      rect.setAttribute('width', '24');
+      rect.setAttribute('height', '2');
+      rect.setAttribute('y', String(y));
+      svg.appendChild(rect);
+    });
+
+    toggle.appendChild(svg);
     nav.insertAdjacentElement('afterend', toggle);
   }
 
