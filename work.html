@@ -24,6 +24,7 @@
           <li><a href="/work.html" class="nav-link" data-nav>Work</a></li>
           <li><a href="/samples/index.html" class="nav-link" data-nav>Samples</a></li>
           <li><a href="/about.html" class="nav-link" data-nav>About</a></li>
+          <li><a href="/approach.html" class="nav-link" data-nav>Approach</a></li>
           <li><a href="/order.html" class="nav-link" data-nav>Pricing</a></li>
           <li><a href="/contact.html" class="nav-link" data-nav>Contact</a></li>
         </ul>
@@ -88,6 +89,12 @@
       const grid = document.getElementById('grid');
       const samplesSection = document.getElementById('samples-grid');
       const samplesContainer = document.getElementById('samples');
+      const projectHrefMap = {
+        'solomon-williams': '/projects/solomon-williams.html',
+        'bootyz-series': '/projects/bootyz-series.html',
+        'im-cool': '/projects/im-cool.html'
+      };
+      const getProjectHref = (project) => projectHrefMap[project.slug || project.id] || ('/projects/' + (project.slug || project.id) + '.html');
 
       // Load projects data always (to show related systems when filtering)
       let projects = [];
@@ -109,7 +116,7 @@
             const article = document.createElement('article');
             article.className = 'card';
             const link = document.createElement('a');
-            link.href = '/projects/' + (p.slug || p.id) + '.html';
+            link.href = getProjectHref(p);
             link.className = 'card-link';
             link.setAttribute('aria-label', 'View system: ' + p.title);
 
@@ -197,7 +204,7 @@
           samplesContainer.parentNode.insertBefore(relatedHeading, samplesContainer);
           related.forEach(p => {
             const a = document.createElement('a');
-            a.href = '/projects/' + (p.slug || p.id) + '.html';
+            a.href = getProjectHref(p);
             a.className = 'btn';
             a.style.marginRight = '8px';
             a.textContent = p.title;

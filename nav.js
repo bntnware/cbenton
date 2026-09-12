@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
       '/index': '/index.html',
       '/work': '/work.html',
       '/about': '/about.html',
+      '/approach': '/approach.html',
       '/order': '/order.html',
       '/contact': '/contact.html',
       '/sample': '/sample.html',
@@ -33,8 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
     currentPath.startsWith('/samples/')
   ) {
     activePath = '/samples/index.html';
-  } else if (currentPath === '/approach.html' || currentPath === '/about.html') {
+  } else if (currentPath === '/about.html') {
     activePath = '/about.html';
+  } else if (currentPath === '/approach.html') {
+    activePath = '/approach.html';
   } else if (currentPath === '/thank-you.html' || currentPath === '/contact.html') {
     activePath = '/contact.html';
   } else if (currentPath === '/order.html') {
