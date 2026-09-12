@@ -43,6 +43,7 @@
   <main id="main" class="container" role="main">
     <h1>Work — Selected systems</h1>
     <p class="prose">Systems-first portfolio index. Each entry represents a repeatable visual system and links to more detailed documentation.</p>
+    <p id="projects-status" class="muted" hidden></p>
 
     <section id="systems-grid" style="margin-top:20px;">
       <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
@@ -87,6 +88,7 @@
       const params = new URLSearchParams(window.location.search);
       const filter = params.get('filter');
       const grid = document.getElementById('grid');
+      const projectsStatus = document.getElementById('projects-status');
       const samplesSection = document.getElementById('samples-grid');
       const samplesContainer = document.getElementById('samples');
       const projectHrefMap = {
@@ -136,6 +138,10 @@
         projectsLoaded = true;
       } catch (e) {
         console.error('Failed to load projects.json', e);
+        if (!filter) {
+          projectsStatus.hidden = false;
+          projectsStatus.textContent = 'Showing the built-in systems index because the latest project feed is unavailable right now.';
+        }
       }
 
       if (!filter) {
