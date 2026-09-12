@@ -1,28 +1,7 @@
 {
   "preserved_packages": [
-    {
-      "id": "starter",
-      "name": "Starter",
-      "price": 500,
-      "price_display": "$500",
-      "note": "/project",
-      "features": ["Single page design","Mobile responsive","Basic optimization","2 rounds of revisions","Deployment support"]
-    },
-    {
-      "id": "professional",
-      "name": "Professional",
-      "price": 1500,
-      "price_display": "$1,500",
-      "note": "/project",
-      "features": ["3-5 page website","Custom branding","Advanced optimization","Unlimited revisions","30 days support","Analytics setup"]
-    },
-    {
-      "id": "enterprise",
-      "name": "Enterprise",
-      "price": 3000,
-      "price_display": "$3,000+",
-      "note": "/project",
-      "features": ["Full website redesign","API integration","Performance tuning","Unlimited revisions","90 days support","Training & documentation"]
-    }
+    {"id": "starter", "name": "Starter", "price": 500, "price_display": "$500", "note": "/project"},
+    {"id": "professional", "name": "Professional", "price": 1500, "price_display": "$1,500", "note": "/project"},
+    {"id": "enterprise", "name": "Enterprise", "price": 3000, "price_display": "$3,000+", "note": "/project"}
   ]
 }

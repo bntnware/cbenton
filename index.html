@@ -4,67 +4,89 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CBenton — Coded Visual Systems, Campaigns & Publication Design</title>
+  <meta name="description" content="CBenton builds coded visual systems rather than isolated graphics across campaigns, serialized editions, publication architecture, and print systems." />
+  <link rel="canonical" href="https://cbenton.art/" />
   <meta property="og:title" content="CBenton — Coded Visual Systems, Campaigns & Publication Design" />
-  <meta property="og:description" content="CBenton builds coded visual campaign systems, serialized editions, publication architecture, print systems, and coordinated project-based visual identities." />
+  <meta property="og:description" content="Project-led visual systems for campaigns, serialized editions, and publication architecture." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://cbenton.art/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="styles-image-hints.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" role="banner" aria-label="Top header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="/" aria-label="Homepage" class="brand-link">
-          <span class="logo">[ cbenton ]</span>
-        </a>
-      </div>
-
-      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link active" data-nav>Home</a></li>
-          <li><a href="/work" class="nav-link" data-nav>Work</a></li>
-          <li><a href="/about" class="nav-link" data-nav>About</a></li>
-          <li><a href="/order" class="nav-link" data-nav>Pricing</a></li>
-          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
-        </ul>
-      </nav>
-
-      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
-        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
-          <rect width="24" height="2" y="0"></rect>
-          <rect width="24" height="2" y="7"></rect>
-          <rect width="24" height="2" y="14"></rect>
-        </svg>
-      </button>
-    </div>
-  </header>
+  <header class="site-header" role="banner"></header>
 
   <main id="main" class="container" role="main">
-    <section class="hero" aria-labelledby="hero-heading">
-      <p class="eyebrow" style="letter-spacing:0.06em;font-weight:600;font-size:0.9rem;color:var(--muted);">CODED VISUAL SYSTEMS / CAMPAIGN PRODUCTION / PUBLICATION ARCHITECTURE</p>
-      <h1 id="hero-heading" style="margin:8px 0 12px 0;font-size:clamp(1.5rem,4.5vw,2.5rem);">I build visual systems, not isolated graphics.</h1>
-      <p class="prose" style="max-width:58ch;margin-bottom:20px;">Campaigns, editions, publications, print systems, and serialized visual objects designed to expand—so a small project can arrive with the presence of a much larger one.</p>
-
+    <section class="section" aria-labelledby="hero-heading">
+      <p class="eyebrow">Coded visual systems · campaign production · publication architecture</p>
+      <h1 id="hero-heading">CBenton builds coded visual systems rather than isolated graphics.</h1>
+      <p class="prose">Each engagement is treated as a system: fixed rules, controlled variation, and repeatable production logic that can scale from a focused release to a larger project family.</p>
       <p>
-        <a href="/work" class="btn btn-primary" style="margin-right:12px;">View selected systems</a>
+        <a href="/work" class="btn btn-primary">View selected Work</a>
         <a href="/contact" class="btn">Start a project</a>
       </p>
     </section>
 
-    <section id="what-it-is" style="margin-top:48px;">
-      <h2>One project. A whole visual system.</h2>
-      <p class="prose">A project may begin with one artifact, but the work is designed to extend: posters, PDFs, print pieces, sequences, editions, identifiers, mailers, launch materials, or other coordinated outputs can grow from the same underlying visual logic.</p>
+    <section class="section" aria-labelledby="selected-work-heading">
+      <h2 id="selected-work-heading">Selected Work projects</h2>
+      <div id="home-work-grid" class="grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="systems-heading">
+      <h2 id="systems-heading">How the practice is positioned</h2>
+      <p class="prose">Work is organized as campaign systems, serialized/variable editions, publication systems, and print-ready production frameworks. Samples stay visual and lightweight; Work focuses on system logic, outputs, and production architecture.</p>
+    </section>
+
+    <section class="section" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Project-based engagement</h2>
+      <p class="prose">Engagements are scoped by project families, variable unit count, rule complexity, production requirements, and reusable handoff—not by commodity file counts.</p>
+      <p>
+        <a href="/pricing" class="btn">View pricing approach</a>
+        <a href="/contact" class="btn btn-primary">Send an inquiry</a>
+      </p>
     </section>
   </main>
 
-  <footer class="site-footer container" role="contentinfo">
-    <p>&copy; 2026 cbenton</p>
-  </footer>
+  <footer class="site-footer" role="contentinfo"></footer>
+  <script src="/nav.js" defer></script>
+  <script>
+    function createEl(tag, className, text) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
 
-  <script src="nav.js" defer></script>
+    async function loadHomeWork() {
+      const container = document.getElementById('home-work-grid');
+      try {
+        const res = await fetch('/data/project-registry.json');
+        if (!res.ok) throw new Error('Registry request failed');
+        const projects = await res.json();
+        projects.filter((p) => p.featuredInWork).forEach((p) => {
+          const card = createEl('article', 'card');
+          const link = createEl('a', 'card-link');
+          link.href = `/projects/${p.slug}`;
+          link.setAttribute('aria-label', `View project: ${p.title}`);
+          const img = createEl('img');
+          img.src = `/${p.hero}`;
+          img.alt = p.heroAlt || p.summary || p.title;
+          img.loading = 'lazy';
+          const content = createEl('div', 'card-content');
+          const h3 = createEl('h3', null, p.title);
+          const type = createEl('p', 'muted', p.projectType);
+          const summary = createEl('p', 'muted', p.summary);
+          content.append(h3, type, summary);
+          link.append(img, content);
+          card.appendChild(link);
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.appendChild(createEl('p', 'muted', 'Selected Work is temporarily unavailable. Visit /work for direct project links.'));
+      }
+    }
+    loadHomeWork();
+  </script>
 </body>
 </html>
