@@ -34,30 +34,35 @@
 
     async function renderWork() {
       const grid = document.getElementById('work-grid');
-      const res = await fetch('/data/project-registry.json');
-      const projects = await res.json();
-      projects.filter((p) => p.featuredInWork).forEach((p) => {
-        const scope = (p.outputs || []).join(', ');
-        const article = createEl('article', 'card');
-        const link = createEl('a', 'card-link');
-        link.href = `/projects/${p.slug}`;
-        const img = createEl('img');
-        img.src = `/${p.hero}`;
-        img.alt = `${p.title} hero`;
-        img.loading = 'lazy';
+      try {
+        const res = await fetch('/data/project-registry.json');
+        if (!res.ok) throw new Error('Registry request failed');
+        const projects = await res.json();
+        projects.filter((p) => p.featuredInWork).forEach((p) => {
+          const scope = (p.outputs || []).join(', ');
+          const article = createEl('article', 'card');
+          const link = createEl('a', 'card-link');
+          link.href = `/projects/${p.slug}`;
+          const img = createEl('img');
+          img.src = `/${p.hero}`;
+          img.alt = `${p.title} hero`;
+          img.loading = 'lazy';
 
-        const content = createEl('div', 'card-content');
-        const h2 = createEl('h2', null, p.title);
-        const type = createEl('p', 'muted', p.projectType);
-        const summary = createEl('p', 'muted', p.summary);
-        const why = createEl('p', 'muted', `Why it matters: ${(p.problem || p.systemDescription || '').slice(0, 170)}`);
-        const outputs = createEl('p', 'muted', `Scope / outputs: ${scope || 'Project system outputs'}`);
+          const content = createEl('div', 'card-content');
+          const h2 = createEl('h2', null, p.title);
+          const type = createEl('p', 'muted', p.projectType);
+          const summary = createEl('p', 'muted', p.summary);
+          const why = createEl('p', 'muted', `Why it matters: ${(p.problem || p.systemDescription || '').slice(0, 170)}`);
+          const outputs = createEl('p', 'muted', `Scope / outputs: ${scope || 'Project system outputs'}`);
 
-        content.append(h2, type, summary, why, outputs);
-        link.append(img, content);
-        article.appendChild(link);
-        grid.appendChild(article);
-      });
+          content.append(h2, type, summary, why, outputs);
+          link.append(img, content);
+          article.appendChild(link);
+          grid.appendChild(article);
+        });
+      } catch (err) {
+        grid.appendChild(createEl('p', 'muted', 'Work projects could not be loaded right now. Please retry shortly.'));
+      }
     }
     renderWork();
   </script>

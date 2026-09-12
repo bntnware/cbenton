@@ -29,8 +29,19 @@ async function loadProjectDetail() {
   if (!root) return;
 
   const slug = root.getAttribute('data-project-slug');
-  const res = await fetch('/data/project-registry.json');
-  const projects = await res.json();
+  let projects = [];
+  try {
+    const res = await fetch('/data/project-registry.json');
+    if (!res.ok) throw new Error('Registry request failed');
+    projects = await res.json();
+  } catch (err) {
+    root.append(
+      el('h1', null, 'Project temporarily unavailable'),
+      el('p', 'prose', 'Project details could not be loaded at this time.')
+    );
+    return;
+  }
+
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {

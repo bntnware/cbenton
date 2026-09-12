@@ -34,26 +34,31 @@
 
     async function renderSamples() {
       const grid = document.getElementById('samples-grid');
-      const res = await fetch('/data/project-registry.json');
-      const projects = await res.json();
-      projects.filter((p) => p.visibleInSamples).forEach((p) => {
-        const marker = (p.assets || []).filter((a) => a.path.endsWith('.png')).length;
-        const article = createEl('article', 'card');
-        const link = createEl('a', 'card-link');
-        link.href = `/projects/${p.slug}`;
-        const img = createEl('img');
-        img.src = `/${p.hero}`;
-        img.alt = `${p.title} representative visual`;
-        img.loading = 'lazy';
-        const content = createEl('div', 'card-content');
-        const h2 = createEl('h2', null, p.title);
-        const type = createEl('p', 'muted', p.projectType);
-        const count = createEl('p', 'muted', `${marker} visual asset${marker === 1 ? '' : 's'}`);
-        content.append(h2, type, count);
-        link.append(img, content);
-        article.appendChild(link);
-        grid.appendChild(article);
-      });
+      try {
+        const res = await fetch('/data/project-registry.json');
+        if (!res.ok) throw new Error('Registry request failed');
+        const projects = await res.json();
+        projects.filter((p) => p.visibleInSamples).forEach((p) => {
+          const marker = (p.assets || []).filter((a) => a.path.endsWith('.png')).length;
+          const article = createEl('article', 'card');
+          const link = createEl('a', 'card-link');
+          link.href = `/projects/${p.slug}`;
+          const img = createEl('img');
+          img.src = `/${p.hero}`;
+          img.alt = `${p.title} representative visual`;
+          img.loading = 'lazy';
+          const content = createEl('div', 'card-content');
+          const h2 = createEl('h2', null, p.title);
+          const type = createEl('p', 'muted', p.projectType);
+          const count = createEl('p', 'muted', `${marker} visual asset${marker === 1 ? '' : 's'}`);
+          content.append(h2, type, count);
+          link.append(img, content);
+          article.appendChild(link);
+          grid.appendChild(article);
+        });
+      } catch (err) {
+        grid.appendChild(createEl('p', 'muted', 'Samples are temporarily unavailable. Please retry shortly.'));
+      }
     }
     renderSamples();
   </script>

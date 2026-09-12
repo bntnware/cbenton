@@ -60,25 +60,30 @@
 
     async function loadHomeWork() {
       const container = document.getElementById('home-work-grid');
-      const res = await fetch('/data/project-registry.json');
-      const projects = await res.json();
-      projects.filter((p) => p.featuredInWork).forEach((p) => {
-        const card = createEl('article', 'card');
-        const link = createEl('a', 'card-link');
-        link.href = `/projects/${p.slug}`;
-        const img = createEl('img');
-        img.src = `/${p.hero}`;
-        img.alt = `${p.title} hero`;
-        img.loading = 'lazy';
-        const content = createEl('div', 'card-content');
-        const h3 = createEl('h3', null, p.title);
-        const type = createEl('p', 'muted', p.projectType);
-        const summary = createEl('p', 'muted', p.summary);
-        content.append(h3, type, summary);
-        link.append(img, content);
-        card.appendChild(link);
-        container.appendChild(card);
-      });
+      try {
+        const res = await fetch('/data/project-registry.json');
+        if (!res.ok) throw new Error('Registry request failed');
+        const projects = await res.json();
+        projects.filter((p) => p.featuredInWork).forEach((p) => {
+          const card = createEl('article', 'card');
+          const link = createEl('a', 'card-link');
+          link.href = `/projects/${p.slug}`;
+          const img = createEl('img');
+          img.src = `/${p.hero}`;
+          img.alt = `${p.title} hero`;
+          img.loading = 'lazy';
+          const content = createEl('div', 'card-content');
+          const h3 = createEl('h3', null, p.title);
+          const type = createEl('p', 'muted', p.projectType);
+          const summary = createEl('p', 'muted', p.summary);
+          content.append(h3, type, summary);
+          link.append(img, content);
+          card.appendChild(link);
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.appendChild(createEl('p', 'muted', 'Selected Work is temporarily unavailable. Visit /work for direct project links.'));
+      }
     }
     loadHomeWork();
   </script>
