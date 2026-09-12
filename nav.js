@@ -64,8 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
   nav.replaceChildren(list);
 
   let toggle = document.getElementById('nav-toggle');
+  const createdToggle = !toggle;
 
-  if (!toggle) {
+  if (createdToggle) {
     toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.className = 'nav-toggle';
@@ -88,7 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.appendChild(svg);
   }
 
-  nav.parentNode.insertBefore(toggle, nav);
+  if (createdToggle || (toggle.parentNode === nav.parentNode && toggle.nextElementSibling !== nav)) {
+    nav.parentNode.insertBefore(toggle, nav);
+  }
 
   if (!toggle.querySelector('.sr-only')) {
     const label = document.createElement('span');
@@ -103,10 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     nav.setAttribute('data-hidden', String(!open));
-    if (open) {
-      const first = nav.querySelector('a');
-      if (first) first.focus();
-    } else if (document.activeElement && nav.contains(document.activeElement)) {
+    if (!open && document.activeElement && nav.contains(document.activeElement)) {
       toggle.focus();
     }
   };
