@@ -1,0 +1,16 @@
+{
+  "brand": { "label": "CBenton", "href": "/" },
+  "items": [
+    { "label": "Work", "href": "/work" },
+    { "label": "Samples", "href": "/samples" },
+    { "label": "Approach", "href": "/approach" },
+    { "label": "Pricing", "href": "/pricing" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "options": {
+    "projectDetailActivates": "/work",
+    "useAriaCurrent": true,
+    "mobileBreakpointPx": 768
+  }
+}
