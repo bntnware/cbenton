@@ -65,6 +65,7 @@
       const grid = document.getElementById('grid');
       const samplesSection = document.getElementById('samples-grid');
       const samplesContainer = document.getElementById('samples');
+      const siteUrl = (value) => new URL(value, window.location.href).href;
 
       // Load projects data always (to show related systems when filtering)
       let projects = [];
@@ -81,7 +82,7 @@
           const article = document.createElement('article');
           article.className = 'card';
           const link = document.createElement('a');
-          link.href = 'projects/' + (p.slug || p.id) + '.html';
+          link.href = siteUrl('projects/' + (p.slug || p.id) + '.html');
           link.className = 'card-link';
           link.setAttribute('aria-label', 'View system: ' + p.title);
 
@@ -136,13 +137,13 @@
           card.className = 'card';
 
           const link = document.createElement('a');
-          link.href = a.path; // open the image directly
+          link.href = siteUrl(a.path); // open the image directly
           link.target = '_blank';
           link.rel = 'noopener';
           link.className = 'card-link';
 
           const img = document.createElement('img');
-          img.src = a.path;
+          img.src = siteUrl(a.path);
           img.alt = a.path.split('/').pop();
           img.loading = 'lazy';
           img.style.width = '100%';
@@ -167,7 +168,7 @@
           samplesContainer.parentNode.insertBefore(relatedHeading, samplesContainer);
           related.forEach(p => {
             const a = document.createElement('a');
-            a.href = 'projects/' + (p.slug || p.id) + '.html';
+            a.href = siteUrl('projects/' + (p.slug || p.id) + '.html');
             a.className = 'btn';
             a.style.marginRight = '8px';
             a.textContent = p.title;

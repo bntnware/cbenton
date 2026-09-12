@@ -190,7 +190,7 @@
     (function () {
       const items = document.querySelectorAll('.gallery-item');
 
-      const filteredWorkUrl = (value) => 'work.html?filter=' + encodeURIComponent(value);
+      const filteredWorkUrl = (value) => new URL('work.html?filter=' + encodeURIComponent(value), window.location.href).href;
 
       items.forEach(item => {
         const img = item.querySelector('img');

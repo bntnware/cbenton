@@ -33,33 +33,26 @@ document.addEventListener('DOMContentLoaded', function () {
     return normalized;
   };
 
-  const getSiteBase = () => {
-    if (pageProtocol === 'file:') {
-      if (pagePath.includes('/projects/')) return pagePath.slice(0, pagePath.indexOf('/projects/'));
-      if (pagePath.includes('/samples/')) return pagePath.slice(0, pagePath.indexOf('/samples/'));
-      return pagePath.slice(0, pagePath.lastIndexOf('/'));
-    }
+  const getSiteRootPath = () => {
+    if (pagePath.includes('/projects/')) return pagePath.slice(0, pagePath.indexOf('/projects/') + 1);
+    if (pagePath.includes('/samples/')) return pagePath.slice(0, pagePath.indexOf('/samples/') + 1);
 
-    if (pagePath.includes('/projects/')) return pagePath.slice(0, pagePath.indexOf('/projects/'));
-    if (pagePath.includes('/samples/')) return pagePath.slice(0, pagePath.indexOf('/samples/'));
+    const sectionRootMatch = pagePath.match(/^(.*\/)(?:projects|samples)\/?$/);
+    if (sectionRootMatch) return sectionRootMatch[1];
 
-    const topLevelMatch = pagePath.match(/^(.*)\/(?:index|work|about|approach|contact|order|sample|sample-pdf|thank-you)\.html$/);
-    if (topLevelMatch) return topLevelMatch[1];
-
-    const samplesRootMatch = pagePath.match(/^(.*)\/samples\/?$/);
-    if (samplesRootMatch) return samplesRootMatch[1];
-
-    return pagePath === '/' ? '' : pagePath.replace(/\/$/, '');
+    const lastSlashIndex = pagePath.lastIndexOf('/');
+    return lastSlashIndex >= 0 ? pagePath.slice(0, lastSlashIndex + 1) : '/';
   };
 
-  const siteBase = getSiteBase();
+  const siteRootPath = getSiteRootPath();
+  const siteRootUrl = new URL(window.location.href);
+  siteRootUrl.hash = '';
+  siteRootUrl.search = '';
+  siteRootUrl.pathname = siteRootPath;
 
   const toSiteUrl = (route) => {
     const normalized = normalizeRoute(route);
-    if (pageProtocol === 'file:') {
-      return `file://${siteBase}${normalized}`;
-    }
-    return `${window.location.origin}${siteBase}${normalized}`;
+    return new URL(normalized.slice(1), siteRootUrl).href;
   };
 
   const rewriteInternalUrl = (value) => {
@@ -73,15 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const getCurrentRoute = () => {
     let route;
 
-    if (pageProtocol === 'file:') {
-      if (pagePath.includes('/projects/')) route = pagePath.slice(pagePath.indexOf('/projects/'));
-      else if (pagePath.includes('/samples/')) route = pagePath.slice(pagePath.indexOf('/samples/'));
-      else route = `/${pagePath.split('/').pop() || 'index.html'}`;
-    } else if (siteBase && pagePath.startsWith(siteBase)) {
-      route = pagePath.slice(siteBase.length) || '/';
-    } else {
-      route = pagePath || '/';
-    }
+    if (pagePath.startsWith(siteRootPath)) route = `/${pagePath.slice(siteRootPath.length)}`;
+    else if (pageProtocol === 'file:') route = `/${pagePath.split('/').pop() || 'index.html'}`;
+    else route = pagePath || '/';
 
     const normalized = normalizeRoute(route);
 
