@@ -184,11 +184,13 @@
     <p>&copy; 2026 cbenton</p>
   </footer>
 
-  <script src="nav.js" defer></script>
+  <script src="nav.js"></script>
   <script>
     // Attach click behavior to each gallery-item so it opens the Work index filtered by sample type.
     (function () {
       const items = document.querySelectorAll('.gallery-item');
+
+      const filteredWorkUrl = (value) => window.cbentonSite.rewriteInternalUrl('/work?filter=' + encodeURIComponent(value));
 
       items.forEach(item => {
         const img = item.querySelector('img');
@@ -198,24 +200,24 @@
         item.setAttribute('tabindex', '0');
         item.addEventListener('click', () => {
           if (type) {
-            window.location.href = '/work?filter=' + encodeURIComponent(type);
+            window.location.href = filteredWorkUrl(type);
           } else {
             const src = img.getAttribute('src') || '';
             const filename = src.split('/').pop();
             const token = filename.toLowerCase().split(/[_\-\.]/)[1] || filename.split('.')[0];
-            window.location.href = '/work?filter=' + encodeURIComponent(token);
+            window.location.href = filteredWorkUrl(token);
           }
         });
         item.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             if (type) {
-              window.location.href = '/work?filter=' + encodeURIComponent(type);
+              window.location.href = filteredWorkUrl(type);
             } else {
               const src = img.getAttribute('src') || '';
               const filename = src.split('/').pop();
               const token = filename.toLowerCase().split(/[_\-\.]/)[1] || filename.split('.')[0];
-              window.location.href = '/work?filter=' + encodeURIComponent(token);
+              window.location.href = filteredWorkUrl(token);
             }
           }
         });
