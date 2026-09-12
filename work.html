@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Work — CBenton</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="styles-image-hints.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/styles-image-hints.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -13,18 +13,19 @@
   <header class="site-header" role="banner" aria-label="Top header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="/" aria-label="Homepage" class="brand-link">
+        <a href="/index.html" aria-label="Homepage" class="brand-link">
           <span class="logo">[ cbenton ]</span>
         </a>
       </div>
 
       <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
         <ul class="nav-list">
-          <li><a href="/" class="nav-link" data-nav>Home</a></li>
-          <li><a href="/work" class="nav-link active" data-nav>Work</a></li>
-          <li><a href="/about" class="nav-link" data-nav>About</a></li>
-          <li><a href="/order" class="nav-link" data-nav>Pricing</a></li>
-          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+          <li><a href="/index.html" class="nav-link" data-nav>Home</a></li>
+          <li><a href="/work.html" class="nav-link" data-nav>Work</a></li>
+          <li><a href="/samples/index.html" class="nav-link" data-nav>Samples</a></li>
+          <li><a href="/about.html" class="nav-link" data-nav>About</a></li>
+          <li><a href="/order.html" class="nav-link" data-nav>Pricing</a></li>
+          <li><a href="/contact.html" class="nav-link" data-nav>Contact</a></li>
         </ul>
       </nav>
 
@@ -43,13 +44,35 @@
     <p class="prose">Systems-first portfolio index. Each entry represents a repeatable visual system and links to more detailed documentation.</p>
 
     <section id="systems-grid" style="margin-top:20px;">
-      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
+      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
+        <article class="card">
+          <a href="/projects/solomon-williams.html" class="card-link" aria-label="View system: 01 — Solomon Williams">
+            <img src="/samples/01_SOLOMON_WILLIAMS_JERSEY_0_FLORIDA_TOP_FRONT_BOTTOM_BACK.png" alt="Solomon Williams jersey sample" style="width:100%;height:auto;display:block;border-radius:6px;" />
+            <h3 style="margin:10px 0 6px 0;">01 — Solomon Williams</h3>
+            <p class="muted">A serialized jersey system showing front/back outputs and individualized identifiers.</p>
+          </a>
+        </article>
+        <article class="card">
+          <a href="/projects/bootyz-series.html" class="card-link" aria-label="View system: BOOTYZ — edition series">
+            <img src="/samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png" alt="BOOTYZ Petaled Rose Tone" style="width:100%;height:auto;display:block;border-radius:6px;" />
+            <h3 style="margin:10px 0 6px 0;">BOOTYZ — edition series</h3>
+            <p class="muted">A family of related prints exploring color variation and repeatable layout rules.</p>
+          </a>
+        </article>
+        <article class="card">
+          <a href="/projects/im-cool.html" class="card-link" aria-label="View system: I'M COOL — front/back systems">
+            <img src="/samples/01_IM_COOL_FRONT.png" alt="I'M COOL Front" style="width:100%;height:auto;display:block;border-radius:6px;" />
+            <h3 style="margin:10px 0 6px 0;">I'M COOL — front/back systems</h3>
+            <p class="muted">Coordinated front/back pieces designed to register across print formats and scales.</p>
+          </a>
+        </article>
+      </div>
     </section>
 
     <section id="samples-grid" style="margin-top:20px; display:none;">
       <h2 id="samples-heading">Samples</h2>
       <div id="samples" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
-      <p style="margin-top:12px;"><a href="/work" class="btn">View all systems</a></p>
+      <p style="margin-top:12px;"><a href="/work.html" class="btn">View all systems</a></p>
     </section>
 
   </main>
@@ -77,6 +100,9 @@
 
       if (!filter) {
         // Render systems-first index (original behavior)
+        if (!projects.length) return;
+
+        grid.innerHTML = '';
         projects.forEach(p => {
           const article = document.createElement('article');
           article.className = 'card';
@@ -182,6 +208,6 @@
 
     renderProjectsOrSamples();
   </script>
-  <script src="nav.js" defer></script>
+  <script src="/nav.js" defer></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Sample PDF — cbenton</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
   <style>
     /* Local PDF-tile styles to ensure the sample renders even if global CSS changes */
     .sample-grid{ display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; }
@@ -23,18 +23,19 @@
   <header class="site-header" role="banner" aria-label="Top header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="/" aria-label="Homepage" class="brand-link">
+        <a href="/index.html" aria-label="Homepage" class="brand-link">
           <span class="logo">[ cbenton ]</span>
         </a>
       </div>
 
       <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
         <ul class="nav-list">
-          <li><a href="/" class="nav-link" data-nav>Main</a></li>
-          <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
-          <li><a href="/sample" class="nav-link active" data-nav>Sample</a></li>
-          <li><a href="/order" class="nav-link" data-nav>Order</a></li>
-          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+          <li><a href="/index.html" class="nav-link" data-nav>Home</a></li>
+          <li><a href="/work.html" class="nav-link" data-nav>Work</a></li>
+          <li><a href="/samples/index.html" class="nav-link" data-nav>Samples</a></li>
+          <li><a href="/about.html" class="nav-link" data-nav>About</a></li>
+          <li><a href="/order.html" class="nav-link" data-nav>Pricing</a></li>
+          <li><a href="/contact.html" class="nav-link" data-nav>Contact</a></li>
         </ul>
       </nav>
 
@@ -50,13 +51,14 @@
 
   <main id="main" class="container" role="main">
     <h1>PDF Sample</h1>
-    <p class="prose">This page demonstrates a single-page PDF sample: a thumbnail is shown in the gallery and clicking it opens the PDF in a new tab. The thumbnail here is an inline SVG placeholder — in production you would generate a real thumbnail (WebP/JPEG) from the PDF's first page.</p>
+    <p class="prose">This page demonstrates a proof-sheet PDF sample using a repository asset. The thumbnail is still an inline placeholder, but the download link now opens an actual project PDF in a new tab.</p>
+    <p class="prose"><a href="/samples/index.html">Back to Samples</a> or <a href="/sample.html">browse the full sample gallery</a>.</p>
 
     <section aria-labelledby="sample-heading">
       <h2 id="sample-heading" class="sr-only">Sample PDF Gallery</h2>
 
       <div class="sample-grid">
-        <a class="pdf-tile" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener">
+        <a class="pdf-tile" href="/samples/IM_COOL_FRONT_BACK_PUSH.pdf" target="_blank" rel="noopener">
           <span class="pdf-badge" aria-hidden="true">PDF</span>
           <figure class="pdf-thumb" aria-hidden="true">
             <!-- Inline SVG thumbnail placeholder -->
@@ -75,8 +77,8 @@
           </figure>
 
           <div class="pdf-body">
-            <p class="pdf-title">Dummy PDF (sample)</p>
-            <p class="pdf-meta">1 page • opens in a new tab</p>
+            <p class="pdf-title">I'M COOL proof PDF</p>
+            <p class="pdf-meta">Repository sample • opens in a new tab</p>
           </div>
         </a>
       </div>
@@ -87,6 +89,6 @@
     <p>&copy; 2026 cbenton</p>
   </footer>
 
-  <script src="nav.js" defer></script>
+  <script src="/nav.js" defer></script>
 </body>
 </html>

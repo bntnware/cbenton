@@ -1,6 +1,43 @@
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.getElementById('nav-toggle');
   const nav = document.getElementById('main-nav');
+  const navLinks = nav ? nav.querySelectorAll('.nav-link') : [];
+
+  const normalizePath = (value) => {
+    if (!value) return '/index.html';
+    const path = value.split('?')[0].split('#')[0];
+    return path === '/' ? '/index.html' : path;
+  };
+
+  const currentPath = normalizePath(window.location.pathname);
+  let activePath = currentPath;
+
+  if (currentPath.startsWith('/projects/') || currentPath === '/work.html') {
+    activePath = '/work.html';
+  } else if (
+    currentPath === '/sample.html' ||
+    currentPath === '/sample-pdf.html' ||
+    currentPath.startsWith('/samples/')
+  ) {
+    activePath = '/samples/index.html';
+  } else if (currentPath === '/approach.html' || currentPath === '/about.html') {
+    activePath = '/about.html';
+  } else if (currentPath === '/thank-you.html' || currentPath === '/contact.html') {
+    activePath = '/contact.html';
+  } else if (currentPath === '/order.html') {
+    activePath = '/order.html';
+  }
+
+  navLinks.forEach((link) => {
+    const linkPath = normalizePath(link.getAttribute('href'));
+    const isActive = linkPath === activePath;
+    link.classList.toggle('active', isActive);
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
 
   if (!toggle || !nav) return;
 

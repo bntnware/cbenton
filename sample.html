@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sample — cbenton</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-image-hints.css">
+  <title>Sample Gallery — cbenton</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles-image-hints.css">
   <style>
     .gallery-item{cursor:pointer}
     .gallery-item:focus{outline:3px solid var(--focus);}
@@ -17,18 +17,19 @@
   <header class="site-header" role="banner" aria-label="Top header">
     <div class="container header-inner">
       <div class="brand">
-        <a href="/" aria-label="Homepage" class="brand-link">
+        <a href="/index.html" aria-label="Homepage" class="brand-link">
           <span class="logo">[ cbenton ]</span>
         </a>
       </div>
 
       <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
         <ul class="nav-list">
-          <li><a href="/" class="nav-link" data-nav>Main</a></li>
-          <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
-          <li><a href="/sample" class="nav-link active" data-nav>Sample</a></li>
-          <li><a href="/order" class="nav-link" data-nav>Order</a></li>
-          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
+          <li><a href="/index.html" class="nav-link" data-nav>Home</a></li>
+          <li><a href="/work.html" class="nav-link" data-nav>Work</a></li>
+          <li><a href="/samples/index.html" class="nav-link" data-nav>Samples</a></li>
+          <li><a href="/about.html" class="nav-link" data-nav>About</a></li>
+          <li><a href="/order.html" class="nav-link" data-nav>Pricing</a></li>
+          <li><a href="/contact.html" class="nav-link" data-nav>Contact</a></li>
         </ul>
       </nav>
 
@@ -44,130 +45,131 @@
 
   <main id="main" role="main">
     <div class="container">
-      <h1>Portfolio</h1>
-      <p class="prose">A selection of recent projects showcasing design, development, and digital strategy work.</p>
+      <h1>Sample Gallery</h1>
+      <p class="prose">A broad wall view of recent projects and production variants. Each sample links to a filtered systems view so the underlying project context is available without JavaScript.</p>
+      <p class="prose">Prefer a curated index? Visit <a href="/samples/index.html">Selected project systems</a>. Need a downloadable proof example? Open the <a href="/sample-pdf.html">sample PDF page</a>.</p>
     </div>
 
     <!-- Gallery - All Items Unified -->
     <div class="fullwidth-section">
       <div class="fullwidth-content">
         <!-- Entries preserved; clicking any item will open a filtered portfolio view for that sample type -->
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/01_SOLOMON_WILLIAMS_JERSEY_0_FLORIDA_TOP_FRONT_BOTTOM_BACK.png" alt="Solomon Williams jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/01_SOLOMON_WILLIAMS_JERSEY_0_FLORIDA_TOP_FRONT_BOTTOM_BACK.png" alt="Solomon Williams jersey sample" class="gallery-img">
           <div class="gallery-caption">01 — Solomon Williams (Florida)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/02_EJ_CAMINONG_JERSEY_2_WASHINGTON_TOP_FRONT_BOTTOM_BACK.png" alt="EJ Caminong jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/02_EJ_CAMINONG_JERSEY_2_WASHINGTON_TOP_FRONT_BOTTOM_BACK.png" alt="EJ Caminong jersey sample" class="gallery-img">
           <div class="gallery-caption">02 — EJ Caminong (Washington)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/03_JARON_KEAWE_SAGAPOLUTELE_JERSEY_3_HAWAII_TOP_FRONT_BOTTOM_BACK.png" alt="Jaron Keawe Sagapolutele jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/03_JARON_KEAWE_SAGAPOLUTELE_JERSEY_3_HAWAII_TOP_FRONT_BOTTOM_BACK.png" alt="Jaron Keawe Sagapolutele jersey sample" class="gallery-img">
           <div class="gallery-caption">03 — Jaron Keawe Sagapolutele (Hawaii)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/04_EMMANUEL_OKOYE_JERSEY_6_NIGERIA_TOP_FRONT_BOTTOM_BACK.png" alt="Emmanuel Okoye jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/04_EMMANUEL_OKOYE_JERSEY_6_NIGERIA_TOP_FRONT_BOTTOM_BACK.png" alt="Emmanuel Okoye jersey sample" class="gallery-img">
           <div class="gallery-caption">04 — Emmanuel Okoye (Nigeria)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/05_IAN_STRONG_JERSEY_9_NEW_YORK_TOP_FRONT_BOTTOM_BACK.png" alt="Ian Strong jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/05_IAN_STRONG_JERSEY_9_NEW_YORK_TOP_FRONT_BOTTOM_BACK.png" alt="Ian Strong jersey sample" class="gallery-img">
           <div class="gallery-caption">05 — Ian Strong (New York)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/06_AJ_TUITELE_JERSEY_9_NEVADA_TOP_FRONT_BOTTOM_BACK.png" alt="AJ Tuitele jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/06_AJ_TUITELE_JERSEY_9_NEVADA_TOP_FRONT_BOTTOM_BACK.png" alt="AJ Tuitele jersey sample" class="gallery-img">
           <div class="gallery-caption">06 — AJ Tuitele (Nevada)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/07_JACKSON_BROUSSEAU_JERSEY_11_UTAH_TOP_FRONT_BOTTOM_BACK.png" alt="Jackson Brousseau jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/07_JACKSON_BROUSSEAU_JERSEY_11_UTAH_TOP_FRONT_BOTTOM_BACK.png" alt="Jackson Brousseau jersey sample" class="gallery-img">
           <div class="gallery-caption">07 — Jackson Brousseau (Utah)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/08_AARON_HAMPTON_JERSEY_21_ALASKA_TOP_FRONT_BOTTOM_BACK.png" alt="Aaron Hampton jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/08_AARON_HAMPTON_JERSEY_21_ALASKA_TOP_FRONT_BOTTOM_BACK.png" alt="Aaron Hampton jersey sample" class="gallery-img">
           <div class="gallery-caption">08 — Aaron Hampton (Alaska)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/09_ANGUS_DAVIES_JERSEY_29_AUSTRALIA_TOP_FRONT_BOTTOM_BACK.png" alt="Angus Davies jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/09_ANGUS_DAVIES_JERSEY_29_AUSTRALIA_TOP_FRONT_BOTTOM_BACK.png" alt="Angus Davies jersey sample" class="gallery-img">
           <div class="gallery-caption">09 — Angus Davies (Australia)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/10_FREDERICK_WILLIAMS_III_JERSEY_54_CALIFORNIA_TOP_FRONT_BOTTOM_BACK.png" alt="Frederick Williams III jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/10_FREDERICK_WILLIAMS_III_JERSEY_54_CALIFORNIA_TOP_FRONT_BOTTOM_BACK.png" alt="Frederick Williams III jersey sample" class="gallery-img">
           <div class="gallery-caption">10 — Frederick Williams III (California)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/11_JUSTIN_HASENHUETL_JERSEY_65_GERMANY_TOP_FRONT_BOTTOM_BACK.png" alt="Justin Hasenhuetl jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/11_JUSTIN_HASENHUETL_JERSEY_65_GERMANY_TOP_FRONT_BOTTOM_BACK.png" alt="Justin Hasenhuetl jersey sample" class="gallery-img">
           <div class="gallery-caption">11 — Justin Hasenhuetl (Germany)</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="jersey">
-          <img src="samples/12_RICO_WALKER_JERSEY_8_NORTH_CAROLINA_TOP_FRONT_BOTTOM_BACK.png" alt="Rico Walker jersey sample" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=jersey">
+          <img src="/samples/12_RICO_WALKER_JERSEY_8_NORTH_CAROLINA_TOP_FRONT_BOTTOM_BACK.png" alt="Rico Walker jersey sample" class="gallery-img">
           <div class="gallery-caption">12 — Rico Walker (North Carolina)</div>
-        </div>
+        </a>
 
         <!-- I'M COOL Additional Samples -->
-        <div class="gallery-item" data-type="im-cool">
-          <img src="samples/01_IM_COOL_FRONT.png" alt="I'M COOL Front" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=im-cool">
+          <img src="/samples/01_IM_COOL_FRONT.png" alt="I'M COOL Front" class="gallery-img">
           <div class="gallery-caption">I'M COOL Front</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="im-cool">
-          <img src="samples/02_IM_COOL_BACK.png" alt="I'M COOL Back" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=im-cool">
+          <img src="/samples/02_IM_COOL_BACK.png" alt="I'M COOL Back" class="gallery-img">
           <div class="gallery-caption">I'M COOL Back</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="im-cool">
-          <img src="samples/03_IM_COOL_FRONT_BACK_BUTTED.png" alt="I'M COOL Front & Back Butted" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=im-cool">
+          <img src="/samples/03_IM_COOL_FRONT_BACK_BUTTED.png" alt="I'M COOL Front & Back Butted" class="gallery-img">
           <div class="gallery-caption">I'M COOL Front & Back Butted</div>
-        </div>
+        </a>
 
         <!-- BOOTYZ Series -->
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png" alt="BOOTYZ Petaled Rose Tone" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png" alt="BOOTYZ Petaled Rose Tone" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 01 — Petaled Rose Tone</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_02_SOFT_VANILLA_ACCENT_FRONT_BACK.png" alt="BOOTYZ Soft Vanilla Accent" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_02_SOFT_VANILLA_ACCENT_FRONT_BACK.png" alt="BOOTYZ Soft Vanilla Accent" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 02 — Soft Vanilla Accent</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_03_RIPE_STRAWBERRY_GLOW_FRONT_BACK.png" alt="BOOTYZ Ripe Strawberry Glow" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_03_RIPE_STRAWBERRY_GLOW_FRONT_BACK.png" alt="BOOTYZ Ripe Strawberry Glow" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 03 — Ripe Strawberry Glow</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_04_SUNLIT_PEACH_FIELD_FRONT_BACK.png" alt="BOOTYZ Sunlit Peach Field" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_04_SUNLIT_PEACH_FIELD_FRONT_BACK.png" alt="BOOTYZ Sunlit Peach Field" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 04 — Sunlit Peach Field</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_05_CUT_GREEN_GREEN_CREAM_FRONT_BACK.png" alt="BOOTYZ Cut Green Green Cream" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_05_CUT_GREEN_GREEN_CREAM_FRONT_BACK.png" alt="BOOTYZ Cut Green Green Cream" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 05 — Cut Green Green Cream</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_06_SMOOTH_COCONUT_WAVE_FRONT_BACK.png" alt="BOOTYZ Smooth Coconut Wave" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_06_SMOOTH_COCONUT_WAVE_FRONT_BACK.png" alt="BOOTYZ Smooth Coconut Wave" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 06 — Smooth Coconut Wave</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_07_BRIGHT_CITRUS_VEIL_FRONT_BACK.png" alt="BOOTYZ Bright Citrus Veil" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_07_BRIGHT_CITRUS_VEIL_FRONT_BACK.png" alt="BOOTYZ Bright Citrus Veil" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 07 — Bright Citrus Veil</div>
-        </div>
+        </a>
 
-        <div class="gallery-item" data-type="bootyz">
-          <img src="samples/BOOTYZ_08_NECTARED_HONEY_CREAM_FRONT_BACK.png" alt="BOOTYZ Nectared Honey Cream" class="gallery-img">
+        <a class="gallery-item card-link" href="/work.html?filter=bootyz">
+          <img src="/samples/BOOTYZ_08_NECTARED_HONEY_CREAM_FRONT_BACK.png" alt="BOOTYZ Nectared Honey Cream" class="gallery-img">
           <div class="gallery-caption">BOOTYZ 08 — Nectared Honey Cream</div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -184,43 +186,6 @@
     <p>&copy; 2026 cbenton</p>
   </footer>
 
-  <script src="nav.js" defer></script>
-  <script>
-    // Attach click behavior to each gallery-item so it opens the Work index filtered by sample type.
-    (function () {
-      const items = document.querySelectorAll('.gallery-item');
-
-      items.forEach(item => {
-        const img = item.querySelector('img');
-        if (!img) return;
-        const type = item.dataset.type || '';
-        // make item keyboard-focusable
-        item.setAttribute('tabindex', '0');
-        item.addEventListener('click', () => {
-          if (type) {
-            window.location.href = '/work?filter=' + encodeURIComponent(type);
-          } else {
-            const src = img.getAttribute('src') || '';
-            const filename = src.split('/').pop();
-            const token = filename.toLowerCase().split(/[_\-\.]/)[1] || filename.split('.')[0];
-            window.location.href = '/work?filter=' + encodeURIComponent(token);
-          }
-        });
-        item.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            if (type) {
-              window.location.href = '/work?filter=' + encodeURIComponent(type);
-            } else {
-              const src = img.getAttribute('src') || '';
-              const filename = src.split('/').pop();
-              const token = filename.toLowerCase().split(/[_\-\.]/)[1] || filename.split('.')[0];
-              window.location.href = '/work?filter=' + encodeURIComponent(token);
-            }
-          }
-        });
-      });
-    })();
-  </script>
+  <script src="/nav.js" defer></script>
 </body>
 </html>
