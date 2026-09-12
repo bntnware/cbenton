@@ -3,8 +3,8 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const registryPath = path.join(root, 'data', 'project-registry.json');
+const navigationPath = path.join(root, 'data', 'navigation.json');
 const sampleDir = path.join(root, 'samples');
-const navJsPath = path.join(root, 'nav.js');
 
 function warn(msg) { console.warn('WARN:', msg); }
 function fail(msg) { console.error('ERROR:', msg); process.exitCode = 1; }
@@ -43,8 +43,8 @@ const ignored = new Set(['samples/README.md']);
 const unassigned = files.filter((f) => !assigned.has(f) && !ignored.has(f) && !f.endsWith('.html') && !f.endsWith('.txt'));
 if (unassigned.length) warn(`Unassigned sample assets: ${unassigned.join(', ')}`);
 
-const navContent = fs.readFileSync(navJsPath, 'utf8');
-const hrefs = Array.from(navContent.matchAll(/href:\s*'([^']+)'/g)).map((m) => m[1]);
+const navConfig = JSON.parse(fs.readFileSync(navigationPath, 'utf8'));
+const hrefs = (navConfig.nav || []).map((item) => item.href);
 const routable = new Set(['/','/work','/samples','/approach','/pricing','/about','/contact']);
 for (const href of hrefs) {
   if (!routable.has(href)) warn(`Nav href has no matching canonical route: ${href}`);

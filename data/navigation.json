@@ -1,0 +1,13 @@
+{
+  "siteName": "CBenton",
+  "siteUrl": "https://cbenton.art",
+  "footerText": "CBenton builds coded visual systems rather than isolated graphics.",
+  "nav": [
+    { "label": "Work", "href": "/work" },
+    { "label": "Samples", "href": "/samples" },
+    { "label": "Approach", "href": "/approach" },
+    { "label": "Pricing", "href": "/pricing" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

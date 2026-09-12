@@ -6,6 +6,7 @@
     "projectType": "Serialized / variable visual system",
     "summary": "One coded front/back visual system that expands across player-specific units while preserving a fixed structural grammar.",
     "hero": "samples/03_IM_COOL_FRONT_BACK_BUTTED.png",
+    "heroAlt": "UC Berkeley — I’M COOL front and back system overview composition",
     "assets": [
       { "path": "samples/01_IM_COOL_FRONT.png", "alt": "I’M COOL system front" },
       { "path": "samples/02_IM_COOL_BACK.png", "alt": "I’M COOL system back" },
@@ -27,7 +28,6 @@
     ],
     "featuredInWork": true,
     "visibleInSamples": true,
-    "sampleCount": 15,
     "status": "published",
     "year": "2026",
     "problem": "Build a single family that can scale across many personalized units.",
@@ -47,6 +47,7 @@
     "projectType": "Edition / variant series",
     "summary": "Eight front/back variants produced as one edition family with stable structure and changing palettes.",
     "hero": "samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png",
+    "heroAlt": "BOOTYZ edition variant 01 front and back",
     "assets": [
       { "path": "samples/BOOTYZ_01_PETALED_ROSE_TONE_FRONT_BACK.png", "alt": "BOOTYZ variant 01 Petaled Rose Tone" },
       { "path": "samples/BOOTYZ_02_SOFT_VANILLA_ACCENT_FRONT_BACK.png", "alt": "BOOTYZ variant 02 Soft Vanilla Accent" },
@@ -59,7 +60,6 @@
     ],
     "featuredInWork": true,
     "visibleInSamples": true,
-    "sampleCount": 8,
     "status": "published",
     "problem": "Produce cohesive edition diversity without splitting into unrelated one-offs.",
     "systemDescription": "One parent project containing eight named variants that share layout and production logic.",
@@ -77,13 +77,13 @@
     "projectType": "Front / back design project",
     "summary": "A single parent project built around a paired front/back composition.",
     "hero": "samples/04_ITS_HER_BIRTHDAY_FRONT_BACK_BUTTED.png",
+    "heroAlt": "IT’S HER BIRTHDAY paired front and back composition",
     "assets": [
       { "path": "samples/04_ITS_HER_BIRTHDAY_FRONT_BACK_BUTTED.png", "alt": "IT’S HER BIRTHDAY front/back composition" },
       { "path": "samples/ITS_HER_BIRTHDAY_FRONT_BACK_UNIT_PUSH.pdf", "alt": "IT’S HER BIRTHDAY proof document" }
     ],
     "featuredInWork": false,
     "visibleInSamples": true,
-    "sampleCount": 1,
     "status": "published",
     "systemDescription": "A compact two-panel system emphasizing paired composition and alignment.",
     "outputs": ["front/back pair", "production proof"],
@@ -96,12 +96,12 @@
     "projectType": "Mobile-format stacked sample",
     "summary": "A parent project presented as an eight-unit vertical mobile stack.",
     "hero": "samples/05_CHRISTOPHER_PHONE_8_STACKED.png",
+    "heroAlt": "Christopher eight-unit phone stack composition",
     "assets": [
       { "path": "samples/05_CHRISTOPHER_PHONE_8_STACKED.png", "alt": "Christopher mobile-format eight-unit stack" }
     ],
     "featuredInWork": false,
     "visibleInSamples": true,
-    "sampleCount": 1,
     "status": "published",
     "systemDescription": "A stacked mobile-format composition where unit sequencing defines the output.",
     "outputs": ["stacked mobile composition"],

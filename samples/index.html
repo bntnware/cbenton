@@ -31,6 +31,9 @@
       if (text !== undefined) el.textContent = text;
       return el;
     }
+    function isImageAsset(path) {
+      return /\.(png|jpe?g|webp|gif|svg)$/i.test(path || '');
+    }
 
     async function renderSamples() {
       const grid = document.getElementById('samples-grid');
@@ -39,13 +42,14 @@
         if (!res.ok) throw new Error('Registry request failed');
         const projects = await res.json();
         projects.filter((p) => p.visibleInSamples).forEach((p) => {
-          const marker = Number.isFinite(p.sampleCount) ? p.sampleCount : (p.assets || []).length;
+          const marker = (p.assets || []).filter((a) => isImageAsset(a.path)).length;
           const article = createEl('article', 'card');
           const link = createEl('a', 'card-link');
           link.href = `/projects/${p.slug}`;
+          link.setAttribute('aria-label', `View project: ${p.title}`);
           const img = createEl('img');
           img.src = `/${p.hero}`;
-          img.alt = `${p.title} representative visual`;
+          img.alt = p.heroAlt || p.summary || p.title;
           img.loading = 'lazy';
           const content = createEl('div', 'card-content');
           const h2 = createEl('h2', null, p.title);

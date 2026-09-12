@@ -23,6 +23,9 @@ function renderGallery(grid, assets) {
     grid.appendChild(figure);
   });
 }
+function isImageAsset(filePath) {
+  return /\.(png|jpe?g|webp|gif|svg)$/i.test(filePath || '');
+}
 
 async function loadProjectDetail() {
   const root = document.getElementById('project-page');
@@ -51,10 +54,10 @@ async function loadProjectDetail() {
     return;
   }
 
-  const pngAssets = (project.assets || []).filter((a) => a.path.endsWith('.png'));
-  const nonImageAssets = (project.assets || []).filter((a) => !a.path.endsWith('.png'));
-  const overview = pngAssets.slice(0, 3);
-  const remaining = pngAssets.slice(3);
+  const imageAssets = (project.assets || []).filter((a) => isImageAsset(a.path));
+  const nonImageAssets = (project.assets || []).filter((a) => !isImageAsset(a.path));
+  const overview = imageAssets.slice(0, 3);
+  const remaining = imageAssets.slice(3);
 
   const breadcrumb = el('nav');
   breadcrumb.setAttribute('aria-label', 'Breadcrumb');
@@ -74,7 +77,7 @@ async function loadProjectDetail() {
   const introFigure = el('figure', 'figure-card');
   const introImg = el('img');
   introImg.src = `/${project.hero}`;
-  introImg.alt = `${project.title} hero`;
+  introImg.alt = project.heroAlt || project.summary || project.title;
   const introCaption = el('figcaption', null, `${project.title} representative visual`);
   introFigure.append(introImg, introCaption);
   intro.appendChild(introFigure);

@@ -1,4 +1,4 @@
-const SITE_CONFIG = {
+const FALLBACK_SITE_CONFIG = {
   siteName: 'CBenton',
   siteUrl: 'https://cbenton.art',
   nav: [
@@ -11,6 +11,7 @@ const SITE_CONFIG = {
   ],
   footerText: 'CBenton builds coded visual systems rather than isolated graphics.'
 };
+let SITE_CONFIG = FALLBACK_SITE_CONFIG;
 
 function normalizePath(pathname) {
   if (!pathname) return '/';
@@ -95,8 +96,21 @@ function initMobileNav() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderHeader();
-  renderFooter();
-  initMobileNav();
-  window.cbentonSite = { SITE_CONFIG, normalizePath };
+  const boot = async () => {
+    try {
+      const res = await fetch('/data/navigation.json');
+      if (res.ok) {
+        const config = await res.json();
+        if (config?.nav?.length) SITE_CONFIG = config;
+      }
+    } catch (err) {
+      SITE_CONFIG = FALLBACK_SITE_CONFIG;
+    }
+
+    renderHeader();
+    renderFooter();
+    initMobileNav();
+    window.cbentonSite = { SITE_CONFIG, normalizePath };
+  };
+  boot();
 });

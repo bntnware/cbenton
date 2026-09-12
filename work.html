@@ -43,9 +43,10 @@
           const article = createEl('article', 'card');
           const link = createEl('a', 'card-link');
           link.href = `/projects/${p.slug}`;
+          link.setAttribute('aria-label', `View project: ${p.title}`);
           const img = createEl('img');
           img.src = `/${p.hero}`;
-          img.alt = `${p.title} hero`;
+          img.alt = p.heroAlt || p.summary || p.title;
           img.loading = 'lazy';
 
           const content = createEl('div', 'card-content');
