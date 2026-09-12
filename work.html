@@ -102,40 +102,40 @@
 
       if (!filter) {
         // Render systems-first index (original behavior)
-        if (!projectsLoaded) return;
+        if (projectsLoaded) {
+          grid.innerHTML = '';
+          projects.forEach(p => {
+            const article = document.createElement('article');
+            article.className = 'card';
+            const link = document.createElement('a');
+            link.href = '/projects/' + (p.slug || p.id) + '.html';
+            link.className = 'card-link';
+            link.setAttribute('aria-label', 'View system: ' + p.title);
 
-        grid.innerHTML = '';
-        projects.forEach(p => {
-          const article = document.createElement('article');
-          article.className = 'card';
-          const link = document.createElement('a');
-          link.href = '/projects/' + (p.slug || p.id) + '.html';
-          link.className = 'card-link';
-          link.setAttribute('aria-label', 'View system: ' + p.title);
+            const img = document.createElement('img');
+            img.src = p.images && p.images[0] && p.images[0].src ? p.images[0].src : '';
+            img.alt = p.images && p.images[0] && p.images[0].alt ? p.images[0].alt : p.title;
+            img.loading = 'lazy';
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            img.style.display = 'block';
+            img.style.borderRadius = '6px';
 
-          const img = document.createElement('img');
-          img.src = p.images && p.images[0] && p.images[0].src ? p.images[0].src : '';
-          img.alt = p.images && p.images[0] && p.images[0].alt ? p.images[0].alt : p.title;
-          img.loading = 'lazy';
-          img.style.width = '100%';
-          img.style.height = 'auto';
-          img.style.display = 'block';
-          img.style.borderRadius = '6px';
+            const h3 = document.createElement('h3');
+            h3.textContent = p.title;
+            h3.style.margin = '10px 0 6px 0';
 
-          const h3 = document.createElement('h3');
-          h3.textContent = p.title;
-          h3.style.margin = '10px 0 6px 0';
+            const meta = document.createElement('p');
+            meta.className = 'muted';
+            meta.textContent = p.summary || '';
 
-          const meta = document.createElement('p');
-          meta.className = 'muted';
-          meta.textContent = p.summary || '';
-
-          link.appendChild(img);
-          link.appendChild(h3);
-          link.appendChild(meta);
-          article.appendChild(link);
-          grid.appendChild(article);
-        });
+            link.appendChild(img);
+            link.appendChild(h3);
+            link.appendChild(meta);
+            article.appendChild(link);
+            grid.appendChild(article);
+          });
+        }
         return;
       }
 
