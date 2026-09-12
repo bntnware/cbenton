@@ -137,9 +137,11 @@ a { color: inherit; text-decoration: none; }
   background: var(--accent);
 }
 
-/* Active state (use .active on the link server or client-side) */
-.nav-link.active { color: var(--bg); background: var(--accent); border-color: var(--accent); }
-.nav-link.active::after { transform: scaleX(1); background: var(--accent); }
+/* Active state (use .active or aria-current on the current page link) */
+.nav-link.active,
+.nav-link[aria-current="page"] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.nav-link.active::after,
+.nav-link[aria-current="page"]::after { transform: scaleX(1); background: var(--accent); }
 
 /* Hamburger toggle (mobile) */
 .nav-toggle{
@@ -167,8 +169,8 @@ a { color: inherit; text-decoration: none; }
     transition: transform var(--transition-fast), opacity var(--transition-fast);
     will-change: transform, opacity;
   }
-  .site-nav[data-hidden="true"] { transform: scaleY(0.97); opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
-  .site-nav[data-hidden="false"] { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+  .js .site-nav[data-hidden="true"] { transform: scaleY(0.97); opacity: 0; pointer-events: none; height: 0; overflow: hidden; }
+  .js .site-nav[data-hidden="false"] { transform: scaleY(1); opacity: 1; pointer-events: auto; }
 
   .nav-list{ flex-direction: column; gap: var(--space-3); padding: var(--space-3); }
   .nav-link { padding: var(--space-2) 0; font-size: 1.125rem; color: var(--text); border: none; background: transparent; }
