@@ -52,6 +52,7 @@ async function loadProjectDetail() {
   }
 
   const pngAssets = (project.assets || []).filter((a) => a.path.endsWith('.png'));
+  const nonImageAssets = (project.assets || []).filter((a) => !a.path.endsWith('.png'));
   const overview = pngAssets.slice(0, 3);
   const remaining = pngAssets.slice(3);
 
@@ -105,6 +106,20 @@ async function loadProjectDetail() {
     const remainingGrid = el('div', 'gallery-grid');
     renderGallery(remainingGrid, remaining);
     gallerySection.appendChild(remainingGrid);
+  }
+  if (nonImageAssets.length) {
+    gallerySection.appendChild(el('h3', null, 'Additional project assets'));
+    const list = el('ul');
+    nonImageAssets.forEach((asset) => {
+      const li = el('li');
+      const link = el('a', null, asset.alt);
+      link.href = `/${asset.path}`;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+    gallerySection.appendChild(list);
   }
 
   const production = el('section', 'section');

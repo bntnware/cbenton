@@ -39,7 +39,7 @@
         if (!res.ok) throw new Error('Registry request failed');
         const projects = await res.json();
         projects.filter((p) => p.visibleInSamples).forEach((p) => {
-          const marker = (p.assets || []).filter((a) => a.path.endsWith('.png')).length;
+          const marker = Number.isFinite(p.sampleCount) ? p.sampleCount : (p.assets || []).length;
           const article = createEl('article', 'card');
           const link = createEl('a', 'card-link');
           link.href = `/projects/${p.slug}`;

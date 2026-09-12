@@ -34,7 +34,11 @@ function walkSampleAssets(dir, basePrefix = 'samples') {
     else files.push(rel);
   }
 }
-walkSampleAssets(sampleDir);
+if (fs.existsSync(sampleDir)) {
+  walkSampleAssets(sampleDir);
+} else {
+  fail('samples directory is missing, cannot validate sample asset assignment.');
+}
 const ignored = new Set(['samples/README.md']);
 const unassigned = files.filter((f) => !assigned.has(f) && !ignored.has(f) && !f.endsWith('.html') && !f.endsWith('.txt'));
 if (unassigned.length) warn(`Unassigned sample assets: ${unassigned.join(', ')}`);

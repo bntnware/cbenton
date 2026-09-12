@@ -21,7 +21,8 @@ function normalizePath(pathname) {
 
 function getActiveNavHref(path) {
   if (path === '/work' || path.startsWith('/projects/')) return '/work';
-  if (path === '/samples') return '/samples';
+  if (path === '/samples' || path === '/sample' || path === '/sample-pdf') return '/samples';
+  if (path === '/order') return '/pricing';
   return SITE_CONFIG.nav.find((item) => item.href === path)?.href || null;
 }
 
