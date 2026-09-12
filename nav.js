@@ -6,7 +6,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const normalizePath = (value) => {
     if (!value) return '/index.html';
     const path = value.split('?')[0].split('#')[0];
-    return path === '/' ? '/index.html' : path;
+    if (path === '/') return '/index.html';
+
+    const legacyMap = {
+      '/index': '/index.html',
+      '/work': '/work.html',
+      '/about': '/about.html',
+      '/order': '/order.html',
+      '/contact': '/contact.html',
+      '/sample': '/sample.html',
+      '/samples': '/samples/index.html'
+    };
+
+    return legacyMap[path] || path;
   };
 
   const currentPath = normalizePath(window.location.pathname);
