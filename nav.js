@@ -86,8 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     toggle.appendChild(svg);
-    nav.insertAdjacentElement('afterend', toggle);
   }
+
+  nav.parentNode.insertBefore(toggle, nav);
 
   if (!toggle.querySelector('.sr-only')) {
     const label = document.createElement('span');
