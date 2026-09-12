@@ -37,8 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (pagePath.includes('/projects/')) return pagePath.slice(0, pagePath.indexOf('/projects/') + 1);
     if (pagePath.includes('/samples/')) return pagePath.slice(0, pagePath.indexOf('/samples/') + 1);
 
+    const topLevelPageMatch = pagePath.match(/^(.*\/)(?:index(?:\.html)?|work(?:\.html)?|about(?:\.html)?|approach(?:\.html)?|contact(?:\.html)?|order(?:\.html)?|sample(?:-pdf)?(?:\.html)?|thank-you(?:\.html)?)$/);
+    if (topLevelPageMatch) return topLevelPageMatch[1];
+
     const sectionRootMatch = pagePath.match(/^(.*\/)(?:projects|samples)\/?$/);
     if (sectionRootMatch) return sectionRootMatch[1];
+
+    if (pagePath.endsWith('/')) return pagePath;
 
     const lastSlashIndex = pagePath.lastIndexOf('/');
     return lastSlashIndex >= 0 ? pagePath.slice(0, lastSlashIndex + 1) : '/';

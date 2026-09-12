@@ -70,7 +70,7 @@
       // Load projects data always (to show related systems when filtering)
       let projects = [];
       try {
-        const res = await fetch('data/projects.json');
+        const res = await fetch(siteUrl('data/projects.json'));
         projects = await res.json();
       } catch (e) {
         console.error('Failed to load projects.json', e);
@@ -87,7 +87,7 @@
           link.setAttribute('aria-label', 'View system: ' + p.title);
 
           const img = document.createElement('img');
-          img.src = p.images && p.images[0] && p.images[0].src ? p.images[0].src : '';
+          img.src = p.images && p.images[0] && p.images[0].src ? siteUrl(p.images[0].src) : '';
           img.alt = p.images && p.images[0] && p.images[0].alt ? p.images[0].alt : p.title;
           img.loading = 'lazy';
           img.style.width = '100%';
@@ -115,7 +115,7 @@
       // If a filter param exists: show samples matching the filter token
       // Load asset inventory and filter by token
       try {
-        const assetsRes = await fetch('data/assets.json');
+        const assetsRes = await fetch(siteUrl('data/assets.json'));
         const assets = await assetsRes.json();
         const token = filter.toLowerCase();
         // find matching assets (path includes token)
