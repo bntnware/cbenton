@@ -69,7 +69,7 @@
       // Load projects data always (to show related systems when filtering)
       let projects = [];
       try {
-        const res = await fetch('/data/projects.json');
+        const res = await fetch('data/projects.json');
         projects = await res.json();
       } catch (e) {
         console.error('Failed to load projects.json', e);
@@ -81,7 +81,7 @@
           const article = document.createElement('article');
           article.className = 'card';
           const link = document.createElement('a');
-          link.href = '/projects/' + (p.slug || p.id) + '.html';
+          link.href = 'projects/' + (p.slug || p.id) + '.html';
           link.className = 'card-link';
           link.setAttribute('aria-label', 'View system: ' + p.title);
 
@@ -114,7 +114,7 @@
       // If a filter param exists: show samples matching the filter token
       // Load asset inventory and filter by token
       try {
-        const assetsRes = await fetch('/data/assets.json');
+        const assetsRes = await fetch('data/assets.json');
         const assets = await assetsRes.json();
         const token = filter.toLowerCase();
         // find matching assets (path includes token)
@@ -136,13 +136,13 @@
           card.className = 'card';
 
           const link = document.createElement('a');
-          link.href = '/' + a.path; // open the image directly
+          link.href = a.path; // open the image directly
           link.target = '_blank';
           link.rel = 'noopener';
           link.className = 'card-link';
 
           const img = document.createElement('img');
-          img.src = '/' + a.path;
+          img.src = a.path;
           img.alt = a.path.split('/').pop();
           img.loading = 'lazy';
           img.style.width = '100%';
@@ -167,7 +167,7 @@
           samplesContainer.parentNode.insertBefore(relatedHeading, samplesContainer);
           related.forEach(p => {
             const a = document.createElement('a');
-            a.href = '/projects/' + (p.slug || p.id) + '.html';
+            a.href = 'projects/' + (p.slug || p.id) + '.html';
             a.className = 'btn';
             a.style.marginRight = '8px';
             a.textContent = p.title;

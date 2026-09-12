@@ -190,6 +190,8 @@
     (function () {
       const items = document.querySelectorAll('.gallery-item');
 
+      const filteredWorkUrl = (value) => 'work.html?filter=' + encodeURIComponent(value);
+
       items.forEach(item => {
         const img = item.querySelector('img');
         if (!img) return;
@@ -198,24 +200,24 @@
         item.setAttribute('tabindex', '0');
         item.addEventListener('click', () => {
           if (type) {
-            window.location.href = '/work?filter=' + encodeURIComponent(type);
+            window.location.href = filteredWorkUrl(type);
           } else {
             const src = img.getAttribute('src') || '';
             const filename = src.split('/').pop();
             const token = filename.toLowerCase().split(/[_\-\.]/)[1] || filename.split('.')[0];
-            window.location.href = '/work?filter=' + encodeURIComponent(token);
+            window.location.href = filteredWorkUrl(token);
           }
         });
         item.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             if (type) {
-              window.location.href = '/work?filter=' + encodeURIComponent(type);
+              window.location.href = filteredWorkUrl(type);
             } else {
               const src = img.getAttribute('src') || '';
               const filename = src.split('/').pop();
               const token = filename.toLowerCase().split(/[_\-\.]/)[1] || filename.split('.')[0];
-              window.location.href = '/work?filter=' + encodeURIComponent(token);
+              window.location.href = filteredWorkUrl(token);
             }
           }
         });
