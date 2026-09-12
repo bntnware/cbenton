@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — cbenton</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/styles-image-hints.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,8 +21,9 @@
       <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
         <ul class="nav-list">
           <li><a href="/" class="nav-link" data-nav>Main</a></li>
+          <li><a href="/work" class="nav-link" data-nav>Work</a></li>
+          <li><a href="/samples" class="nav-link" data-nav>Samples</a></li>
           <li><a href="/about" class="nav-link" data-nav>About Me</a></li>
-          <li><a href="/sample" class="nav-link" data-nav>Sample</a></li>
           <li><a href="/order" class="nav-link" data-nav>Order</a></li>
           <li><a href="/contact" class="nav-link active" data-nav>Contact</a></li>
         </ul>
@@ -39,42 +41,102 @@
 
   <main id="main" class="container" role="main">
     <h1>Contact</h1>
-    <p class="prose">Get in touch — fill out the form below and I'll receive your message by email.</p>
+    <p class="prose">Interested in a project, collaboration, or commissioning work? Use the form below to describe your project and I'll get back to you within 3 business days. If this is urgent, email directly.</p>
 
-    <section class="contact-card" aria-labelledby="contact-form-heading">
-      <h2 id="contact-form-heading" class="sr-only">Contact form</h2>
+    <div style="display:grid;grid-template-columns:1fr;gap:20px;max-width:980px;">
+      <section class="contact-card" aria-labelledby="contact-form-heading">
+        <h2 id="contact-form-heading" class="sr-only">Contact form</h2>
 
-      <form class="contact-form" action="https://formsubmit.co/chrisbenton@outlook.com" method="POST">
-        <!-- Redirect to a local thank-you page after submission -->
-        <input type="hidden" name="_next" value="/thank-you.html" />
-        <!-- Disable FormSubmit's captcha (optional) -->
-        <input type="hidden" name="_captcha" value="false" />
+        <form class="contact-form" action="https://formsubmit.co/chrisbenton@outlook.com" method="POST" aria-describedby="contact-help">
+          <!-- Redirect to a local thank-you page after submission -->
+          <input type="hidden" name="_next" value="/thank-you.html" />
+          <!-- Disable FormSubmit's captcha (optional) -->
+          <input type="hidden" name="_captcha" value="false" />
+          <!-- Subject line for incoming email -->
+          <input type="hidden" name="_subject" value="New inquiry from cbenton.art contact form" />
 
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" required autocomplete="name" />
+          <!-- Honeypot anti-spam field (hidden from users) -->
+          <label class="sr-only" for="fax">Leave this field empty</label>
+          <input id="fax" name="fax" type="text" style="display:none !important" tabindex="-1" autocomplete="off" />
 
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required autocomplete="email" />
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <label for="name">Name <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name" />
+            </div>
 
-        <label for="subject">Subject</label>
-        <input id="subject" name="subject" type="text" required />
+            <div>
+              <label for="email">Email <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+          </div>
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
+          <div style="margin-top:12px;">
+            <label for="project-type">Project type</label>
+            <select id="project-type" name="project-type">
+              <option value="general">General inquiry</option>
+              <option value="visual-system">Visual system / Campaign</option>
+              <option value="edition">Edition / Print</option>
+              <option value="publication">Publication / Editorial</option>
+              <option value="consult">Consultation</option>
+            </select>
+          </div>
 
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Send message</button>
-        </div>
-      </form>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+            <div>
+              <label for="budget">Estimated budget</label>
+              <select id="budget" name="budget">
+                <option value="not-sure">Not sure</option>
+                <option value="under-2k">Under $2k</option>
+                <option value="2k-10k">$2k–$10k</option>
+                <option value="10k-50k">$10k–$50k</option>
+                <option value="50k-plus">$50k+</option>
+              </select>
+            </div>
 
-      <p class="muted-note">Or email directly: <a href="mailto:chrisbenton@outlook.com">chrisbenton@outlook.com</a></p>
-    </section>
+            <div>
+              <label for="timeline">Timeline</label>
+              <input id="timeline" name="timeline" type="text" placeholder="e.g., 6–8 weeks / ASAP" />
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <label for="subject">Project title / subject</label>
+            <input id="subject" name="subject" type="text" />
+          </div>
+
+          <div style="margin-top:12px;">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <a class="btn" href="mailto:chrisbenton@outlook.com">Email directly</a>
+          </div>
+
+          <p id="contact-help" class="muted" style="margin-top:12px;">By submitting this form you consent to receive a reply and agree that the message content will be sent to the site owner. Do not include sensitive personal data. I aim to respond within 3 business days.</p>
+        </form>
+      </section>
+
+      <aside aria-labelledby="other-ways-heading">
+        <h2 id="other-ways-heading">Other ways to reach me</h2>
+        <ul>
+          <li>Email: <a href="mailto:chrisbenton@outlook.com">chrisbenton@outlook.com</a></li>
+          <li>For project enquiries: please include approximate budget and timeline in your message.</li>
+        </ul>
+
+        <h3 style="margin-top:12px;">Privacy</h3>
+        <p class="prose muted">Messages are delivered to the site owner. Contact data will not be shared. This contact form uses FormSubmit (third-party). If you prefer not to use it, email directly.</p>
+      </aside>
+    </div>
+
   </main>
 
   <footer class="site-footer container" role="contentinfo">
     <p>&copy; 2026 cbenton</p>
   </footer>
 
-  <script src="nav.js" defer></script>
+  <script src="/nav.js" defer></script>
 </body>
 </html>
