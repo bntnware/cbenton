@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     currentPath.startsWith('/samples/')
   ) {
     activePath = '/samples/index.html';
-  } else if (currentPath === '/approach.html' || currentPath === '/about.html') {
+  } else if (currentPath === '/about.html') {
     activePath = '/about.html';
   } else if (currentPath === '/thank-you.html' || currentPath === '/contact.html') {
     activePath = '/contact.html';

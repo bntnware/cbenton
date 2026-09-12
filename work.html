@@ -94,6 +94,7 @@
       let projectsLoaded = false;
       try {
         const res = await fetch('/data/projects.json');
+        if (!res.ok) throw new Error('Failed to load projects.json: ' + res.status);
         projects = await res.json();
         projectsLoaded = true;
       } catch (e) {
@@ -143,6 +144,7 @@
       // Load asset inventory and filter by token
       try {
         const assetsRes = await fetch('/data/assets.json');
+        if (!assetsRes.ok) throw new Error('Failed to load assets.json: ' + assetsRes.status);
         const assets = await assetsRes.json();
         const token = filter.toLowerCase();
         // find matching assets (path includes token)
