@@ -94,7 +94,37 @@
         'bootyz-series': '/projects/bootyz-series.html',
         'im-cool': '/projects/im-cool.html'
       };
+      const projectTitleMap = {
+        'solomon-williams': '01 — Solomon Williams',
+        'bootyz-series': 'BOOTYZ — edition series',
+        'im-cool': 'I\\'M COOL — front/back systems'
+      };
+      const filterFallbackProjects = {
+        jersey: ['solomon-williams'],
+        'im-cool': ['im-cool'],
+        bootyz: ['bootyz-series']
+      };
       const getProjectHref = (project) => projectHrefMap[project.slug || project.id] || ('/projects/' + (project.slug || project.id) + '.html');
+      const renderFallbackButtons = (token) => {
+        const relatedIds = filterFallbackProjects[token] || [];
+        if (!relatedIds.length) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.flexWrap = 'wrap';
+        wrapper.style.gap = '8px';
+        wrapper.style.marginTop = '12px';
+
+        relatedIds.forEach((id) => {
+          const link = document.createElement('a');
+          link.href = projectHrefMap[id];
+          link.className = 'btn';
+          link.textContent = projectTitleMap[id];
+          wrapper.appendChild(link);
+        });
+
+        samplesContainer.appendChild(wrapper);
+      };
 
       // Load projects data always (to show related systems when filtering)
       let projects = [];
@@ -214,6 +244,14 @@
 
       } catch (e) {
         console.error('Failed to load assets.json for filtering', e);
+        const token = filter.toLowerCase();
+        samplesSection.style.display = '';
+        samplesContainer.innerHTML = '';
+        const message = document.createElement('p');
+        message.className = 'muted';
+        message.textContent = 'Sample previews are temporarily unavailable. Open the related system page instead.';
+        samplesContainer.appendChild(message);
+        renderFallbackButtons(token);
       }
     }
 
