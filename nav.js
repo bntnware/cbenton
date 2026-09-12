@@ -61,11 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const rewriteInternalUrl = (value) => {
-    if (!value || !value.startsWith('/') || value.startsWith('//')) return value;
+    if (!value || value.startsWith('#') || value.startsWith('?') || value.startsWith('//') || /^[a-z][a-z0-9+.-]*:/i.test(value)) return value;
     const suffixIndex = value.search(/[?#]/);
     const route = suffixIndex >= 0 ? value.slice(0, suffixIndex) : value;
     const suffix = suffixIndex >= 0 ? value.slice(suffixIndex) : '';
-    return `${toSiteUrl(route)}${suffix}`;
+    const target = route.startsWith('/') ? route.slice(1) : route;
+    return `${new URL(target, siteRootUrl).href}${suffix}`;
   };
 
   const getCurrentRoute = () => {
