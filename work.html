@@ -58,6 +58,7 @@
     <p>&copy; 2026 cbenton</p>
   </footer>
 
+  <script src="nav.js"></script>
   <script>
     async function renderProjectsOrSamples() {
       const params = new URLSearchParams(window.location.search);
@@ -65,19 +66,7 @@
       const grid = document.getElementById('grid');
       const samplesSection = document.getElementById('samples-grid');
       const samplesContainer = document.getElementById('samples');
-      const currentPath = decodeURIComponent(window.location.pathname);
-      const getSiteRootPath = () => {
-        const topLevelPageMatch = currentPath.match(/^(.*\/)(?:index(?:\.html)?|work(?:\.html)?|about(?:\.html)?|approach(?:\.html)?|contact(?:\.html)?|order(?:\.html)?|sample(?:-pdf)?(?:\.html)?|thank-you(?:\.html)?)$/);
-        if (topLevelPageMatch) return topLevelPageMatch[1];
-        if (currentPath.endsWith('/')) return currentPath;
-        const lastSlashIndex = currentPath.lastIndexOf('/');
-        return lastSlashIndex >= 0 ? currentPath.slice(0, lastSlashIndex + 1) : '/';
-      };
-      const siteRootUrl = new URL(window.location.href);
-      siteRootUrl.hash = '';
-      siteRootUrl.search = '';
-      siteRootUrl.pathname = getSiteRootPath();
-      const siteUrl = (value) => new URL(value.startsWith('/') ? value.slice(1) : value, siteRootUrl).href;
+      const siteUrl = window.cbentonSite.toSiteUrl;
 
       // Load projects data always (to show related systems when filtering)
       let projects = [];
@@ -195,6 +184,5 @@
 
     renderProjectsOrSamples();
   </script>
-  <script src="nav.js" defer></script>
 </body>
 </html>

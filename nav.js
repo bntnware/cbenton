@@ -1,7 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const nav = document.getElementById('main-nav');
-  if (!nav) return;
-
+(() => {
   const navItems = [
     { label: 'Home', route: '/' },
     { label: 'Work', route: '/work' },
@@ -11,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     { label: 'Contact', route: '/contact' }
   ];
 
-  const pagePath = decodeURIComponent(window.location.pathname);
-  const pageProtocol = window.location.protocol;
+  const currentUrl = new URL(window.location.href);
+  const pagePath = decodeURIComponent(currentUrl.pathname);
 
   const normalizeRoute = (route) => {
     if (!route) return '/index.html';
@@ -34,14 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const getSiteRootPath = () => {
-    if (pagePath.includes('/projects/')) return pagePath.slice(0, pagePath.indexOf('/projects/') + 1);
-    if (pagePath.includes('/samples/')) return pagePath.slice(0, pagePath.indexOf('/samples/') + 1);
-
-    const topLevelPageMatch = pagePath.match(/^(.*\/)(?:index(?:\.html)?|work(?:\.html)?|about(?:\.html)?|approach(?:\.html)?|contact(?:\.html)?|order(?:\.html)?|sample(?:-pdf)?(?:\.html)?|thank-you(?:\.html)?)$/);
-    if (topLevelPageMatch) return topLevelPageMatch[1];
+    const nestedSectionMatch = pagePath.match(/^(.*\/)(?:projects|samples)\/[^/]+$/);
+    if (nestedSectionMatch) return nestedSectionMatch[1];
 
     const sectionRootMatch = pagePath.match(/^(.*\/)(?:projects|samples)\/?$/);
     if (sectionRootMatch) return sectionRootMatch[1];
+
+    const topLevelPageMatch = pagePath.match(/^(.*\/)(?:index(?:\.html)?|work(?:\.html)?|about(?:\.html)?|approach(?:\.html)?|contact(?:\.html)?|order(?:\.html)?|sample(?:-pdf)?(?:\.html)?|thank-you(?:\.html)?)$/);
+    if (topLevelPageMatch) return topLevelPageMatch[1];
 
     if (pagePath.endsWith('/')) return pagePath;
 
@@ -50,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const siteRootPath = getSiteRootPath();
-  const siteRootUrl = new URL(window.location.href);
+  const siteRootUrl = new URL(currentUrl.href);
   siteRootUrl.hash = '';
   siteRootUrl.search = '';
   siteRootUrl.pathname = siteRootPath;
@@ -69,112 +66,123 @@ document.addEventListener('DOMContentLoaded', function () {
     return `${new URL(target, siteRootUrl).href}${suffix}`;
   };
 
-  const getCurrentRoute = () => {
-    let route;
-
-    if (pagePath.startsWith(siteRootPath)) route = `/${pagePath.slice(siteRootPath.length)}`;
-    else if (pageProtocol === 'file:') route = `/${pagePath.split('/').pop() || 'index.html'}`;
-    else route = pagePath || '/';
-
-    const normalized = normalizeRoute(route);
-
-    if (normalized.startsWith('/projects/')) return '/work.html';
-    if (normalized === '/sample.html' || normalized === '/sample-pdf.html') return '/samples/index.html';
-    if (normalized === '/approach.html') return '/about.html';
-    if (normalized === '/thank-you.html') return '/contact.html';
-    if (normalized.startsWith('/samples/')) return '/samples/index.html';
-
-    return normalized;
+  window.cbentonSite = {
+    normalizeRoute,
+    rewriteInternalUrl,
+    toSiteUrl
   };
 
-  const currentRoute = getCurrentRoute();
-  nav.innerHTML = `
-    <ul class="nav-list">
-      ${navItems.map((item) => `<li><a href="${toSiteUrl(item.route)}" class="nav-link" data-nav-route="${normalizeRoute(item.route)}">${item.label}</a></li>`).join('')}
-    </ul>
-  `;
+  document.addEventListener('DOMContentLoaded', function () {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
 
-  const brandLink = document.querySelector('.brand-link');
-  if (brandLink) brandLink.href = toSiteUrl('/');
+    const getCurrentRoute = () => {
+      let route;
 
-  document.querySelectorAll('a[href]').forEach((link) => {
-    const href = link.getAttribute('href');
-    const rewritten = rewriteInternalUrl(href);
-    if (rewritten !== href) link.href = rewritten;
-  });
+      if (pagePath.startsWith(siteRootPath)) route = `/${pagePath.slice(siteRootPath.length)}`;
+      else if (currentUrl.protocol === 'file:') route = `/${pagePath.split('/').pop() || 'index.html'}`;
+      else route = pagePath || '/';
 
-  document.querySelectorAll('img[src]').forEach((image) => {
-    const src = image.getAttribute('src');
-    const rewritten = rewriteInternalUrl(src);
-    if (rewritten !== src) image.src = rewritten;
-  });
+      const normalized = normalizeRoute(route);
 
-  const nextInput = document.querySelector('input[name="_next"]');
-  if (nextInput) {
-    const rewritten = rewriteInternalUrl(nextInput.value);
-    if (rewritten !== nextInput.value) nextInput.value = rewritten;
-  }
+      if (normalized.startsWith('/projects/')) return '/work.html';
+      if (normalized === '/sample.html' || normalized === '/sample-pdf.html') return '/samples/index.html';
+      if (normalized === '/approach.html') return '/about.html';
+      if (normalized === '/thank-you.html') return '/contact.html';
+      if (normalized.startsWith('/samples/')) return '/samples/index.html';
 
-  nav.querySelectorAll('[data-nav-route]').forEach((link) => {
-    const isActive = link.getAttribute('data-nav-route') === currentRoute;
-    link.classList.toggle('active', isActive);
-    if (isActive) link.setAttribute('aria-current', 'page');
-    else link.removeAttribute('aria-current');
-  });
+      return normalized;
+    };
 
-  const headerInner = nav.closest('.header-inner');
-  let toggle = document.getElementById('nav-toggle');
-
-  if (!toggle && headerInner) {
-    toggle = document.createElement('button');
-    toggle.className = 'nav-toggle';
-    toggle.id = 'nav-toggle';
-    toggle.type = 'button';
-    toggle.setAttribute('aria-controls', 'main-nav');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
-    toggle.innerHTML = `
-      <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
-        <rect width="24" height="2" y="0"></rect>
-        <rect width="24" height="2" y="7"></rect>
-        <rect width="24" height="2" y="14"></rect>
-      </svg>
+    const currentRoute = getCurrentRoute();
+    nav.innerHTML = `
+      <ul class="nav-list">
+        ${navItems.map((item) => `<li><a href="${toSiteUrl(item.route)}" class="nav-link" data-nav-route="${normalizeRoute(item.route)}">${item.label}</a></li>`).join('')}
+      </ul>
     `;
-    headerInner.appendChild(toggle);
-  }
 
-  if (!toggle) return;
+    const brandLink = document.querySelector('.brand-link');
+    if (brandLink) brandLink.href = toSiteUrl('/');
 
-  const setState = (open) => {
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    nav.setAttribute('data-hidden', String(!open));
-    if (open) {
-      const first = nav.querySelector('a');
-      if (first) first.focus();
-    } else {
-      toggle.focus();
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const href = link.getAttribute('href');
+      const rewritten = rewriteInternalUrl(href);
+      if (rewritten !== href) link.href = rewritten;
+    });
+
+    document.querySelectorAll('img[src]').forEach((image) => {
+      const src = image.getAttribute('src');
+      const rewritten = rewriteInternalUrl(src);
+      if (rewritten !== src) image.src = rewritten;
+    });
+
+    const nextInput = document.querySelector('input[name="_next"]');
+    if (nextInput) {
+      const rewritten = rewriteInternalUrl(nextInput.value);
+      if (rewritten !== nextInput.value) nextInput.value = rewritten;
     }
-  };
 
-  setState(false);
+    nav.querySelectorAll('[data-nav-route]').forEach((link) => {
+      const isActive = link.getAttribute('data-nav-route') === currentRoute;
+      link.classList.toggle('active', isActive);
+      if (isActive) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
 
-  toggle.addEventListener('click', function () {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    setState(!isOpen);
-  });
+    const headerInner = nav.closest('.header-inner');
+    let toggle = document.getElementById('nav-toggle');
 
-  nav.addEventListener('click', function (event) {
-    if (event.target instanceof Element && event.target.closest('a')) {
-      setState(false);
+    if (!toggle && headerInner) {
+      toggle = document.createElement('button');
+      toggle.className = 'nav-toggle';
+      toggle.id = 'nav-toggle';
+      toggle.type = 'button';
+      toggle.setAttribute('aria-controls', 'main-nav');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.innerHTML = `
+        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+          <rect width="24" height="2" y="0"></rect>
+          <rect width="24" height="2" y="7"></rect>
+          <rect width="24" height="2" y="14"></rect>
+        </svg>
+      `;
+      headerInner.appendChild(toggle);
     }
-  });
 
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') setState(false);
-  });
+    if (!toggle) return;
 
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) setState(false);
+    const setState = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      nav.setAttribute('data-hidden', String(!open));
+      if (open) {
+        const first = nav.querySelector('a');
+        if (first) first.focus();
+      } else {
+        toggle.focus();
+      }
+    };
+
+    setState(false);
+
+    toggle.addEventListener('click', function () {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setState(!isOpen);
+    });
+
+    nav.addEventListener('click', function (event) {
+      if (event.target instanceof Element && event.target.closest('a')) {
+        setState(false);
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setState(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) setState(false);
+    });
   });
-});
+})();
