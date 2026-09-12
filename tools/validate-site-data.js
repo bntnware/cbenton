@@ -45,14 +45,6 @@ if (unassigned.length) warn(`Unassigned sample assets: ${unassigned.join(', ')}`
 
 const navConfig = JSON.parse(fs.readFileSync(navigationPath, 'utf8'));
 const hrefs = (navConfig.nav || []).map((item) => item.href);
-const routable = new Set(['/','/work','/samples','/approach','/pricing','/about','/contact']);
-for (const href of hrefs) {
-  if (!routable.has(href)) warn(`Nav href has no matching canonical route: ${href}`);
-}
-
-if (!fs.existsSync(path.join(root, 'index.html'))) {
-  warn('Brand home route is missing index.html for /.');
-}
 
 const htmlFiles = [];
 function walk(dir) {
@@ -64,6 +56,24 @@ function walk(dir) {
   }
 }
 walk(root);
+
+const routable = new Set(['/']);
+for (const file of htmlFiles) {
+  const rel = path.relative(root, file).split(path.sep).join('/');
+  if (!rel.endsWith('.html')) continue;
+  if (rel === 'index.html') {
+    routable.add('/');
+  } else if (rel === 'samples/index.html') {
+    routable.add('/samples');
+  } else {
+    const withoutExt = rel.slice(0, -5);
+    routable.add(`/${withoutExt}`);
+  }
+}
+for (const href of hrefs) {
+  if (!routable.has(href)) warn(`Nav href has no matching canonical route: ${href}`);
+}
+if (!routable.has('/')) warn('Brand home route is missing index.html for /.');
 
 const staleHeaders = htmlFiles.filter((f) => fs.readFileSync(f, 'utf8').includes('class="nav-list"'));
 if (staleHeaders.length) warn(`Multiple header implementations remain in files: ${staleHeaders.map((f) => path.relative(root, f)).join(', ')}`);

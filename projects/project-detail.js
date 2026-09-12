@@ -87,7 +87,9 @@ async function loadProjectDetail() {
   const systemHeading = el('h2', null, 'System');
   systemHeading.id = 'system-heading';
   system.appendChild(systemHeading);
-  system.appendChild(el('p', 'prose', project.systemDescription || ''));
+  if (project.systemDescription) {
+    system.appendChild(el('p', 'prose', project.systemDescription));
+  }
   system.appendChild(el('p', 'prose', `Fixed: ${(project.fixedElements || []).join(', ') || 'Structured elements documented in project assets.'}`));
   system.appendChild(el('p', 'prose', `Variables: ${(project.variables || []).join(', ') || 'Project-defined variable content.'}`));
   system.appendChild(el('p', 'prose', `Outputs relation: ${(project.outputs || []).join(', ') || 'Project outputs vary while preserving core logic.'}`));
@@ -156,7 +158,7 @@ async function loadProjectDetail() {
   const canonicalUrl = `https://cbenton.art/projects/${project.slug}`;
   document.title = `${project.title} — CBenton`;
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = canonicalUrl;
+  if (canonical) canonical.setAttribute('href', canonicalUrl);
   updateMeta('meta[name="description"]', project.seoDescription || project.summary);
   updateMeta('meta[property="og:title"]', project.seoTitle || `${project.title} — CBenton`);
   updateMeta('meta[property="og:description"]', project.seoDescription || project.summary);
