@@ -25,25 +25,37 @@
   <footer class="site-footer" role="contentinfo"></footer>
   <script src="/nav.js" defer></script>
   <script>
+    function createEl(tag, className, text) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
     async function renderWork() {
       const grid = document.getElementById('work-grid');
       const res = await fetch('/data/project-registry.json');
       const projects = await res.json();
       projects.filter((p) => p.featuredInWork).forEach((p) => {
         const scope = (p.outputs || []).join(', ');
-        const article = document.createElement('article');
-        article.className = 'card';
-        article.innerHTML = `
-          <a class="card-link" href="/projects/${p.slug}">
-            <img src="/${p.hero}" alt="${p.title} hero" loading="lazy" />
-            <div class="card-content">
-              <h2>${p.title}</h2>
-              <p class="muted">${p.projectType}</p>
-              <p class="muted">${p.summary}</p>
-              <p class="muted"><strong>Why it matters:</strong> ${(p.problem || p.systemDescription || '').slice(0, 170)}</p>
-              <p class="muted"><strong>Scope / outputs:</strong> ${scope || 'Project system outputs'}</p>
-            </div>
-          </a>`;
+        const article = createEl('article', 'card');
+        const link = createEl('a', 'card-link');
+        link.href = `/projects/${p.slug}`;
+        const img = createEl('img');
+        img.src = `/${p.hero}`;
+        img.alt = `${p.title} hero`;
+        img.loading = 'lazy';
+
+        const content = createEl('div', 'card-content');
+        const h2 = createEl('h2', null, p.title);
+        const type = createEl('p', 'muted', p.projectType);
+        const summary = createEl('p', 'muted', p.summary);
+        const why = createEl('p', 'muted', `Why it matters: ${(p.problem || p.systemDescription || '').slice(0, 170)}`);
+        const outputs = createEl('p', 'muted', `Scope / outputs: ${scope || 'Project system outputs'}`);
+
+        content.append(h2, type, summary, why, outputs);
+        link.append(img, content);
+        article.appendChild(link);
         grid.appendChild(article);
       });
     }

@@ -1,13 +1,42 @@
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function updateMeta(selector, content) {
+  const node = document.querySelector(selector);
+  if (!node || !content) return;
+  node.setAttribute('content', content);
+}
+
+function renderGallery(grid, assets) {
+  assets.forEach((asset) => {
+    const figure = el('figure', 'figure-card');
+    const img = el('img');
+    img.src = `/${asset.path}`;
+    img.alt = asset.alt;
+    img.loading = 'lazy';
+    const caption = el('figcaption', null, asset.alt);
+    figure.append(img, caption);
+    grid.appendChild(figure);
+  });
+}
+
 async function loadProjectDetail() {
   const root = document.getElementById('project-page');
   if (!root) return;
+
   const slug = root.getAttribute('data-project-slug');
   const res = await fetch('/data/project-registry.json');
   const projects = await res.json();
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
-    root.innerHTML = '<h1>Project not found</h1><p class="prose">This project slug does not exist in the canonical registry.</p>';
+    const h1 = el('h1', null, 'Project not found');
+    const p = el('p', 'prose', 'This project slug does not exist in the canonical registry.');
+    root.append(h1, p);
     return;
   }
 
@@ -15,52 +44,94 @@ async function loadProjectDetail() {
   const overview = pngAssets.slice(0, 3);
   const remaining = pngAssets.slice(3);
 
-  const gallery = (assets) => assets.map((a) => `<figure class="figure-card"><img src="/${a.path}" alt="${a.alt}" loading="lazy" /><figcaption>${a.alt}</figcaption></figure>`).join('');
+  const breadcrumb = el('nav');
+  breadcrumb.setAttribute('aria-label', 'Breadcrumb');
+  const workLink = el('a', null, 'Work');
+  workLink.href = '/work';
+  breadcrumb.append(workLink, document.createTextNode(` › ${project.title}`));
 
-  const relatedLinks = (project.relatedProjectIds || [])
+  const heading = el('h1', null, project.title);
+  const type = el('p', 'muted', project.projectType);
+  const summary = el('p', 'prose', project.summary);
+
+  const intro = el('section', 'section');
+  intro.setAttribute('aria-labelledby', 'intro-heading');
+  const introHeading = el('h2', null, 'Intro');
+  introHeading.id = 'intro-heading';
+  intro.appendChild(introHeading);
+  const introFigure = el('figure', 'figure-card');
+  const introImg = el('img');
+  introImg.src = `/${project.hero}`;
+  introImg.alt = `${project.title} hero`;
+  const introCaption = el('figcaption', null, `${project.title} representative visual`);
+  introFigure.append(introImg, introCaption);
+  intro.appendChild(introFigure);
+
+  const system = el('section', 'section');
+  system.setAttribute('aria-labelledby', 'system-heading');
+  const systemHeading = el('h2', null, 'System');
+  systemHeading.id = 'system-heading';
+  system.appendChild(systemHeading);
+  system.appendChild(el('p', 'prose', project.systemDescription || ''));
+  system.appendChild(el('p', 'prose', `Fixed: ${(project.fixedElements || []).join(', ') || 'Structured elements documented in project assets.'}`));
+  system.appendChild(el('p', 'prose', `Variables: ${(project.variables || []).join(', ') || 'Project-defined variable content.'}`));
+  system.appendChild(el('p', 'prose', `Outputs relation: ${(project.outputs || []).join(', ') || 'Project outputs vary while preserving core logic.'}`));
+  if (project.productionNotes) {
+    system.appendChild(el('p', 'prose', project.productionNotes));
+  }
+
+  const gallerySection = el('section', 'section');
+  gallerySection.setAttribute('aria-labelledby', 'gallery-heading');
+  const galleryHeading = el('h2', null, 'Gallery');
+  galleryHeading.id = 'gallery-heading';
+  gallerySection.appendChild(galleryHeading);
+  gallerySection.appendChild(el('h3', null, 'Overview assets'));
+  const overviewGrid = el('div', 'gallery-grid');
+  renderGallery(overviewGrid, overview);
+  gallerySection.appendChild(overviewGrid);
+  if (remaining.length) {
+    gallerySection.appendChild(el('h3', null, 'Instances / variants'));
+    const remainingGrid = el('div', 'gallery-grid');
+    renderGallery(remainingGrid, remaining);
+    gallerySection.appendChild(remainingGrid);
+  }
+
+  const production = el('section', 'section');
+  production.setAttribute('aria-labelledby', 'production-heading');
+  const productionHeading = el('h2', null, 'Production');
+  productionHeading.id = 'production-heading';
+  production.appendChild(productionHeading);
+  production.appendChild(el('p', 'prose', project.tools ? `Tools: ${project.tools.join(', ')}.` : 'Production notes are documented through project assets and system structure.'));
+
+  root.append(breadcrumb, heading, type, summary, intro, system, gallerySection, production);
+
+  const related = (project.relatedProjectIds || [])
     .map((id) => projects.find((p) => p.id === id))
-    .filter(Boolean)
-    .map((p) => `<a class="btn" href="/projects/${p.slug}">${p.title}</a>`)
-    .join(' ');
+    .filter(Boolean);
+  if (related.length) {
+    const relatedSection = el('section', 'section');
+    relatedSection.setAttribute('aria-labelledby', 'related-heading');
+    const relatedHeading = el('h2', null, 'Related projects');
+    relatedHeading.id = 'related-heading';
+    const wrap = el('p');
+    related.forEach((r) => {
+      const link = el('a', 'btn', r.title);
+      link.href = `/projects/${r.slug}`;
+      wrap.appendChild(link);
+      wrap.appendChild(document.createTextNode(' '));
+    });
+    relatedSection.append(relatedHeading, wrap);
+    root.appendChild(relatedSection);
+  }
 
-  root.innerHTML = `
-    <nav aria-label="Breadcrumb"><a href="/work">Work</a> › ${project.title}</nav>
-    <h1>${project.title}</h1>
-    <p class="muted">${project.projectType}</p>
-    <p class="prose">${project.summary}</p>
-
-    <section class="section" aria-labelledby="intro-heading">
-      <h2 id="intro-heading">Intro</h2>
-      <figure class="figure-card"><img src="/${project.hero}" alt="${project.title} hero" /><figcaption>${project.title} representative visual</figcaption></figure>
-    </section>
-
-    <section class="section" aria-labelledby="system-heading">
-      <h2 id="system-heading">System</h2>
-      <p class="prose">${project.systemDescription || ''}</p>
-      <p class="prose"><strong>Fixed:</strong> ${(project.fixedElements || []).join(', ') || 'Structured elements documented in project assets.'}</p>
-      <p class="prose"><strong>Variables:</strong> ${(project.variables || []).join(', ') || 'Project-defined variable content.'}</p>
-      <p class="prose"><strong>Outputs relation:</strong> ${(project.outputs || []).join(', ') || 'Project outputs vary while preserving core logic.'}</p>
-      ${project.productionNotes ? `<p class="prose">${project.productionNotes}</p>` : ''}
-    </section>
-
-    <section class="section" aria-labelledby="gallery-heading">
-      <h2 id="gallery-heading">Gallery</h2>
-      <h3>Overview assets</h3>
-      <div class="gallery-grid">${gallery(overview)}</div>
-      ${remaining.length ? `<h3>Instances / variants</h3><div class="gallery-grid">${gallery(remaining)}</div>` : ''}
-    </section>
-
-    <section class="section" aria-labelledby="production-heading">
-      <h2 id="production-heading">Production</h2>
-      <p class="prose">${project.tools ? `Tools: ${project.tools.join(', ')}.` : 'Production notes are documented through project assets and system structure.'}</p>
-    </section>
-
-    ${relatedLinks ? `<section class="section" aria-labelledby="related-heading"><h2 id="related-heading">Related projects</h2><p>${relatedLinks}</p></section>` : ''}
-  `;
-
+  const canonicalUrl = `https://cbenton.art/projects/${project.slug}`;
   document.title = `${project.title} — CBenton`;
   const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.href = `https://cbenton.art/projects/${project.slug}`;
+  if (canonical) canonical.href = canonicalUrl;
+  updateMeta('meta[name="description"]', project.seoDescription || project.summary);
+  updateMeta('meta[property="og:title"]', project.seoTitle || `${project.title} — CBenton`);
+  updateMeta('meta[property="og:description"]', project.seoDescription || project.summary);
+  updateMeta('meta[property="og:url"]', canonicalUrl);
 }
 
 document.addEventListener('DOMContentLoaded', loadProjectDetail);

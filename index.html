@@ -51,14 +51,32 @@
   <footer class="site-footer" role="contentinfo"></footer>
   <script src="/nav.js" defer></script>
   <script>
+    function createEl(tag, className, text) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
     async function loadHomeWork() {
       const container = document.getElementById('home-work-grid');
       const res = await fetch('/data/project-registry.json');
       const projects = await res.json();
       projects.filter((p) => p.featuredInWork).forEach((p) => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        card.innerHTML = `<a class="card-link" href="/projects/${p.slug}"><img src="/${p.hero}" alt="${p.title} hero" loading="lazy" /><div class="card-content"><h3>${p.title}</h3><p class="muted">${p.projectType}</p><p class="muted">${p.summary}</p></div></a>`;
+        const card = createEl('article', 'card');
+        const link = createEl('a', 'card-link');
+        link.href = `/projects/${p.slug}`;
+        const img = createEl('img');
+        img.src = `/${p.hero}`;
+        img.alt = `${p.title} hero`;
+        img.loading = 'lazy';
+        const content = createEl('div', 'card-content');
+        const h3 = createEl('h3', null, p.title);
+        const type = createEl('p', 'muted', p.projectType);
+        const summary = createEl('p', 'muted', p.summary);
+        content.append(h3, type, summary);
+        link.append(img, content);
+        card.appendChild(link);
         container.appendChild(card);
       });
     }

@@ -24,16 +24,30 @@ for (const p of projects) {
 }
 
 const assigned = new Set(projects.flatMap((p) => (p.assets || []).map((a) => a.path)));
-const files = fs.readdirSync(sampleDir).map((f) => `samples/${f}`);
+const files = [];
+function walkSampleAssets(dir, basePrefix = 'samples') {
+  for (const item of fs.readdirSync(dir)) {
+    const full = path.join(dir, item);
+    const stat = fs.statSync(full);
+    const rel = `${basePrefix}/${item}`;
+    if (stat.isDirectory()) walkSampleAssets(full, rel);
+    else files.push(rel);
+  }
+}
+walkSampleAssets(sampleDir);
 const ignored = new Set(['samples/README.md']);
 const unassigned = files.filter((f) => !assigned.has(f) && !ignored.has(f) && !f.endsWith('.html') && !f.endsWith('.txt'));
 if (unassigned.length) warn(`Unassigned sample assets: ${unassigned.join(', ')}`);
 
 const navContent = fs.readFileSync(navJsPath, 'utf8');
 const hrefs = Array.from(navContent.matchAll(/href:\s*'([^']+)'/g)).map((m) => m[1]);
-const routable = new Set(['/work','/samples','/approach','/pricing','/about','/contact']);
+const routable = new Set(['/','/work','/samples','/approach','/pricing','/about','/contact']);
 for (const href of hrefs) {
   if (!routable.has(href)) warn(`Nav href has no matching canonical route: ${href}`);
+}
+
+if (!fs.existsSync(path.join(root, 'index.html'))) {
+  warn('Brand home route is missing index.html for /.');
 }
 
 const htmlFiles = [];
