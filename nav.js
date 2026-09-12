@@ -89,11 +89,18 @@ document.addEventListener('DOMContentLoaded', function () {
     nav.insertAdjacentElement('afterend', toggle);
   }
 
+  if (!toggle.querySelector('.sr-only')) {
+    const label = document.createElement('span');
+    label.className = 'sr-only';
+    label.textContent = 'Menu';
+    toggle.appendChild(label);
+  }
+
   toggle.setAttribute('aria-controls', 'main-nav');
-  toggle.setAttribute('aria-label', 'Open menu');
 
   const setState = function (open) {
     toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     nav.setAttribute('data-hidden', String(!open));
     if (open) {
       const first = nav.querySelector('a');
