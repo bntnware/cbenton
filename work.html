@@ -91,16 +91,18 @@
 
       // Load projects data always (to show related systems when filtering)
       let projects = [];
+      let projectsLoaded = false;
       try {
         const res = await fetch('/data/projects.json');
         projects = await res.json();
+        projectsLoaded = true;
       } catch (e) {
         console.error('Failed to load projects.json', e);
       }
 
       if (!filter) {
         // Render systems-first index (original behavior)
-        if (!projects.length) return;
+        if (!projectsLoaded) return;
 
         grid.innerHTML = '';
         projects.forEach(p => {
