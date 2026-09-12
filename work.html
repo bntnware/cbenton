@@ -3,185 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Work — CBenton</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="styles-image-hints.css" />
+  <title>Selected Work — CBenton</title>
+  <meta name="description" content="Curated case-study index of CBenton visual systems, showing project logic, scope, and outputs." />
+  <link rel="canonical" href="https://cbenton.art/work" />
+  <meta property="og:title" content="Selected Work — CBenton" />
+  <meta property="og:description" content="Curated systems-focused case studies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cbenton.art/work" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" role="banner" aria-label="Top header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="/" aria-label="Homepage" class="brand-link">
-          <span class="logo">[ cbenton ]</span>
-        </a>
-      </div>
-
-      <nav id="main-nav" class="site-nav" role="navigation" aria-label="Main navigation" data-hidden="true">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link" data-nav>Home</a></li>
-          <li><a href="/work" class="nav-link active" data-nav>Work</a></li>
-          <li><a href="/about" class="nav-link" data-nav>About</a></li>
-          <li><a href="/order" class="nav-link" data-nav>Pricing</a></li>
-          <li><a href="/contact" class="nav-link" data-nav>Contact</a></li>
-        </ul>
-      </nav>
-
-      <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open menu">
-        <svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true" focusable="false">
-          <rect width="24" height="2" y="0"></rect>
-          <rect width="24" height="2" y="7"></rect>
-          <rect width="24" height="2" y="14"></rect>
-        </svg>
-      </button>
-    </div>
-  </header>
+  <header class="site-header" role="banner"></header>
 
   <main id="main" class="container" role="main">
-    <h1>Work — Selected systems</h1>
-    <p class="prose">Systems-first portfolio index. Each entry represents a repeatable visual system and links to more detailed documentation.</p>
-
-    <section id="systems-grid" style="margin-top:20px;">
-      <div id="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
-    </section>
-
-    <section id="samples-grid" style="margin-top:20px; display:none;">
-      <h2 id="samples-heading">Samples</h2>
-      <div id="samples" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
-      <p style="margin-top:12px;"><a href="/work" class="btn">View all systems</a></p>
-    </section>
-
+    <h1>Work</h1>
+    <p class="prose">Curated portfolio case studies. This index prioritizes system logic, why the project matters, scope, and production outputs.</p>
+    <div id="work-grid" class="grid section"></div>
   </main>
 
-  <footer class="site-footer container" role="contentinfo">
-    <p>&copy; 2026 cbenton</p>
-  </footer>
-
+  <footer class="site-footer" role="contentinfo"></footer>
+  <script src="/nav.js" defer></script>
   <script>
-    async function renderProjectsOrSamples() {
-      const params = new URLSearchParams(window.location.search);
-      const filter = params.get('filter');
-      const grid = document.getElementById('grid');
-      const samplesSection = document.getElementById('samples-grid');
-      const samplesContainer = document.getElementById('samples');
-
-      // Load projects data always (to show related systems when filtering)
-      let projects = [];
-      try {
-        const res = await fetch('/data/projects.json');
-        projects = await res.json();
-      } catch (e) {
-        console.error('Failed to load projects.json', e);
-      }
-
-      if (!filter) {
-        // Render systems-first index (original behavior)
-        projects.forEach(p => {
-          const article = document.createElement('article');
-          article.className = 'card';
-          const link = document.createElement('a');
-          link.href = '/projects/' + (p.slug || p.id) + '.html';
-          link.className = 'card-link';
-          link.setAttribute('aria-label', 'View system: ' + p.title);
-
-          const img = document.createElement('img');
-          img.src = p.images && p.images[0] && p.images[0].src ? p.images[0].src : '';
-          img.alt = p.images && p.images[0] && p.images[0].alt ? p.images[0].alt : p.title;
-          img.loading = 'lazy';
-          img.style.width = '100%';
-          img.style.height = 'auto';
-          img.style.display = 'block';
-          img.style.borderRadius = '6px';
-
-          const h3 = document.createElement('h3');
-          h3.textContent = p.title;
-          h3.style.margin = '10px 0 6px 0';
-
-          const meta = document.createElement('p');
-          meta.className = 'muted';
-          meta.textContent = p.summary || '';
-
-          link.appendChild(img);
-          link.appendChild(h3);
-          link.appendChild(meta);
-          article.appendChild(link);
-          grid.appendChild(article);
-        });
-        return;
-      }
-
-      // If a filter param exists: show samples matching the filter token
-      // Load asset inventory and filter by token
-      try {
-        const assetsRes = await fetch('/data/assets.json');
-        const assets = await assetsRes.json();
-        const token = filter.toLowerCase();
-        // find matching assets (path includes token)
-        const matches = assets.filter(a => a.path.toLowerCase().includes(token));
-        // If no direct matches, also try matching within filenames by token presence
-        if (matches.length === 0) {
-          // fallback: match any asset whose filename contains token as substring
-          const alt = assets.filter(a => a.path.toLowerCase().split('/').pop().includes(token));
-          matches.push(...alt);
-        }
-
-        // Show samples section
-        samplesSection.style.display = '';
-        // Clear any previous samples
-        samplesContainer.innerHTML = '';
-
-        matches.forEach(a => {
-          const card = document.createElement('article');
-          card.className = 'card';
-
-          const link = document.createElement('a');
-          link.href = '/' + a.path; // open the image directly
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.className = 'card-link';
-
-          const img = document.createElement('img');
-          img.src = '/' + a.path;
-          img.alt = a.path.split('/').pop();
-          img.loading = 'lazy';
-          img.style.width = '100%';
-          img.style.height = 'auto';
-
-          const caption = document.createElement('div');
-          caption.className = 'gallery-caption';
-          caption.textContent = a.path.split('/').pop();
-
-          link.appendChild(img);
-          link.appendChild(caption);
-          card.appendChild(link);
-          samplesContainer.appendChild(card);
-        });
-
-        // Also show related systems (projects whose images reference the token)
-        const related = projects.filter(p => (p.images || []).some(img => img.src.toLowerCase().includes(token)));
-        if (related.length > 0) {
-          const relatedHeading = document.createElement('h2');
-          relatedHeading.textContent = 'Related systems';
-          relatedHeading.style.marginTop = '28px';
-          samplesContainer.parentNode.insertBefore(relatedHeading, samplesContainer);
-          related.forEach(p => {
-            const a = document.createElement('a');
-            a.href = '/projects/' + (p.slug || p.id) + '.html';
-            a.className = 'btn';
-            a.style.marginRight = '8px';
-            a.textContent = p.title;
-            samplesContainer.parentNode.appendChild(a);
-          });
-        }
-
-      } catch (e) {
-        console.error('Failed to load assets.json for filtering', e);
-      }
+    async function renderWork() {
+      const grid = document.getElementById('work-grid');
+      const res = await fetch('/data/project-registry.json');
+      const projects = await res.json();
+      projects.filter((p) => p.featuredInWork).forEach((p) => {
+        const scope = (p.outputs || []).join(', ');
+        const article = document.createElement('article');
+        article.className = 'card';
+        article.innerHTML = `
+          <a class="card-link" href="/projects/${p.slug}">
+            <img src="/${p.hero}" alt="${p.title} hero" loading="lazy" />
+            <div class="card-content">
+              <h2>${p.title}</h2>
+              <p class="muted">${p.projectType}</p>
+              <p class="muted">${p.summary}</p>
+              <p class="muted"><strong>Why it matters:</strong> ${(p.problem || p.systemDescription || '').slice(0, 170)}</p>
+              <p class="muted"><strong>Scope / outputs:</strong> ${scope || 'Project system outputs'}</p>
+            </div>
+          </a>`;
+        grid.appendChild(article);
+      });
     }
-
-    renderProjectsOrSamples();
+    renderWork();
   </script>
-  <script src="nav.js" defer></script>
 </body>
 </html>

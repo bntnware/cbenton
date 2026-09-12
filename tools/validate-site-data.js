@@ -1,0 +1,53 @@
+const fs = require('fs');
+const path = require('path');
+
+const root = path.resolve(__dirname, '..');
+const registryPath = path.join(root, 'data', 'project-registry.json');
+const sampleDir = path.join(root, 'samples');
+const navJsPath = path.join(root, 'nav.js');
+
+function warn(msg) { console.warn('WARN:', msg); }
+function fail(msg) { console.error('ERROR:', msg); process.exitCode = 1; }
+
+const projects = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+const slugs = new Set();
+
+for (const p of projects) {
+  if (!p.slug) fail(`Project ${p.id} has no canonical slug.`);
+  if (slugs.has(p.slug)) fail(`Duplicate slug found: ${p.slug}`);
+  slugs.add(p.slug);
+
+  const heroPath = path.join(root, p.hero || '');
+  if (!p.hero || !fs.existsSync(heroPath)) fail(`Hero missing or not found for ${p.slug}: ${p.hero}`);
+  if (p.visibleInSamples && !p.hero) fail(`Samples-visible project missing hero: ${p.slug}`);
+  if (p.featuredInWork && !p.summary) fail(`Work-featured project missing summary: ${p.slug}`);
+}
+
+const assigned = new Set(projects.flatMap((p) => (p.assets || []).map((a) => a.path)));
+const files = fs.readdirSync(sampleDir).map((f) => `samples/${f}`);
+const ignored = new Set(['samples/README.md']);
+const unassigned = files.filter((f) => !assigned.has(f) && !ignored.has(f) && !f.endsWith('.html') && !f.endsWith('.txt'));
+if (unassigned.length) warn(`Unassigned sample assets: ${unassigned.join(', ')}`);
+
+const navContent = fs.readFileSync(navJsPath, 'utf8');
+const hrefs = Array.from(navContent.matchAll(/href:\s*'([^']+)'/g)).map((m) => m[1]);
+const routable = new Set(['/work','/samples','/approach','/pricing','/about','/contact']);
+for (const href of hrefs) {
+  if (!routable.has(href)) warn(`Nav href has no matching canonical route: ${href}`);
+}
+
+const htmlFiles = [];
+function walk(dir) {
+  for (const item of fs.readdirSync(dir)) {
+    const full = path.join(dir, item);
+    const stat = fs.statSync(full);
+    if (stat.isDirectory() && !full.includes('.git')) walk(full);
+    else if (full.endsWith('.html')) htmlFiles.push(full);
+  }
+}
+walk(root);
+
+const staleHeaders = htmlFiles.filter((f) => fs.readFileSync(f, 'utf8').includes('class="nav-list"'));
+if (staleHeaders.length) warn(`Multiple header implementations remain in files: ${staleHeaders.map((f) => path.relative(root, f)).join(', ')}`);
+
+if (!process.exitCode) console.log('Validation completed without blocking errors.');
