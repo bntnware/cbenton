@@ -36,6 +36,24 @@
     "status": "published"
   },
   {
+    "id": "suitcase-clinic-im-cool",
+    "slug": "suitcase-clinic-im-cool",
+    "title": "Suitcase Clinic — I’M COOL iteration",
+    "year": "2026",
+    "systemType": "Service / institutional iteration",
+    "summary": "A 32-unit serialized I’M COOL edition integrating Suitcase Clinic and its printed affiliation network through registered front/back pairs.",
+    "outputs": ["32 serialized units", "front/back pairs", "four-unit imposed sheets", "selected web samples"],
+    "rules": ["shared I’M COOL architecture", "service-context integration", "sequential article identity", "unit-specific visual variation"],
+    "variables": ["serial number", "front glyph palette", "cube state", "right-panel configuration", "binary article ID"],
+    "fixedElements": ["I’M COOL object", "Suitcase Clinic context", "two-sided registration", "service affiliation field"],
+    "tools": ["coded layout system", "variable-data production", "print imposition"],
+    "images": [
+      { "src": "samples/IM_COOL_SUITCASE_CLINIC_16_FRONT_BACK.png", "alt": "Suitcase Clinic I’M COOL unit 16 front and back", "role": "instance" }
+    ],
+    "featured": true,
+    "status": "published"
+  },
+  {
     "id": "bootyz-series",
     "slug": "bootyz-series",
     "title": "BOOTYZ — deterministic edition system",
