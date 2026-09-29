@@ -70,5 +70,23 @@
     ],
     "featured": true,
     "status": "published"
+  },
+  {
+    "id": "cmyk-synthpop",
+    "slug": "cmyk-synthpop",
+    "title": "CMYK SYNTHPOP — 32-unit synthesizer system",
+    "year": "2026",
+    "systemType": "Deterministic CMYK field / synthesizer system",
+    "summary": "A 32-unit front/back population pairing color-field letter structures with unit-specific four-channel synthesizer states. Production is imposed as four units per panel, while the website preserves every unit as its own registered PNG pair.",
+    "outputs": ["32 unit-specific front/back pairs", "four-unit production panels", "CMYK field fronts", "four-channel synthesizer backs"],
+    "rules": ["four units per production panel", "one registered front/back pair per unit", "CMYK channel identity remains fixed", "field and control states vary by unit"],
+    "variables": ["field palette", "letter-field distribution", "channel synth type", "envelope or oscillator mode", "frequency", "offset", "fine control", "range", "HPF", "field behavior"],
+    "fixedElements": ["CMYK channel order", "front field grid", "back control architecture", "five-state selector SAME OPP OFF 50 ON"],
+    "tools": ["coded layout system", "CMYK field engine", "synthesizer parameter system", "duplex print imposition"],
+    "images": [
+      { "src": "samples/CMYK_SYNTHPOP_UNIT_01_FRONT_BACK.png", "alt": "CMYK SYNTHPOP unit 01 front and back", "role": "hero" }
+    ],
+    "featured": true,
+    "status": "published"
   }
 ]
