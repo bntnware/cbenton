@@ -88,5 +88,23 @@
     ],
     "featured": true,
     "status": "published"
+  },
+  {
+    "id": "bitstream-project",
+    "slug": "bitstream-project",
+    "title": "BITSTREAM PROJECT — 52-unit one-sided system",
+    "year": "2026",
+    "systemType": "One-sided BITSTREAM-configured playing-card population",
+    "summary": "A 52-unit playing-card population generated within a shared page architecture. Production is imposed as four one-sided units per panel; the website separates all 52 units into individual PNGs.",
+    "outputs": ["52 one-sided units", "13 four-unit production panels", "52 unit-specific PNGs", "complete playing-card population"],
+    "rules": ["one side per unit", "four units per production panel", "shared page architecture", "unit-specific BITSTREAM configuration"],
+    "variables": ["name typography", "card rank and suit", "cube state", "line field", "color field", "image and vector modules", "unit identifier"],
+    "fixedElements": ["BITSTREAM project identity", "single-sided architecture", "playing-card structure", "shared modular field"],
+    "tools": ["coded layout system", "deterministic variation", "playing-card data", "four-up print imposition"],
+    "images": [
+      { "src": "samples/bitstream-project/BITSTREAM_PROJECT_UNIT_01.png", "alt": "BITSTREAM PROJECT one-sided unit 01", "role": "hero" }
+    ],
+    "featured": true,
+    "status": "published"
   }
 ]
