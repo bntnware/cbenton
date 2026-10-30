@@ -264,13 +264,12 @@
     "summary": "A complete playing-card deck generated through 52 individual BITSTREAM configurations within one modular page architecture.",
     "outputs": [
       "52 one-sided units",
-      "13 four-unit production panels",
-      "52 unit-specific PNGs",
+      "52 letter-size pages",
       "complete playing-card population"
     ],
     "rules": [
       "one side per unit",
-      "four units per production panel",
+      "one complete unit per page",
       "shared page architecture",
       "unit-specific BITSTREAM configuration"
     ],
@@ -293,7 +292,7 @@
       "coded layout system",
       "deterministic variation",
       "playing-card data",
-      "four-up print imposition"
+      "full-page print production"
     ],
     "images": [
       {
